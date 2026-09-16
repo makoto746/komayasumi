@@ -130,6 +130,16 @@ h2{font-size:clamp(1.7rem,5.4vw,2.5rem);letter-spacing:.12em;text-align:center}
 .chap.last{text-align:center;padding-bottom:10px}
 .chap.last h3{font-size:clamp(1.5rem,5.5vw,2rem)}
 .chap.last p.tx{color:var(--ink-soft)}
+/* filmstrip rail — 一コマずつ、つながっていく */
+.chap.reel{position:relative;padding-left:34px}
+.chap.reel::before{content:"";position:absolute;left:8px;top:52px;bottom:-2px;width:2px;background:repeating-linear-gradient(var(--paper-deep) 0 7px,transparent 7px 14px)}
+.chap.reel::after{content:"";position:absolute;left:2px;top:48px;width:15px;height:15px;border-radius:50%;background:var(--honey);box-shadow:0 0 0 4px var(--frame),0 0 0 6px var(--paper-deep)}
+.chap.reel.reel-end::before{display:none}
+/* こまのきもち — 犬視点のひとこと */
+.chap .koma-say{margin-top:20px;padding:13px 16px 13px 17px;background:var(--paper);border-left:3px solid var(--pero);border-radius:0 14px 14px 0}
+.chap .koma-say b{display:block;font-family:'Kiwi Maru',serif;color:var(--pero);font-size:.72rem;letter-spacing:.24em;margin-bottom:5px;font-weight:700}
+.chap .koma-say .say{color:var(--ink);font-size:.94rem;line-height:1.9;font-weight:500}
+.chap.pro .num{color:var(--pero)}
 /* ---- next issue ---- */
 .next-issue{max-width:460px;margin:44px auto 0;text-align:center;border:2px dashed var(--pero);
   border-radius:22px;padding:22px 24px;color:var(--paper)}
@@ -852,54 +862,74 @@ a.door .lbl i{text-decoration:none}
     <span class="eyebrow">はじめましての方へ</span>
     <h2>こまものがたり</h2>
 
-    <div class="chap">
+    <div class="chap pro reel">
+      <span class="num">プロローグ</span>
+      <h3>「その名前は、フィルムから。」</h3>
+      <p class="tx">「こま」という名前は、フィルムの「一コマ」からもらいました。<br>一コマ、一コマ。そのときは、ただの一枚の絵。<br>でも、つなげて、まわすと——ふしぎ。絵が、動きだす。物語に、なる。<br>この子の毎日を、一コマずつ残していこう。そう決めた日に、名前は「こま」になりました。</p>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">なまえを よばれると、しっぽが かってに うごくの。</span></div>
+    </div>
+
+    <div class="chap reel">
       <span class="num">その一</span>
       <h3>「ダックスを、飼うはずだった。」</h3>
-      <p class="tx">最初に決めていたのは、カニンヘンダックスフンド。でも、友人の家のフレンチブルドッグに、パパは出会ってしまった。「かわいい子がいるよ」——その一言で、次の日にはもう、会いに行っていた。<br>2025年5月6日。こまが、家族になった日。</p>
+      <p class="tx">最初に決めていたのは、カニンヘンダックスフンド。あの、細長い子。<br>でも、友人の家で、パパはフレンチブルドッグに出会ってしまった。ぺちゃんこの鼻。まんまるの目。「かわいい子がいるよ」——その一言で、次の日にはもう、車を走らせていた。<br>ケージの奥から、こまがこちらを見た。その瞬間、ダックスのことは、きれいに忘れた。<br>2025年5月6日。こまが、家族になった日。</p>
       <div class="ph"><img data-k="pen" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="家に来たばかりの子犬のこまが、サークルの中から見上げている" loading="lazy"></div>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">このひとたち、ついていっても だいじょうぶ そうだな、って おもった。</span></div>
     </div>
 
-    <div class="chap">
+    <div class="chap reel">
       <span class="num">その二</span>
       <h3>「パパは、リビングで寝た。」</h3>
-      <p class="tx">ちいさなこまを、夜ひとりにできなくて。<br>パパは布団をリビングに運んで、ケージの横で眠った。何日も、何日も。<br>寝返りをうつたび、鼻先が触れる距離で。</p>
+      <p class="tx">ちいさなこまを、夜ひとりにできなくて。<br>パパは布団をリビングに運んで、ケージの横で眠った。何日も、何日も。<br>夜中に「くうん」と鳴くたび、指を一本、格子のすきまから入れてやる。すると、すっと静かになった。<br>朝、パパの背中はばきばきだった。それでも、やめなかった。</p>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">ゆびが いっぽん あれば、よるは こわくないよ。</span></div>
     </div>
 
-    <div class="chap">
+    <div class="chap reel">
       <span class="num">その三</span>
       <h3>「トイレ、詰まる。」</h3>
-      <p class="tx">ある日、うんちと一緒に、おしりふきを流した。トイレは詰まった。業者さんが来た。家族は、笑うしかなかった。<br>——こまが来てから、家に笑いが増えた。</p>
+      <p class="tx">ある日、うんちと一緒に、おしりふきが流れていった。<br>水は、みるみる引かなくなった。トイレは、みごとに詰まった。翌日、業者さんが来て、家族は頭を下げながら、どこか笑っていた。<br>——こまが来てから、家の困りごとは増えた。それ以上に、ずっと、笑いが増えた。</p>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">わるいこと、してないよ。ながしたのは、みずだもん。</span></div>
     </div>
 
-    <div class="chap">
+    <div class="chap reel">
       <span class="num">その四</span>
-      <h3>「夜の、びょういん。」</h3>
-      <p class="tx">娘の人形の、ちいさなくつした。ある夜、こまはそれを飲みこんだ。<br>気づいて、あわてて夜間の病院へ走った。<br>先生の手で、こまはぜんぶ吐き出した。けろっとした顔で。<br>——眠れなかったのは、家族のほうだった。</p>
+      <h3>「あそぼ、の合図。」</h3>
+      <p class="tx">遊んでほしいとき、こまには、決まった作法がある。<br>お気に入りのボールか、人形をくわえて、とことこ歩いてくる。そして、ひざの上に、ぐいっと押しつける。<br>「これで、あそんで」。ことばはないのに、ぜんぶ伝わる。<br>忙しい手をとめてしまうのは、いつだって、こっちのほうだ。</p>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">めを みて、ぐっと おしつける。これが いちばん つよい わざ。</span></div>
     </div>
 
-    <div class="chap">
+    <div class="chap reel">
       <span class="num">その五</span>
-      <h3>「手術の日。」</h3>
-      <p class="tx">避妊手術の日、こまのいない家は、しんとしていた。ソファのはじっこが、こんなに広かったなんて。<br>無事に帰ってきた夜、家族はいつもより長く、こまをなでた。</p>
-      <div class="ph"><img data-k="hippo" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="カバのぬいぐるみに寄り添って眠るこま" loading="lazy"></div>
+      <h3>「夜の、びょういん。」</h3>
+      <p class="tx">娘の人形の、ちいさなくつした。ある夜、こまはそれを、ぺろりと飲みこんだ。<br>気づいたときには、もう喉のおく。あわてて上着をつかんで、夜間の病院へ走った。赤信号が、やけに長く感じた。<br>先生の手で、こまはぜんぶ吐き出した。そして、けろっとした顔で、家族を見上げた。<br>——その夜、眠れなかったのは、こまではなく、家族のほうだった。</p>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">くつした、ちいさくて、おいしそう だったの。ごめんね。</span></div>
     </div>
 
-    <div class="chap">
+    <div class="chap reel">
       <span class="num">その六</span>
-      <h3>「おかえりを、いちばんに。」</h3>
-      <p class="tx">パパの帰りが、どんなに遅くなっても。残業でも、接待でも。<br>玄関のドアが開いた瞬間、こまは全力でとんでくる。その日いちばんの顔で、しっぽを振って。<br>——「ただいま」が、いちばん好きな時間になった。</p>
+      <h3>「手術の日。」</h3>
+      <p class="tx">避妊手術の日。こまのいない家は、しんと静まりかえっていた。<br>ソファのはじっこが、こんなに広かったなんて。床に落ちた毛さえ、その日はなぜか、掃除できなかった。<br>迎えにいくと、まだ少しふらつく足で、こまは尾を振った。<br>無事に帰ってきた夜、家族はいつもより長く、ずっと長く、こまをなでた。</p>
+      <div class="ph"><img data-k="hippo" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="カバのぬいぐるみに寄り添って眠るこま" loading="lazy"></div>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">いえの におい。やっぱり、ここが いちばん あんしんする。</span></div>
     </div>
 
-    <div class="chap">
+    <div class="chap reel">
       <span class="num">その七</span>
+      <h3>「おかえりを、いちばんに。」</h3>
+      <p class="tx">パパの帰りが、どんなに遅くなっても。残業でも、接待でも。日付が変わっていても。<br>玄関のドアが、かちゃりと鳴る。その瞬間、こまは廊下の奥から全力でとんでくる。<br>その日いちばんの顔で、しっぽを、ちぎれるくらい振って。<br>——世界でいちばんの「おかえり」を、知ってしまった。もう、後戻りはできない。</p>
+      <div class="koma-say"><b>こまのきもち</b><span class="say">あしおとで わかるの。あ、うちの ひとだ、って。</span></div>
+    </div>
+
+    <div class="chap reel reel-end">
+      <span class="num">その八</span>
       <h3>「だから、一コマずつ。」</h3>
-      <p class="tx">いつか来る「いつか」のことは、考えない。そのかわり、今日のこまを、一コマずつ残していく。<br>10年後も、20年後も、ここに来れば会えるように。</p>
+      <p class="tx">いつか来る「いつか」のことは、考えない。<br>そのかわり、今日のこまを、一コマずつ、ここに残していく。<br>笑った顔も、寝ぼけた顔も、いたずらした顔も。ぜんぶ。<br>10年後も、20年後も。ここに来れば、いつでも会えるように。</p>
     </div>
 
     <div class="chap last">
       <span class="num">むすび</span>
       <h3>「こまは、ずっと見てるよ。」</h3>
-      <p class="tx">人が大好きで、いつも人を見ている子。<br>窓のそとを見つめて、家族の帰りを待っている。<br>だから、この場所の合言葉はこれにしました。<br>あなたが今日をがんばるあいだも——こまは、ずっと見てるよ。</p>
+      <p class="tx">人が大好きで、いつも人を見ている子。<br>窓のそとを見つめて、家族の帰りを待っている。だれかが帰ってくる、その一瞬を、逃さないように。<br>だから、この場所の合言葉は、これにしました。<br>あなたが今日をがんばるあいだも——こまは、ずっと見てるよ。</p>
     </div>
   </section>
   </div>
