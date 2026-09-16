@@ -601,6 +601,7 @@ footer .copy{margin-top:42px;font-size:.72rem;letter-spacing:.16em;color:rgba(25
 .cal-legend .lg.home{background:#7FB2C4}
 .cal-tip{max-width:440px;margin:22px auto 0;background:var(--frame);border:2px dashed var(--honey);
   border-radius:18px;padding:16px 20px;font-size:.9rem;line-height:1.9;color:var(--ink2);text-align:left}
+.cal-tip .ct-more{display:inline-block;margin-top:10px;font-size:.82rem;color:var(--honey);font-weight:700;text-decoration:none;letter-spacing:.04em}
 .cal-tip .ct-lb{display:block;font-family:'Kiwi Maru',serif;font-size:.8rem;letter-spacing:.1em;
   color:var(--honey);font-weight:700;margin-bottom:5px}
 
@@ -631,6 +632,17 @@ footer .copy{margin-top:42px;font-size:.72rem;letter-spacing:.16em;color:rgba(25
 .reward-close:active{transform:scale(.97)}
 a.door{text-decoration:none;color:inherit;display:block}
 a.door .lbl i{text-decoration:none}
+
+/* ---- みんなの❤️(写真集) ---- */
+.heart-wrap{text-align:center;margin-top:9px}
+.fr .heart{display:inline-flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--paper-deep);border-radius:999px;padding:5px 15px;cursor:pointer;font-family:inherit;font-size:.82rem;color:var(--ink-soft);transition:transform .15s,background .2s,border-color .2s}
+.fr .heart:hover{transform:translateY(-1px)}
+.fr .heart .hi{font-size:1.02rem;line-height:1;color:var(--pero)}
+.fr .heart .hn{font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:.02em}
+.fr .heart.on{background:#FDF0EE;border-color:var(--pero);color:#C96A5E}
+.fr .heart:active{transform:scale(.92)}
+@keyframes heartpop{0%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1)}}
+.fr .heart.pop .hi{animation:heartpop .4s ease}
 </style>
 </head>
 <body>
@@ -749,6 +761,9 @@ a.door .lbl i{text-decoration:none}
       <div class="heat-foot">
         <img data-k="illust" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="伏せてくつろぐこまのイラスト">
         <p>休むことも、りっぱな愛情。<span>暑い日は、おうちで「こまやすみ」。それがいちばんの安心です。</span></p>
+      </div>
+      <div style="text-align:center;padding:16px 20px 4px">
+        <a href="care-natsu.html" style="display:inline-block;font-family:'Kiwi Maru',serif;font-size:.9rem;letter-spacing:.06em;color:var(--honey);font-weight:700;text-decoration:none;border:2px solid var(--honey);border-radius:999px;padding:10px 24px">→ くわしくは「夏の暑さ・熱中症のケア」</a>
       </div>
     </div>
     </div>
@@ -1198,7 +1213,7 @@ a.door .lbl i{text-decoration:none}
         <p>ここを通るには、なでる必要があります。</p>
       </figure>
     </div>
-    <p class="strip-hint">タップで、大きく。ぜんぶで40コマ。</p>
+    <p class="strip-hint">写真はタップで大きく。♡で、すきなコマに「かわいい」を。</p>
   </div>
 
   
@@ -2138,7 +2153,20 @@ document.getElementById('fav').href = IMGS.logo;
     '残暑。まだ熱中症の季節です。おさんぽは朝はやく・夕方すずしい時間に。',
     'すごしやすい季節。フレブルは太りやすい犬種。適度な運動で体重管理を。',
     'こまの日の月。乾燥がはじまります。目やに・鼻まわりのシワのケアを習慣に。',
-    '寒さ本番。暖房による乾燥に注意。関節も冷えやすいので、あたたかく過ごして。'
+      ];
+  const tipLinks = [
+    ['care-fuyu.html','冬の乾燥・寒さ対策'],
+    ['care-fuyu.html','冬の乾燥・寒さ対策'],
+    ['manabu.html','こまと、まなぶ'],
+    ['manabu.html','こまと、まなぶ'],
+    ['manabu.html','こまと、まなぶ'],
+    ['care-kao.html','顔のシワ・鼻のケア'],
+    ['care-natsu.html','夏の暑さ・熱中症対策'],
+    ['care-natsu.html','夏の暑さ・熱中症対策'],
+    ['care-natsu.html','夏の暑さ・熱中症対策'],
+    ['care-taiju.html','体重管理と毎日のごはん'],
+    ['care-kao.html','顔のシワ・鼻のケア'],
+    ['care-fuyu.html','冬の乾燥・寒さ対策']
   ];
   const today = new Date();
   let ym = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -2158,7 +2186,8 @@ document.getElementById('fav').href = IMGS.logo;
       cells += `<div class="${cls}">${d}</div>`;
     }
     grid.innerHTML = cells;
-    tipEl.innerHTML = '<span class="ct-lb">'+(m+1)+'月の、こま手帳</span>'+tips[m];
+    const _tl = tipLinks[m] || ['manabu.html','こまと、まなぶ'];
+    tipEl.innerHTML = '<span class="ct-lb">'+(m+1)+'月の、こま手帳</span>'+tips[m]+'<a class="ct-more" href="'+_tl[0]+'">→ '+_tl[1]+'</a>';
     const started = new Date(2026,6,11);
     let msg = '';
     if(m===1) msg = '2月11日は、こまの誕生日。';
@@ -2415,6 +2444,53 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     }
     show(v);
   })();
+})();
+
+
+// ── みんなの❤️(写真集の各コマ) ──
+(function(){
+  const book = document.getElementById('room-book');
+  if(!book || typeof sbGet==='undefined') return;
+  const fp = (typeof sbFP!=='undefined') ? sbFP() : 'anon';
+  let mine = [];
+  try{ mine = JSON.parse(localStorage.getItem('koma_hearts')||'[]'); }catch(e){}
+  const counts = {}, btns = {};
+  book.querySelectorAll('.fr').forEach(fr=>{
+    const img = fr.querySelector('.ph img[data-k]');
+    if(!img) return;
+    const item = img.dataset.k;
+    if(btns[item]) return;
+    const wrap = document.createElement('div'); wrap.className='heart-wrap';
+    const b = document.createElement('button'); b.className='heart'; b.type='button'; b.dataset.item=item;
+    b.setAttribute('aria-label','この一コマに「かわいい」を送る');
+    b.innerHTML = '<span class="hi">'+(mine.indexOf(item)>=0?'♥':'♡')+'</span><span class="hn">0</span>';
+    if(mine.indexOf(item)>=0) b.classList.add('on');
+    b.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); tap(item); });
+    wrap.appendChild(b); fr.appendChild(wrap); btns[item]=b;
+  });
+  function paint(){
+    for(const it in btns){
+      const b=btns[it], on=mine.indexOf(it)>=0;
+      b.querySelector('.hn').textContent = counts[it]||0;
+      b.querySelector('.hi').textContent = on?'♥':'♡';
+      b.classList.toggle('on', on);
+    }
+  }
+  async function load(){
+    const rows = await sbGet('reactions?select=item');
+    if(Array.isArray(rows)){ for(const k in counts) delete counts[k]; rows.forEach(r=>{ counts[r.item]=(counts[r.item]||0)+1; }); paint(); }
+  }
+  async function tap(item){
+    if(mine.indexOf(item)>=0) return;
+    mine.push(item); try{ localStorage.setItem('koma_hearts', JSON.stringify(mine)); }catch(e){}
+    counts[item]=(counts[item]||0)+1; paint();
+    const b=btns[item]; if(b){ b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); }
+    if(window.komaBlip) window.komaBlip(880, 1174, .06);
+    await sbSend('reactions', {item, fingerprint: fp});
+  }
+  load();
+  const doorBtn = document.querySelector('[data-room="room-book"]');
+  if(doorBtn) doorBtn.addEventListener('click', ()=>{ setTimeout(load, 200); });
 })();
 
 </script>
