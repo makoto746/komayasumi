@@ -415,6 +415,15 @@ header.paper .sndbtn[aria-pressed="true"]{background:var(--honey);color:#241A14}
 .photo-btn{background:var(--honey);color:#241A14;border:none;border-radius:999px;padding:13px 30px;
   font-weight:700;font-size:.95rem;letter-spacing:.08em;cursor:pointer}
 .photo-btn.ghost{background:transparent;border:2px solid var(--ink);color:var(--ink)}
+/* route & share */
+.route-lead{font-family:'Kiwi Maru',serif;font-size:.82rem;color:var(--ink-soft);letter-spacing:.08em;margin-top:6px}
+.route{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
+.route-step{background:var(--frame);border:1.5px solid var(--honey);color:var(--ink);border-radius:999px;padding:8px 16px;font-family:'Kiwi Maru',serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:background .15s,color .15s}
+.route-step:hover{background:var(--honey);color:#241A14}
+.route-arrow{color:var(--honey);font-weight:700}
+.kshare-wrap{text-align:center;margin-top:30px}
+.kshare{display:inline-flex;align-items:center;gap:6px;background:transparent;border:2px solid var(--honey);color:var(--honey);border-radius:999px;padding:12px 26px;font-family:'Kiwi Maru',serif;font-size:.9rem;font-weight:700;letter-spacing:.05em;cursor:pointer;transition:background .15s,color .15s}
+.kshare:hover{background:var(--honey);color:#241A14}
 /* ---- calendar ---- */
 
 .cal-card{max-width:440px;margin:40px auto 0;background:var(--frame);border-radius:24px;padding:22px;
@@ -841,9 +850,17 @@ a.door .lbl i{text-decoration:none}
 </div>
 
   <section class="reveal" id="doors-sec">
-    <span class="eyebrow">ROOMS</span>
+    <span class="eyebrow">おへや</span>
     <h2>こまの家</h2>
     <p class="lead">気になる扉から、どうぞ。</p>
+    <p class="route-lead">はじめての方は、この順で。</p>
+    <div class="route">
+      <button class="route-step" data-room="room-about">こまのこと</button>
+      <span class="route-arrow">→</span>
+      <button class="route-step" data-room="room-story">ものがたり</button>
+      <span class="route-arrow">→</span>
+      <button class="route-step" data-room="room-book">写真集</button>
+    </div>
     <div class="doors">
       <button class="door wide" data-room="room-about">
         <span class="ph"><img data-k="face" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></span>
@@ -898,7 +915,7 @@ a.door .lbl i{text-decoration:none}
   </section>
 
   <section class="reveal" id="puni">
-    <span class="eyebrow">PUNI</span>
+    <span class="eyebrow">ぷにっと</span>
     <h2>はなぺちょ</h2>
     <p class="lead">こまの鼻は、押されるのを待っています。</p>
     <div class="puni-stage">
@@ -987,6 +1004,7 @@ a.door .lbl i{text-decoration:none}
       <h3>「こまは、ずっと見てるよ。」</h3>
       <p class="tx">人が大好きで、いつも人を見ている子。<br>窓のそとを見つめて、家族の帰りを待っている。だれかが帰ってくる、その一瞬を、逃さないように。<br>だから、この場所の合言葉は、これにしました。<br>あなたが今日をがんばるあいだも——こまは、ずっと見てるよ。</p>
     </div>
+    <div class="kshare-wrap"><button class="kshare">🐾 このお話を、だれかに</button></div>
   </section>
   </div>
 
@@ -1300,6 +1318,7 @@ a.door .lbl i{text-decoration:none}
       </figure>
     </div>
     <p class="strip-hint">写真はタップで大きく。♡で、すきなコマに「かわいい」を。</p>
+    <div class="kshare-wrap"><button class="kshare">🐾 この写真集を、教える</button></div>
   </div>
 
   
@@ -1307,7 +1326,7 @@ a.door .lbl i{text-decoration:none}
 <div class="room" id="room-fail" aria-hidden="true">
   <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">きょうのしくじり</span><span style="width:70px"></span></div>
   <section class="reveal">
-    <span class="eyebrow">TODAY'S OOPS</span>
+    <span class="eyebrow">しくじり</span>
     <h2>きょうのしくじり</h2>
     <p class="lead">かんぺきじゃない。それが、こま。<br>きょうも、なにかやらかしています。</p>
     <div class="fail-card">
@@ -1323,7 +1342,7 @@ a.door .lbl i{text-decoration:none}
 <div class="room" id="room-vote" aria-hidden="true">
   <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">人気コマ総選挙</span><span style="width:70px"></span></div>
   <section class="reveal">
-    <span class="eyebrow">KOMA ELECTION</span>
+    <span class="eyebrow">とうひょう</span>
     <h2>人気コマ総選挙</h2>
     <p class="lead">あなたの「推しこま」に、一票を。<br>選んだ子は、いつでも変えられます。</p>
     <div class="vote-grid" id="vote-grid"></div>
@@ -1334,7 +1353,7 @@ a.door .lbl i{text-decoration:none}
 <div class="room" id="room-post" aria-hidden="true">
   <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">こまポスト</span><span style="width:70px"></span></div>
   <section class="reveal">
-    <span class="eyebrow">LETTERS TO KOMA</span>
+    <span class="eyebrow">おてがみ</span>
     <h2>こまポスト</h2>
     <p class="lead">こまへ、ひとことだけでも。「つかれた」でも「また来たよ」でも。<br>書くと、こまがそっとお返事します。世界のこま友の手紙と、ずっとここに。</p>
     <div class="post-form">
@@ -1349,7 +1368,7 @@ a.door .lbl i{text-decoration:none}
 <div class="room" id="room-breath" aria-hidden="true">
   <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">こまとマインドフルネス</span><span style="width:70px"></span></div>
   <section class="reveal" style="text-align:center">
-    <span class="eyebrow">MINDFULNESS WITH KOMA</span>
+    <span class="eyebrow">こきゅう</span>
     <h2>こまと、マインドフルネス</h2>
     <p class="lead" id="mf-lead">頭がいっぱいになったら、こまと少しだけ。<br>こまのおなかに合わせて、ゆっくり、呼吸をととのえます。</p>
     <div class="mf-setup" id="mf-setup">
@@ -1380,7 +1399,7 @@ a.door .lbl i{text-decoration:none}
 <div class="room" id="room-photo" aria-hidden="true">
   <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">こまと記念撮影</span><span style="width:70px"></span></div>
   <section class="reveal" style="text-align:center">
-    <span class="eyebrow">PHOTO WITH KOMA</span>
+    <span class="eyebrow">いっしょに</span>
     <h2>こまと記念撮影</h2>
     <p class="lead">こまと一緒に、写真をとろう。<br>ポーズ・ふきだし・フレーム・背景で、じぶんだけの一コマに。<br>撮った写真は、あなたのスマホに保存されます。</p>
     <div class="photo-stage" id="photo-stage" data-frame="none">
@@ -1417,6 +1436,7 @@ a.door .lbl i{text-decoration:none}
       <button class="photo-btn ghost" id="photo-retry" style="display:none">もう一回</button>
     </div>
     <p class="lead" id="photo-note" style="margin-top:18px;font-size:.82rem">こまやスタンプを、指でドラッグして置けます。スタンプはダブルタップで消せます。</p>
+    <div class="kshare-wrap"><button class="kshare">🐾 こまやすみを、教える</button></div>
   </section>
 </div>
 
@@ -1424,7 +1444,7 @@ a.door .lbl i{text-decoration:none}
 <div class="room" id="room-cal" aria-hidden="true">
   <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">こまカレンダー</span><span style="width:70px"></span></div>
   <section class="reveal">
-    <span class="eyebrow">KOMA CALENDAR</span>
+    <span class="eyebrow">こよみ</span>
     <h2>こまカレンダー</h2>
     <p class="lead">毎月11日は「こまの日」。あたらしい一コマが増えます。<br>その月の、フレブルとの暮らしのヒントも。</p>
     <div class="cal-card">
@@ -1475,6 +1495,7 @@ a.door .lbl i{text-decoration:none}
       <li>こまが歳をとっても、<br>この場所は変わらずここにあります。
         </li>
     </ol>
+    <div class="kshare-wrap"><button class="kshare">🐾 友だちに、こまやすみを教える</button></div>
   </section>
 
 
@@ -2714,6 +2735,17 @@ document.getElementById('fav').href = IMGS.logo;
   document.querySelectorAll('[data-room]').forEach(b=>b.addEventListener('click', ()=>open(b.dataset.room)));
   document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', closeAll));
   addEventListener('keydown', e=>{ if(e.key!=='Escape') return; const l=document.querySelector('.lb.open'); if(l){ window.komaLbClose(); return; } closeAll(); });
+})();
+
+// 共有:友だちに教える
+(function(){
+  const URL='https://makoto746.github.io/komayasumi/';
+  const TXT='フレンチブルドッグ「こま」に会える場所。つかれたら、ここで こまやすみ。';
+  async function share(btn){
+    if(navigator.share){ try{ await navigator.share({title:'こまやすみ。', text:TXT, url:URL}); }catch(e){} }
+    else { try{ await navigator.clipboard.writeText(TXT+' '+URL); const o=btn.textContent; btn.textContent='URLをコピーしました'; setTimeout(()=>btn.textContent=o,1800); }catch(e){} }
+  }
+  document.querySelectorAll('.kshare').forEach(b=>b.addEventListener('click',()=>share(b)));
 })();
 
 // スクロールでふわっと
