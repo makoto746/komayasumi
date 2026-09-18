@@ -257,6 +257,32 @@ header.paper .sndbtn[aria-pressed="true"]{background:var(--honey);color:#241A14}
 .today-cap p.jp{font-family:'Kiwi Maru',serif;font-size:1.1rem;letter-spacing:.08em}
 .today-cap p.en{font-size:.82rem;margin-top:4px}
 .today-note{text-align:center;margin-top:18px;font-size:.82rem;color:var(--ink-soft)}
+/* ---- きょうのこま:仕掛け ---- */
+.td-streak{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin:20px auto 0;max-width:680px}
+.td-streak .flame{font-family:'Kiwi Maru',serif;font-weight:700;color:#241A14;background:var(--honey);border-radius:999px;padding:5px 14px;font-size:.9rem}
+.td-streak .fl-lbl{font-size:.78rem;color:var(--ink-soft);letter-spacing:.08em;margin-left:-4px}
+.td-streak .tot{font-size:.8rem;color:var(--ink-soft);border:1.5px solid var(--paper-deep);border-radius:999px;padding:5px 14px}
+.today-nav{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1.5px dashed var(--paper-deep)}
+.today-nav .today-date{border-bottom:none;padding:0;gap:12px}
+.td-arrow{background:var(--paper-deep);border:none;border-radius:50%;width:34px;height:34px;font-size:.85rem;color:var(--ink);cursor:pointer;flex:none;transition:background .15s}
+.td-arrow:hover{background:var(--honey)}
+.td-hi{font-family:'Kiwi Maru',serif;color:var(--honey);font-size:.92rem;letter-spacing:.06em;margin-bottom:8px}
+.today-card.flip .ph img{animation:tdflip .5s ease}
+@keyframes tdflip{0%{opacity:.2;transform:scale(1.04)}100%{opacity:1;transform:none}}
+.td-tsubu{max-width:680px;margin:26px auto 0;background:var(--frame);border:2px solid var(--honey);border-radius:20px;padding:20px 22px;text-align:center;box-shadow:0 14px 40px -24px rgba(36,26,20,.3)}
+.td-tsubu .lbl{font-family:'Kiwi Maru',serif;font-size:.74rem;letter-spacing:.2em;color:var(--honey);font-weight:700}
+.td-tsubu .tw{font-family:'Kiwi Maru',serif;font-size:1.05rem;letter-spacing:.06em;color:var(--ink);margin:10px 0 14px;line-height:1.8}
+.td-share{background:transparent;border:2px solid var(--honey);color:var(--honey);border-radius:999px;padding:9px 22px;font-family:'Kiwi Maru',serif;font-weight:700;font-size:.86rem;cursor:pointer;transition:background .15s,color .15s}
+.td-share:hover{background:var(--honey);color:#241A14}
+.td-koyomi{max-width:680px;margin:26px auto 0;text-align:center}
+.td-koyomi .lbl{font-family:'Kiwi Maru',serif;font-size:.74rem;letter-spacing:.2em;color:var(--ink-soft);font-weight:700}
+.koyomi-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;max-width:340px;margin:12px auto 0}
+.koyomi-grid .kh{font-size:.66rem;color:var(--ink-soft);padding:2px 0}
+.koyomi-grid .kd{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--ink-soft);border-radius:8px;background:var(--frame)}
+.koyomi-grid .kd.empty{background:transparent}
+.koyomi-grid .kd.on{background:var(--honey);color:#241A14;font-weight:700}
+.koyomi-grid .kd.today{outline:2px solid var(--pero);outline-offset:-2px}
+.koyomi-note{font-size:.8rem;color:var(--ink-soft);margin-top:12px}
 
 /* ---- mikuji ---- */
 .mikuji-wrap{background:var(--paper-deep)}
@@ -1016,17 +1042,33 @@ a.door .lbl i{text-decoration:none}
     <span class="eyebrow">こまの日記</span>
     <h2>きょうのこま</h2>
     <p class="lead">日付が変わると、日記も変わります。<br>いま世界中の人が、この同じ1ページを読んでいます。</p>
+    <div class="td-streak" id="td-streak"></div>
     <div class="today-card">
-      <div class="today-date">
-        <span class="d" id="today-date">—</span>
-        <span class="stamp">きょう</span>
+      <div class="today-nav">
+        <button class="td-arrow" id="td-prev" aria-label="前の日を見る">◀</button>
+        <div class="today-date">
+          <span class="d" id="today-date">—</span>
+          <span class="stamp" id="today-stamp">きょう</span>
+        </div>
+        <button class="td-arrow" id="td-next" aria-label="次の日を見る">▶</button>
       </div>
       <div class="ph"><img id="today-img" data-k="gaze" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="きょうのこまの一コマ"></div>
       <div class="today-cap">
+        <p class="td-hi" id="td-hi"></p>
         <p class="jp" id="today-jp">きょうも、ここにいます。</p>
       </div>
     </div>
-    <p class="today-note">あしたは、ちがう日記。</p>
+    <p class="today-note" id="today-note">あしたは、ちがう日記。</p>
+    <div class="td-tsubu" id="td-tsubu">
+      <span class="lbl">きょうの、こまのひとこと</span>
+      <p class="tw" id="td-tsubu-tx"></p>
+      <button class="td-share" id="td-share">🐾 このひとことを送る</button>
+    </div>
+    <div class="td-koyomi" id="td-koyomi">
+      <span class="lbl">今月の、こよみ</span>
+      <div class="koyomi-grid" id="koyomi-grid"></div>
+      <p class="koyomi-note" id="koyomi-note"></p>
+    </div>
   </section>
 
   
@@ -1765,6 +1807,7 @@ document.getElementById('fav').href = IMGS.logo;
 })();
 
 // きょうのこま(日付で決まる=世界共通)
+// きょうのこま(日付で決まる=世界共通) + 時間帯・日めくり・連続・ひとこと
 (function(){
   const pool = [
     {img:'gaze',  jp:'きょうも、ていちの場所で待っています。だれかが帰ってくると、いちばんに気づくのがわたしの仕事。ドアの音は、ぜんぶ覚えました。'},
@@ -1793,15 +1836,158 @@ document.getElementById('fav').href = IMGS.logo;
     {img:'look',jp:'その手に持っているの、なんですか。さっきから、ずっと気になっています。……こっそり、においだけ、かがせてください。'},
     {img:'upside',jp:'ソファのうえで、逆さまになってみました。世界がひっくり返ると、なんだか楽しい。でも、起き上がるのが、ちょっと大変。'}
   ];
-  const now = new Date();
-  const start = new Date(now.getFullYear(),0,0);
-  const doy = Math.floor((now - start) / 86400000);
-  const pick = pool[doy % pool.length];
-  document.getElementById('today-img').src = IMGS[pick.img];
-  document.getElementById('today-jp').textContent = pick.jp;
-  const w = ['日','月','火','水','木','金','土'][now.getDay()];
-  document.getElementById('today-date').textContent =
-    `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')} (${w})`;
+  const TSUBU = [
+    'きょうも、生きてるだけで、はなまる。',
+    'むずかしいことは、あした考えよう。',
+    'ためいきひとつ、ついてもいいよ。',
+    'がんばりすぎたら、まんまる寝。',
+    'おなかがすくって、元気なしるし。',
+    'ひとやすみも、りっぱな用事です。',
+    'だれかの「ただいま」が、いちばんのごほうび。',
+    'こまは、あなたの味方です。ずっと。',
+    'うまくいかない日も、しっぽは振れる。',
+    'こわいときは、丸くなればいい。',
+    'にがてな日は、そっと目を半分とじて。',
+    'あせらなくて、だいじょうぶ。',
+    'きょうの空、ちょっと見てみて。',
+    'なでられると、悩みが半分になる。',
+    'おやつは、明日をがんばる燃料です。',
+    'できなかったことより、できたことを。',
+    'ねむいときは、ねむい。それでいい。',
+    'ちいさな幸せを、拾って歩こう。',
+    '深呼吸ひとつで、世界はすこし広がる。',
+    'あなたが笑うと、こまも うれしい。',
+    'まちがえても、また歩けばいい。',
+    'きょうも、ちゃんとここにいるよ。',
+    'いそがしい日ほど、水を一杯。',
+    'だいじょうぶ、こまが見てる。',
+    'ときには、なにもしない勇気を。',
+    'こまは、あなたの帰りを覚えてる。',
+    'かなしい日は、無理に笑わなくていい。',
+    '小さな一歩も、りっぱな前進。',
+    'まくらに顔をうずめる時間も、必要。',
+    'きょうの自分に、おつかれさま。',
+    'にっこりは、いちばん軽い贈りもの。',
+    'ゆっくりでいい。こまも、のんびり。',
+    'こまと、あなたと、まんまる。',
+    'つかれた心に、ひなたぼっこを。',
+    'できるときに、できることを。',
+    'あしたのことは、あしたのこまにまかせよう。',
+    'そばにいるよ、を言葉にしてみて。',
+    'どんな日も、夜は必ずやってくる。おやすみ。',
+    'ちょっと休むと、ちょっと強くなれる。',
+    'きょうの「ありがとう」、言えたかな。',
+    'まよったら、やさしいほうへ。',
+    'こまの鼻は、きょうも しめってます。',
+    'いいことは、小さくても数えよう。',
+    'まけそうな日は、ソファでごろん。',
+    'あなたのペースが、いちばん正しい。',
+    'また会えたね。それだけで、いい一日。'
+  ];
+  const card=document.querySelector('#today .today-card'); if(!card) return;
+  const imgEl=document.getElementById('today-img');
+  const jpEl=document.getElementById('today-jp');
+  const dateEl=document.getElementById('today-date');
+  const stampEl=document.getElementById('today-stamp');
+  const hiEl=document.getElementById('td-hi');
+  const noteEl=document.getElementById('today-note');
+  const prevB=document.getElementById('td-prev');
+  const nextB=document.getElementById('td-next');
+  const WD=['日','月','火','水','木','金','土'];
+  const DAY=86400000;
+  function doyOf(d){ const s=new Date(d.getFullYear(),0,0); return Math.floor((d-s)/DAY); }
+  function period(h){
+    if(h<5)  return {emo:'🌙',hi:'ま夜中。こまは、ぐっすり夢の中。'};
+    if(h<11) return {emo:'🌅',hi:'おはよう。こまは、まだ うとうと。'};
+    if(h<17) return {emo:'☀️',hi:'こんにちは。日なたで、のびのび。'};
+    if(h<22) return {emo:'🌇',hi:'こんばんは。おかえり、の時間。'};
+    return {emo:'🌙',hi:'おやすみ前。そろそろ、ねむいね。'};
+  }
+  let offset=0; const MINO=-13; let cdTimer=null;
+  function fmt(d){ return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0')+' ('+WD[d.getDay()]+')'; }
+  function render(){
+    const d=new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()+offset);
+    const idx=((doyOf(d)%pool.length)+pool.length)%pool.length;
+    const pick=pool[idx];
+    if(typeof IMGS!=='undefined' && IMGS[pick.img]) imgEl.src=IMGS[pick.img];
+    jpEl.textContent=pick.jp;
+    dateEl.textContent=fmt(d);
+    card.classList.remove('flip'); void card.offsetWidth; card.classList.add('flip');
+    if(offset===0){
+      const p=period(new Date().getHours());
+      stampEl.textContent=p.emo+' きょう';
+      hiEl.textContent=p.hi; hiEl.style.display='';
+    }else{
+      stampEl.textContent=(-offset)+'日まえ';
+      hiEl.style.display='none';
+    }
+    nextB.style.visibility=offset<0?'visible':'hidden';
+    prevB.style.visibility=offset>MINO?'visible':'hidden';
+    if(cdTimer){clearInterval(cdTimer);cdTimer=null;}
+    if(offset===0){ tick(); cdTimer=setInterval(tick,1000); }
+    else{ noteEl.textContent=(-offset)+'日前の、こま。またあした、あたらしいこまに会いにきてね。'; }
+  }
+  function tick(){
+    const now=new Date(); const mid=new Date(now); mid.setHours(24,0,0,0);
+    let s=Math.floor((mid-now)/1000);
+    const hh=String(Math.floor(s/3600)).padStart(2,'0'); s%=3600;
+    const mm=String(Math.floor(s/60)).padStart(2,'0'); const ss=String(s%60).padStart(2,'0');
+    noteEl.textContent='あすのこままで、あと '+hh+':'+mm+':'+ss;
+  }
+  prevB.addEventListener('click',()=>{ if(offset>MINO){offset--;render();} });
+  nextB.addEventListener('click',()=>{ if(offset<0){offset++;render();} });
+  render();
+
+  // 今日のひとこと + 共有
+  const tsubuTx=document.getElementById('td-tsubu-tx');
+  const tsubu=TSUBU[doyOf(new Date())%TSUBU.length];
+  if(tsubuTx) tsubuTx.textContent='「'+tsubu+'」';
+  const shareB=document.getElementById('td-share');
+  if(shareB) shareB.addEventListener('click', async ()=>{
+    const URL='https://makoto746.github.io/komayasumi/';
+    const t='きょうの、こまのひとこと。\n「'+tsubu+'」\n— こまやすみ。 '+URL;
+    if(navigator.share){ try{ await navigator.share({title:'こまやすみ。',text:t}); }catch(e){} }
+    else { try{ await navigator.clipboard.writeText(t); const o=shareB.textContent; shareB.textContent='コピーしました'; setTimeout(()=>shareB.textContent=o,1600);}catch(e){} }
+  });
+
+  // 連続来訪の炎（koma_visitを読む）
+  try{
+    const st=JSON.parse(localStorage.getItem('koma_visit')||'{}');
+    const streak=st.streak||0, total=st.total||0;
+    let html='';
+    if(streak>=2) html+='<span class="flame">🔥 '+streak+'日</span><span class="fl-lbl">れんぞく来訪</span>';
+    if(total>=1) html+='<span class="tot">こまと '+total+'回 会いました</span>';
+    const stEl=document.getElementById('td-streak'); if(stEl) stEl.innerHTML=html;
+  }catch(e){}
+
+  // 今月のこよみ（来た日をスタンプ）
+  try{
+    const KD='koma_days'; let days={};
+    try{ days=JSON.parse(localStorage.getItem(KD)||'{}'); }catch(e){}
+    const now=new Date();
+    const key=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+    days[key]=1;
+    const cutoff=+new Date()-70*DAY;
+    Object.keys(days).forEach(k=>{ if(+new Date(k)<cutoff) delete days[k]; });
+    localStorage.setItem(KD, JSON.stringify(days));
+    const grid=document.getElementById('koyomi-grid');
+    if(grid){
+      const y=now.getFullYear(), m=now.getMonth();
+      const first=new Date(y,m,1).getDay(), dim=new Date(y,m+1,0).getDate();
+      let cells=''; WD.forEach(w=>cells+='<span class="kh">'+w+'</span>');
+      for(let i=0;i<first;i++) cells+='<span class="kd empty"></span>';
+      let cnt=0;
+      for(let dd=1;dd<=dim;dd++){
+        const kk=y+'-'+String(m+1).padStart(2,'0')+'-'+String(dd).padStart(2,'0');
+        const on=days[kk]?' on':''; if(days[kk])cnt++;
+        const td=(dd===now.getDate())?' today':'';
+        cells+='<span class="kd'+on+td+'">'+dd+'</span>';
+      }
+      grid.innerHTML=cells;
+      const note=document.getElementById('koyomi-note');
+      if(note) note.textContent='今月、'+cnt+'日 会いに来てくれました。';
+    }
+  }catch(e){}
 })();
 
 // こまみくじ v2(超大吉〜末吉/星評価つき/凶なし)
