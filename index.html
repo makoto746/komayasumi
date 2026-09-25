@@ -743,6 +743,26 @@ a.door .lbl i{text-decoration:none}
 .fr .heart:active{transform:scale(.92)}
 @keyframes heartpop{0%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1)}}
 .fr .heart.pop .hi{animation:heartpop .4s ease}
+
+/* ---- こまに、また会える場所 / 流入おかえり / 総選挙1位 ---- */
+.meet{margin:34px auto 0;max-width:460px}
+.meet-h{font-family:'Kiwi Maru',serif;font-size:.95rem;letter-spacing:.12em;color:rgba(251,241,222,.82)}
+.meet-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.meet-a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:16px 10px 14px;border:1.5px solid var(--honey);border-radius:20px;color:var(--paper);text-decoration:none;transition:background .2s,color .2s}
+.meet-a:hover,.meet-a:focus-visible{background:var(--honey);color:#241A14;outline:none}
+.meet-k{font-size:.72rem;letter-spacing:.14em;opacity:.8}
+.meet-s{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.02rem;letter-spacing:.06em}
+.meet-id{font-family:'Nunito',sans-serif;font-size:.76rem;letter-spacing:.04em;opacity:.75}
+.meet-tag{margin-top:16px;font-size:.8rem;letter-spacing:.06em;color:rgba(251,241,222,.7)}
+.meet-tag b{color:var(--honey);font-weight:700}
+.hero .greet-sub.from{color:var(--honey)}
+.vote-top{max-width:600px;margin:30px auto 0;display:flex;align-items:center;gap:14px;background:var(--frame);border:2px dashed var(--honey);border-radius:20px;padding:12px 16px;text-align:left}
+.vote-top:empty{display:none}
+.vote-top img{width:64px;height:64px;border-radius:14px;object-fit:cover;flex:none}
+.vote-top .vt-r{font-family:'Kiwi Maru',serif;font-size:.98rem;color:var(--ink);line-height:1.5}
+.vote-top .vt-n{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:3px}
+.vote-top a{color:var(--honey);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--honey)}
+@media (max-width:380px){.meet-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1387,6 +1407,7 @@ a.door .lbl i{text-decoration:none}
     <span class="eyebrow">とうひょう</span>
     <h2>人気コマ総選挙</h2>
     <p class="lead">あなたの「推しこま」に、一票を。<br>選んだ子は、いつでも変えられます。</p>
+    <div class="vote-top" id="vote-top"></div>
     <div class="vote-grid" id="vote-grid"></div>
     <p class="vote-note" id="vote-note"></p>
   </section>
@@ -1548,7 +1569,16 @@ a.door .lbl i{text-decoration:none}
   <img class="night-logo" data-k="logo" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" style="border-radius:50%">
   <p class="matane" id="matane">またね。</p>
   <p style="margin-top:18px;font-size:.9rem;letter-spacing:.08em">世界のこま友へ——こまは、ずっと見てるよ。</p>
-  <p style="margin-top:26px"><a href="https://www.instagram.com/koma.log/" target="_blank" rel="noopener" style="color:var(--honey);text-decoration:none;font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:.12em;font-size:.86rem;border:1.5px solid var(--honey);border-radius:999px;padding:9px 22px;display:inline-block">Instagram — @koma.log</a></p>
+  <div class="meet">
+    <p class="meet-h">こまに、また会える場所</p>
+    <div class="meet-row">
+      <a class="meet-a" href="https://www.tiktok.com/@koma_log" target="_blank" rel="noopener">
+        <span class="meet-k">うごく こま</span><span class="meet-s">TikTok</span><span class="meet-id">@koma_log</span></a>
+      <a class="meet-a" href="https://www.instagram.com/koma.log/" target="_blank" rel="noopener">
+        <span class="meet-k">とまった こま</span><span class="meet-s">Instagram</span><span class="meet-id">@koma.log</span></a>
+    </div>
+    <p class="meet-tag">あなたの こまやすみ も、<b>#こまやすみ</b> で見せてね。</p>
+  </div>
   <div class="visits" id="visits">
     <span class="v-label">これまでに会いに来てくれた、こま友</span>
     <span class="v-num" id="v-num">— <b>ずっと見てるよ</b></span>
@@ -1661,6 +1691,28 @@ async function sbSend(path, body, prefer){
   catch(e){ return null; } }
 document.getElementById('fav').href = IMGS.logo;
 
+// ── どこから来てくれたか(?from=tt / ig / pin)──
+const KOMA_FROM = (function(){
+  const map={tt:'TikTok',ig:'Instagram',pin:'Pinterest'};
+  let k='';
+  try{
+    const u=new URL(location.href); k=(u.searchParams.get('from')||'').toLowerCase();
+    if(u.searchParams.has('from')){ u.searchParams.delete('from'); history.replaceState(null,'',u.pathname+u.search+u.hash); }
+  }catch(e){}
+  return map[k] ? {key:k, name:map[k]} : null;
+})();
+(async function(){
+  if(!KOMA_FROM) return;
+  const name='from_'+KOMA_FROM.key;
+  try{ if(sessionStorage.getItem('koma_'+name)==='1') return; sessionStorage.setItem('koma_'+name,'1'); }catch(e){}
+  const rows=await sbGet('counters?name=eq.'+name+'&select=value');
+  if(!Array.isArray(rows)||!rows[0]) return;
+  try{
+    const h={...SB_H,'Content-Type':'application/json'};
+    await fetch(SB_URL+'/rest/v1/counters?name=eq.'+name,{method:'PATCH',headers:h,body:JSON.stringify({value:Number(rows[0].value)+1})});
+  }catch(e){}
+})();
+
 
 
 
@@ -1728,6 +1780,11 @@ document.getElementById('fav').href = IMGS.logo;
       else if(gap <= 30) msg = 'ひさしぶり。ずっと見てたよ。';
       else               msg = 'おかえり。こまは、ちゃんと覚えてる。';
     }
+  }
+  if(typeof KOMA_FROM!=='undefined' && KOMA_FROM){
+    msg = last ? KOMA_FROM.name + 'から、おかえり。こまは覚えてるよ。'
+               : KOMA_FROM.name + 'から来てくれたんだね。ようこそ。';
+    sub.classList.add('from');
   }
   sub.textContent = msg;
 
@@ -1945,7 +2002,7 @@ document.getElementById('fav').href = IMGS.logo;
   const shareB=document.getElementById('td-share');
   if(shareB) shareB.addEventListener('click', async ()=>{
     const URL='https://makoto746.github.io/komayasumi/';
-    const t='きょうの、こまのひとこと。\n「'+tsubu+'」\n— こまやすみ。 '+URL;
+    const t='きょうの、こまのひとこと。\n「'+tsubu+'」\n— こまやすみ。 '+URL+'\n#こまやすみ';
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。',text:t}); }catch(e){} }
     else { try{ await navigator.clipboard.writeText(t); const o=shareB.textContent; shareB.textContent='コピーしました'; setTimeout(()=>shareB.textContent=o,1600);}catch(e){} }
   });
@@ -2126,7 +2183,7 @@ document.getElementById('fav').href = IMGS.logo;
   document.getElementById('again').addEventListener('click', draw);
   document.getElementById('share').addEventListener('click', async ()=>{
     const s = cur.s;
-    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。`;
+    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://makoto746.github.io/komayasumi/\n#こまやすみ #こまみくじ`;
     const note = document.getElementById('mnote');
     if(navigator.share){
       try{ await navigator.share({title:'こまみくじ', text:t}); }catch(e){}
@@ -2775,6 +2832,13 @@ document.getElementById('fav').href = IMGS.logo;
       </button>`).join('');
     grid.querySelectorAll('[data-vote]').forEach(b=>b.addEventListener('click',()=>vote(b.dataset.vote)));
     if(mine && note) note.textContent = 'あなたの推しこまは「'+capOf(mine)+'」。いまの得票は '+(counts[mine]||0)+'票。';
+    const top=document.getElementById('vote-top');
+    if(top){
+      let best='',bv=0; cands.forEach(([k])=>{ if((counts[k]||0)>bv){bv=counts[k];best=k;} });
+      top.innerHTML = best ? `<img src="${IMGS[best]}" alt="">
+        <p class="vt-r">いまの1位は「${capOf(best)}」（${bv}票）
+        <span class="vt-n">1位のコマは、<a href="https://www.tiktok.com/@koma_log" target="_blank" rel="noopener">TikTok @koma_log</a> に登場します。</span></p>` : '';
+    }
   }
   async function tally(){
     const rows = await sbGet('votes?select=choice');
@@ -2903,7 +2967,7 @@ document.getElementById('fav').href = IMGS.logo;
 // 共有:友だちに教える
 (function(){
   const URL='https://makoto746.github.io/komayasumi/';
-  const TXT='フレンチブルドッグ「こま」に会える場所。つかれたら、ここで こまやすみ。';
+  const TXT='フレンチブルドッグ「こま」に会える場所。つかれたら、ここで こまやすみ。 #こまやすみ';
   async function share(btn){
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。', text:TXT, url:URL}); }catch(e){} }
     else { try{ await navigator.clipboard.writeText(TXT+' '+URL); const o=btn.textContent; btn.textContent='URLをコピーしました'; setTimeout(()=>btn.textContent=o,1800); }catch(e){} }
