@@ -20,6 +20,13 @@
 <meta name="twitter:description" content="フレンチブルドッグ「こま」に会える場所。つかれたら、ここへ。">
 <meta name="twitter:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
 <link rel="icon" id="fav" href="">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#12100E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="こまやすみ">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Zen+Maru+Gothic:wght@400;500;700&family=Nunito:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
@@ -868,12 +875,86 @@ a.door .lbl i{text-decoration:none}
 .koma-toast.on{transform:translate(-50%,0)}
 .koma-toast b{color:var(--honey)}
 @media (prefers-reduced-motion:reduce){.env-fly{display:none}.cal-grid .cell.st.new .stp{animation:none}}
+
+/* ==== ホーム画面に置く ==== */
+.homeadd{max-width:440px;margin:22px auto 0;display:flex;align-items:center;gap:14px;background:var(--ink);color:var(--paper);
+  border-radius:20px;padding:14px 16px;text-align:left;border:none;width:100%;font:inherit;cursor:pointer;box-shadow:0 16px 40px -20px rgba(36,26,20,.6)}
+.homeadd img{width:52px;height:52px;border-radius:13px;flex:none}
+.homeadd b{display:block;font-family:'Kiwi Maru',serif;font-weight:500;font-size:.98rem;letter-spacing:.06em}
+.homeadd small{display:block;font-size:.74rem;opacity:.72;margin-top:2px;line-height:1.5}
+.homeadd .ha-go{margin-left:auto;color:var(--honey);font-size:1.2rem}
+.is-app .homeadd{display:none}
+.sheet{position:fixed;inset:0;z-index:140;background:rgba(18,16,14,.55);display:none;align-items:flex-end;justify-content:center}
+.sheet.on{display:flex;animation:roomIn .3s ease}
+.sheet-in{background:var(--paper);width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:26px 24px calc(26px + env(safe-area-inset-bottom));text-align:center}
+.sheet-in h3{font-family:'Kiwi Maru',serif;font-weight:500;font-size:1.1rem;letter-spacing:.08em}
+.sheet-in ol{text-align:left;margin:16px auto 0;padding-left:1.4em;max-width:340px;font-size:.9rem;line-height:2}
+.sheet-in ol b{color:var(--honey)}
+.sheet-in .sh-note{font-size:.76rem;color:var(--ink-soft);margin-top:10px;line-height:1.7}
+.sheet-in .sh-x{margin-top:18px;background:var(--honey);color:#241A14;border:none;border-radius:999px;padding:12px 30px;font:inherit;font-weight:700;letter-spacing:.1em}
+.sheet-in .sh-tabs{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.sheet-in .sh-tabs button{border:1.5px solid var(--honey);background:none;color:var(--ink);border-radius:999px;padding:6px 16px;font:inherit;font-size:.82rem}
+.sheet-in .sh-tabs button.on{background:var(--honey);color:#241A14}
+
+/* ==== こまの日の、おくりもの(待ち受け) ==== */
+.okuri{max-width:440px;margin:22px auto 0;background:var(--frame);border-radius:24px;padding:22px;text-align:center;
+  box-shadow:0 20px 60px -26px rgba(36,26,20,.32)}
+.okuri-h{font-family:'Kiwi Maru',serif;font-size:1.02rem;letter-spacing:.1em}
+.okuri-sub{font-size:.78rem;color:var(--ink-soft);margin-top:4px;letter-spacing:.04em;line-height:1.7}
+.okuri-prev{margin:16px auto 0;width:62%;max-width:230px;aspect-ratio:1080/2340;border-radius:22px;overflow:hidden;
+  background:var(--paper-deep);box-shadow:0 18px 40px -18px rgba(36,26,20,.45);position:relative}
+.okuri-prev img{width:100%;height:100%;object-fit:cover;display:block;-webkit-touch-callout:default}
+.okuri-prev .ld{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--ink-soft)}
+.okuri-btn{display:inline-block;margin-top:16px;background:var(--honey);color:#241A14;border:none;border-radius:999px;padding:12px 28px;
+  font:inherit;font-weight:700;letter-spacing:.08em;text-decoration:none;box-shadow:0 12px 30px -12px rgba(227,166,60,.6)}
+.okuri-ios{font-size:.74rem;color:var(--ink-soft);margin-top:10px;line-height:1.7}
+.okuri-next{font-size:.8rem;color:var(--pero);margin-top:12px;font-family:'Kiwi Maru',serif}
+
+/* ==== こまと、いっしょに寝る ==== */
+.nemu-box{margin:40px auto 0;max-width:440px;padding-top:30px;border-top:1px dashed var(--paper-deep)}
+.nemu-box h3{font-family:'Kiwi Maru',serif;font-weight:500;font-size:1.15rem;letter-spacing:.1em}
+.nemu-box p{font-size:.86rem;color:var(--ink-soft);line-height:1.9;margin-top:8px}
+.nemu-go{margin-top:16px;background:#1C2340;color:#F4E9D4;border:none;border-radius:999px;padding:14px 30px;font:inherit;font-weight:700;
+  letter-spacing:.1em;box-shadow:0 14px 34px -14px rgba(28,35,64,.7)}
+.nemu{position:fixed;inset:0;z-index:150;background:radial-gradient(ellipse at 50% 38%,#1E2442 0%,#0B0D18 70%);color:#E9E2D2;
+  display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 24px;transition:opacity 1.2s}
+.nemu.on{display:flex;animation:roomIn .8s ease}
+.nemu .nm-ph{width:min(62vw,280px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1px rgba(244,233,212,.15),0 0 80px 10px rgba(120,140,220,.18);
+  animation:nemuBreath 5.4s ease-in-out infinite}
+.nemu .nm-ph img{width:100%;height:100%;object-fit:cover;object-position:55% 42%;filter:brightness(.82) saturate(.9)}
+@keyframes nemuBreath{0%,100%{transform:scale(1)}45%{transform:scale(1.035)}}
+.nemu .nm-t{font-family:'Kiwi Maru',serif;font-size:1.05rem;letter-spacing:.12em;margin-top:34px;line-height:2}
+.nemu .nm-left{font-size:.76rem;letter-spacing:.2em;opacity:.55;margin-top:14px;min-height:1.2em}
+.nemu .nm-chips{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.nemu .nm-chips button{border:1px solid rgba(244,233,212,.35);background:none;color:#E9E2D2;border-radius:999px;padding:7px 16px;font:inherit;font-size:.8rem}
+.nemu .nm-chips button.on{background:rgba(244,233,212,.9);color:#0B0D18}
+.nemu .nm-end{margin-top:26px;background:none;border:none;color:rgba(233,226,210,.6);font:inherit;font-size:.8rem;letter-spacing:.16em;text-decoration:underline;text-underline-offset:4px}
+.nemu .nm-star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.7}}
+.nemu.dim .nm-chips,.nemu.dim .nm-end{opacity:.25;transition:opacity 1s}
+.hero .tod a{color:var(--honey);text-decoration:none;border-bottom:1px solid var(--honey);margin-left:4px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.nemu .nm-ph{animation:none}}
 </style>
 </head>
 <body>
 
 <audio id="song" src="koma-song.mp3" loop preload="auto"></audio>
 <audio id="snore" src="koma-snore.mp3" loop preload="auto"></audio>
+<div class="sheet" id="ha-sheet" aria-hidden="true"><div class="sheet-in" role="dialog" aria-label="ホーム画面に追加">
+  <h3>こまを、ホーム画面に</h3>
+  <div class="sh-tabs"><button type="button" data-os="ios">iPhone</button><button type="button" data-os="and">Android</button></div>
+  <ol id="ha-steps"></ol>
+  <p class="sh-note">ホーム画面の こまアイコンから開くと、アプリのように全画面で見られます。</p>
+  <button type="button" class="sh-x" data-sheet-x>とじる</button>
+</div></div>
+<div class="nemu" id="nemu" aria-hidden="true">
+  <div class="nm-ph"><img id="nemu-img" alt="ぐっすり眠るこま"></div>
+  <p class="nm-t">こまの いびきを きいて、<br>目を、とじて。</p>
+  <p class="nm-left" id="nemu-left"></p>
+  <div class="nm-chips" id="nemu-chips"><button type="button" data-min="15">15分</button><button type="button" data-min="30" class="on">30分</button><button type="button" data-min="60">1時間</button></div>
+  <button type="button" class="nm-end" id="nemu-end">おきる</button>
+</div>
+
 
 <div id="splash" aria-hidden="true">
   <img data-k="logo" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
@@ -1577,6 +1658,11 @@ a.door .lbl i{text-decoration:none}
       <button class="breath-btn" id="breath-btn">はじめる</button>
     </div>
     <p class="lead" style="margin-top:22px;font-size:.82rem">※音符ボタン(♪)をオンにすると、こまのいびきと一緒に。</p>
+    <div class="nemu-box">
+      <h3>こまと、いっしょに寝る</h3>
+      <p>眠れない夜は、こまのいびき(本犬)を となりに。<br>時間がきたら、いびきは そっと小さくなって止まります。</p>
+      <button type="button" class="nemu-go" data-nemu>🌙 いっしょに寝る</button>
+    </div>
   </section>
 </div>
 
@@ -1646,6 +1732,15 @@ a.door .lbl i{text-decoration:none}
       <p class="himitsu-h">ひみつの一コマ</p>
       <div class="himitsu" id="himitsu"></div>
     </div>
+    <div class="okuri" id="okuri">
+      <p class="okuri-h">こまの日の、おくりもの</p>
+      <p class="okuri-sub" id="okuri-sub"></p>
+      <div class="okuri-prev"><span class="ld">つくっています…</span><img id="okuri-img" alt="こまの待ち受け画像"></div>
+      <a class="okuri-btn" id="okuri-dl" download>待ち受けを保存する</a>
+      <p class="okuri-ios" id="okuri-ios"></p>
+      <p class="okuri-next" id="okuri-next"></p>
+    </div>
+    <button type="button" class="homeadd" data-homeadd><img id="homeadd-ic" alt=""><span><b>こまを、ホーム画面に。</b><small>アイコンをタップするだけで、毎日の足あとが おせます。</small></span><span class="ha-go">›</span></button>
     <div class="cal-tip" id="cal-tip"></div>
     <p class="lead" id="cal-note" style="margin-top:16px;font-size:.86rem"></p>
   </section>
@@ -1826,7 +1921,7 @@ document.getElementById('fav').href = IMGS.logo;
 
 // ── どこから来てくれたか(?from=tt / ig / pin)──
 const KOMA_FROM = (function(){
-  const map={tt:'TikTok',ig:'Instagram',pin:'Pinterest'};
+  const map={tt:'TikTok',ig:'Instagram',pin:'Pinterest',home:'ホーム画面'};
   let k='';
   try{
     const u=new URL(location.href); k=(u.searchParams.get('from')||'').toLowerCase();
@@ -1891,6 +1986,7 @@ const KOMA_TOD = (function(h){
   const tag=hero.querySelector('.tag'); if(tag) tag.innerHTML=t.tag+'<br>';
   if(tag){ const p=document.createElement('p'); p.className='tod';
     p.innerHTML='いまは、<b>'+t.name+'のこま</b>。時間がかわると、こまも かわる。';
+    if(t.k==='shinya'){ p.innerHTML='いまは、<b>深夜のこま</b>。眠れない夜は<a data-nemu-top>こまと寝る 🌙</a>'; }
     tag.parentNode.insertBefore(p, tag.nextSibling); }
 })();
 
@@ -1940,7 +2036,7 @@ const KOMA_TOD = (function(h){
       else               msg = 'おかえり。こまは、ちゃんと覚えてる。';
     }
   }
-  if(typeof KOMA_FROM!=='undefined' && KOMA_FROM){
+  if(typeof KOMA_FROM!=='undefined' && KOMA_FROM && KOMA_FROM.key!=='home'){
     msg = last ? KOMA_FROM.name + 'から、おかえり。こまは覚えてるよ。'
                : KOMA_FROM.name + 'から来てくれたんだね。ようこそ。';
     sub.classList.add('from');
@@ -3207,11 +3303,163 @@ const KOMA_TOD = (function(h){
   drawMailbox(); load();
 })();
 
+
+// ⑥ こまを、ホーム画面に(アプリのように)
+(function(){
+  const standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  if(standalone) document.documentElement.classList.add('is-app');
+  const ic=document.getElementById('homeadd-ic'); if(ic && IMGS.logo) ic.src=IMGS.logo;
+  let deferred=null;
+  addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); deferred=e; });
+  const sheet=document.getElementById('ha-sheet'), steps=document.getElementById('ha-steps');
+  const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  const STEPS={
+    ios:['Safariで このページを開く','画面下の <b>共有ボタン</b>(□に↑)をタップ','<b>「ホーム画面に追加」</b>をえらぶ','右上の <b>「追加」</b>で、こまアイコンが置かれます'],
+    and:['Chromeで このページを開く','右上の <b>︙</b> をタップ','<b>「ホーム画面に追加」</b>(または「アプリをインストール」)をえらぶ','<b>「追加」</b>で、こまアイコンが置かれます']
+  };
+  function tab(os){
+    steps.innerHTML=STEPS[os].map(x=>'<li>'+x+'</li>').join('');
+    sheet.querySelectorAll('[data-os]').forEach(b=>b.classList.toggle('on', b.dataset.os===os));
+  }
+  sheet.querySelectorAll('[data-os]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.os)));
+  const close=()=>{ sheet.classList.remove('on'); sheet.setAttribute('aria-hidden','true'); };
+  sheet.querySelector('[data-sheet-x]').addEventListener('click',close);
+  sheet.addEventListener('click',e=>{ if(e.target===sheet) close(); });
+  document.querySelectorAll('[data-homeadd]').forEach(b=>b.addEventListener('click', async ()=>{
+    if(deferred){ deferred.prompt(); try{ await deferred.userChoice; }catch(e){} deferred=null; return; }
+    tab(isIOS?'ios':'and'); sheet.classList.add('on'); sheet.setAttribute('aria-hidden','false');
+  }));
+})();
+
+// ⑦ こまの日の、おくりもの(毎月11日に、待ち受け画像)
+(function(){
+  const img=document.getElementById('okuri-img'); if(!img) return;
+  const M=[
+    {k:'leo',        c:'もこもこで、年はじめ。',     a:'#F6ECDD', b:'#E6D2B5'},
+    {k:'hero',       c:'たんじょう月の、上目づかい。', a:'#FBE5DF', b:'#EFC2BA'},
+    {k:'window', fy:.02, c:'春を、見はる。',             a:'#EEF2E2', b:'#D4DFC0'},
+    {k:'look',       c:'新しい季節も、となりで。',   a:'#FBF0DA', b:'#EED8B0'},
+    {k:'chair',      c:'家族になった月。',           a:'#E8F1F4', b:'#C9DDE4'},
+    {k:'stairs',     c:'雨の日は、かいだんで。',     a:'#E7EAF1', b:'#C8D0DE'},
+    {k:'tongue',     c:'あつい。ぺろ。',             a:'#FFF2D8', b:'#F6D9A3'},
+    {k:'sunflower',  c:'ひまわりと、背くらべ。',     a:'#FFF6D6', b:'#F9DE8E'},
+    {k:'peek',       c:'のぞき見の、秋。',           a:'#F7ECDA', b:'#E7CFA6'},
+    {k:'gaze',       c:'ソファの、見はりばん。',     a:'#F4E6D4', b:'#DEC3A1'},
+    {k:'flat',       c:'ぺたんこ、びより。',         a:'#EFE6DA', b:'#D6C6B1'},
+    {k:'night_sleep',c:'ことしも、おつかれさま。',   a:'#E4E6EF', b:'#BFC4D8'}
+  ];
+  const now=new Date();
+  // 11日から、その月の待ち受け。10日までは先月のもの
+  let y=now.getFullYear(), m=now.getMonth();
+  if(now.getDate()<11){ m-=1; if(m<0){ m=11; y-=1; } }
+  const def=M[m], ymKey=y+'-'+(m+1);
+  const vol=(y-2026)*12+(m-6)+1;
+  document.getElementById('okuri-sub').innerHTML=(m+1)+'月のこまの日(Vol.'+vol+')の、待ち受け画像。<br>毎月11日に、あたらしい一枚が とどきます。';
+  let ny=now.getFullYear(), nm=now.getMonth(); if(now.getDate()>=11){ nm+=1; if(nm>11){ nm=0; ny+=1; } }
+  document.getElementById('okuri-next').textContent='つぎのおくりものは、'+(nm+1)+'月11日。';
+  const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  if(isIOS) document.getElementById('okuri-ios').textContent='iPhoneは、上の画像を長押し →「“写真”に保存」がかんたんです。';
+
+  function rr(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  let made=false;
+  async function make(){
+    if(made) return; made=true;
+    try{ await Promise.all([document.fonts.load('500 60px "Kiwi Maru"'), document.fonts.load('400 40px "Kiwi Maru"'), document.fonts.load('800 30px "Nunito"')]); }catch(e){}
+    const src=new Image(); src.src=IMGS[def.k]; try{ await src.decode(); }catch(e){ await new Promise(r=>{src.onload=r;}); }
+    const W=1080,H=2340, cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+    const g=cv.getContext('2d');
+    const bg=g.createLinearGradient(0,0,0,H); bg.addColorStop(0,def.a); bg.addColorStop(1,def.b); g.fillStyle=bg; g.fillRect(0,0,W,H);
+    // うすい水玉
+    g.fillStyle='rgba(255,255,255,.35)';
+    for(let i=0;i<46;i++){ const px=(i*211)%W, py=((i*367)%H); g.beginPath(); g.arc(px,py,4+(i%3)*2,0,7); g.fill(); }
+    // ポラロイド(時計にかからない位置)
+    const PW=780, PH=930, cx=W/2, cy=1330;
+    g.save(); g.translate(cx,cy); g.rotate(-0.035);
+    g.shadowColor='rgba(36,26,20,.28)'; g.shadowBlur=60; g.shadowOffsetY=26;
+    g.fillStyle='#FFFDF7'; rr(g,-PW/2,-PH/2,PW,PH,18); g.fill();
+    g.shadowColor='transparent';
+    const S=700, sx=-S/2, sy=-PH/2+40;
+    const r=Math.min(src.width,src.height), ox=(src.width-r)/2, oy=(src.height-r)*(def.fy!=null?def.fy:.3);
+    g.save(); rr(g,sx,sy,S,S,10); g.clip(); g.drawImage(src,ox,oy,r,r,sx,sy,S,S); g.restore();
+    g.fillStyle='#33261E'; g.textAlign='center'; g.font='500 46px "Kiwi Maru", serif';
+    g.fillText('「'+def.c+'」', 0, sy+S+110);
+    // マスキングテープ
+    g.fillStyle='rgba(227,166,60,.55)'; g.save(); g.rotate(0.06); g.fillRect(-110,-PH/2-30,220,64); g.restore();
+    g.restore();
+    // ロゴ文字
+    g.textAlign='center'; g.fillStyle='rgba(36,26,20,.82)';
+    g.font='500 64px "Kiwi Maru", serif'; g.fillText('こまやすみ。', W/2, 2000);
+    g.fillStyle='rgba(36,26,20,.5)'; g.font='800 30px "Nunito", sans-serif';
+    g.fillText(y+'.'+String(m+1).padStart(2,'0')+'   KOMA NO HI  Vol.'+vol, W/2, 2062);
+    cv.toBlob(b=>{
+      const u=URL.createObjectURL(b); img.src=u;
+      const dl=document.getElementById('okuri-dl'); dl.href=u; dl.download='komayasumi-'+y+'-'+String(m+1).padStart(2,'0')+'.jpg';
+      const ld=img.parentNode.querySelector('.ld'); if(ld) ld.remove();
+    },'image/jpeg',.9);
+  }
+  document.getElementById('okuri-dl').addEventListener('click',()=>{ try{ localStorage.setItem('koma_wp_got', ymKey); }catch(e){} });
+  img.addEventListener('contextmenu',()=>{ try{ localStorage.setItem('koma_wp_got', ymKey); }catch(e){} });
+  document.querySelectorAll('[data-room="room-cal"]').forEach(b=>b.addEventListener('click',()=>setTimeout(make,300)));
+  let got=''; try{ got=localStorage.getItem('koma_wp_got')||''; }catch(e){}
+  window.komaWpNew = now.getDate()>=11 && now.getDate()<=17 && got!==ymKey;
+})();
+
+// ⑧ こまと、いっしょに寝る(いびき + スリープタイマー)
+(function(){
+  const box=document.getElementById('nemu'); if(!box) return;
+  const imgEl=document.getElementById('nemu-img'); if(IMGS.night_sleep) imgEl.src=IMGS.night_sleep;
+  for(let i=0;i<28;i++){ const s=document.createElement('span'); s.className='nm-star';
+    s.style.left=((i*37)%100)+'%'; s.style.top=((i*53)%60)+'%'; s.style.animationDelay=(i%7*.6)+'s'; box.appendChild(s); }
+  const au=new Audio('koma-snore.mp3'); au.loop=true; au.preload='none';
+  const left=document.getElementById('nemu-left');
+  let mins=30, endAt=0, tick=null, fade=null, dimT=null;
+  const VOL=.9;
+  function others(){ ['song','snore'].forEach(id=>{ const e=document.getElementById(id); if(e && !e.paused){ try{ e.pause(); }catch(x){} } }); }
+  function show(){
+    const ms=endAt-Date.now();
+    if(ms<=0){ left.textContent='おやすみなさい。'; return; }
+    const m=Math.ceil(ms/60000); left.textContent='あと '+m+' 分で、いびきは おやすみ';
+  }
+  function setTimer(n){
+    mins=n; endAt=Date.now()+n*60000;
+    box.querySelectorAll('[data-min]').forEach(b=>b.classList.toggle('on', +b.dataset.min===n)); show();
+  }
+  function fadeTo(v,dur,done){
+    clearInterval(fade); const f=au.volume, t0=performance.now();
+    fade=setInterval(()=>{ const p=Math.min(1,(performance.now()-t0)/dur); au.volume=Math.max(0,Math.min(1,f+(v-f)*p)); if(p>=1){ clearInterval(fade); done&&done(); } },60);
+  }
+  function loop(){
+    show();
+    const ms=endAt-Date.now();
+    if(ms<=60000 && !au._ending && !au.paused){ au._ending=true; fadeTo(0, Math.max(1000,ms), ()=>{ au.pause(); }); }
+  }
+  function wake(){ box.classList.remove('dim'); clearTimeout(dimT); dimT=setTimeout(()=>box.classList.add('dim'),6000); }
+  async function open(){
+    others();
+    box.classList.add('on'); box.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+    au._ending=false; au.volume=0;
+    try{ await au.play(); fadeTo(VOL,2500); }catch(e){ left.textContent='音が出ないときは、マナーモードを解除してね'; }
+    setTimer(mins); clearInterval(tick); tick=setInterval(loop,5000); wake();
+  }
+  function close(){
+    clearInterval(tick); fadeTo(0,800,()=>au.pause());
+    box.classList.remove('on','dim'); box.setAttribute('aria-hidden','true');
+    if(!document.querySelector('.room.open')) document.body.style.overflow='';
+  }
+  box.querySelectorAll('[data-min]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); setTimer(+b.dataset.min);
+    if(au.paused){ au._ending=false; au.volume=0; au.play().then(()=>fadeTo(VOL,1500)).catch(()=>{}); } else if(au._ending){ au._ending=false; fadeTo(VOL,1500); } wake(); }));
+  document.getElementById('nemu-end').addEventListener('click',e=>{ e.stopPropagation(); close(); });
+  box.addEventListener('click',wake);
+  document.querySelectorAll('[data-nemu],[data-nemu-top]').forEach(b=>b.addEventListener('click',open));
+  window.komaNemu=open;
+})();
+
 // おしらせ:お返事・ひみつの一コマ
 (function(){
   let msg='', room='';
   if(window.komaMailReady && window.komaMailReady()){ msg='📮 こまから <b>お返事</b>が とどいています'; room='room-post'; }
   else if(window.komaAshi && window.komaAshi.newly){ msg='🎁 足あとが たまって、<b>ひみつの一コマ</b>が ひらいたよ'; room='room-cal'; }
+  else if(window.komaWpNew){ msg='🎁 こまの日の <b>待ち受け</b>が とどいたよ'; room='room-cal'; }
   if(!msg) return;
   const t=document.createElement('button'); t.type='button'; t.className='koma-toast'; t.innerHTML=msg;
   document.body.appendChild(t);
