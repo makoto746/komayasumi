@@ -773,6 +773,101 @@ a.door .lbl i{text-decoration:none}
 .hero .tod{margin-top:14px;color:rgba(251,241,222,.6);font-size:.7rem;letter-spacing:.2em;opacity:0;animation:rise 1s ease 1.05s forwards}
 .hero .tod b{color:var(--honey);font-weight:700}
 @media (prefers-reduced-motion:reduce){.hero .tod{opacity:1;animation:none}}
+
+/* ==== 足あと帳(カレンダー) ==== */
+.cal-grid .cell.st:not(.koma):not(.bd):not(.home){background:radial-gradient(circle at 50% 50%,rgba(227,166,60,.20) 0 58%,transparent 60%)}
+.cal-grid .cell.st .stp{position:absolute;top:-3px;right:-2px;width:17px;height:17px;border-radius:50%;background:var(--honey);
+  color:#fff;font-size:.56rem;display:flex;align-items:center;justify-content:center;transform:rotate(-14deg);
+  box-shadow:0 2px 6px -2px rgba(36,26,20,.4)}
+.cal-grid .cell.st.new .stp{animation:stampIn .7s cubic-bezier(.3,1.6,.5,1) .35s both}
+@keyframes stampIn{0%{transform:scale(2.6) rotate(-30deg);opacity:0}100%{transform:scale(1) rotate(-14deg);opacity:1}}
+.cal-legend .lg.stamp{background:var(--honey);border-radius:50%}
+.ashi{max-width:440px;margin:22px auto 0;background:var(--frame);border-radius:24px;padding:22px 22px 24px;
+  box-shadow:0 20px 60px -26px rgba(36,26,20,.32);text-align:center}
+.ashi-h{font-family:'Kiwi Maru',serif;font-size:1.02rem;letter-spacing:.1em;color:var(--ink)}
+.ashi-total{font-size:.78rem;color:var(--ink-soft);letter-spacing:.08em;margin-top:4px}
+.ashi-total b{color:var(--honey);font-size:1.1rem}
+.ashi-row{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.ashi-row span{width:34px;height:34px;border-radius:50%;border:2px dashed var(--paper-deep);display:flex;align-items:center;
+  justify-content:center;font-size:.95rem;color:transparent;transition:all .3s}
+.ashi-row span.on{border:2px solid var(--honey);background:var(--honey);color:#fff;transform:rotate(-10deg)}
+.ashi-row span.gift{border-style:solid;border-color:var(--pero);color:var(--pero);font-size:.9rem}
+.ashi-next{margin-top:12px;font-size:.84rem;color:var(--pero);font-family:'Kiwi Maru',serif;letter-spacing:.04em}
+.himitsu-h{margin-top:22px;padding-top:18px;border-top:1px dashed var(--paper-deep);font-size:.78rem;letter-spacing:.16em;color:var(--ink-soft)}
+.himitsu{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.himitsu button{aspect-ratio:1;border:none;padding:0;border-radius:12px;overflow:hidden;background:var(--paper-deep);position:relative;cursor:pointer}
+.himitsu button img{width:100%;height:100%;object-fit:cover;display:block}
+.himitsu button.lock{cursor:default;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  color:var(--ink-soft);font-size:.64rem;letter-spacing:.06em}
+.himitsu button.lock i{font-style:normal;font-size:1.1rem;opacity:.55}
+.himitsu button.fresh{box-shadow:0 0 0 3px var(--honey);animation:bob 1.6s ease-in-out infinite}
+.hm-reveal{margin:18px auto 0;max-width:300px;display:none}
+.hm-reveal.on{display:block;animation:gPop .6s cubic-bezier(.3,1.5,.5,1)}
+.hm-reveal .fr{margin-top:14px}
+.hm-reveal .hm-t{font-family:'Kiwi Maru',serif;color:var(--honey);font-size:.92rem;letter-spacing:.08em}
+
+/* ==== こまやすみ郵便局(ポスト) ==== */
+.post-form{position:relative}
+.post-send{position:relative}
+.env-fly{position:fixed;z-index:130;left:50%;top:50%;width:84px;height:56px;margin:-28px 0 0 -42px;pointer-events:none;
+  background:var(--frame);border:2px solid var(--honey);border-radius:6px;animation:envFly 1.3s cubic-bezier(.5,0,.7,.4) forwards}
+.env-fly::before{content:"";position:absolute;left:0;right:0;top:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;
+  border-top:30px solid var(--honey);opacity:.9}
+.env-fly::after{content:"🐾";position:absolute;right:6px;bottom:4px;font-size:.7rem}
+@keyframes envFly{0%{transform:translateY(0) scale(1) rotate(0)}35%{transform:translateY(-30px) scale(1.08) rotate(-6deg)}
+  100%{transform:translateY(-70vh) scale(.2) rotate(18deg);opacity:0}}
+.post-sent{display:none;max-width:460px;margin:18px auto 0;background:var(--frame);border-radius:18px;padding:16px 20px;
+  text-align:center;font-family:'Kiwi Maru',serif;font-size:.92rem;line-height:1.9;color:var(--ink);
+  box-shadow:0 12px 34px -20px rgba(36,26,20,.24)}
+.post-sent.on{display:block;animation:rise .6s ease}
+.post-sent small{display:block;font-family:'Zen Maru Gothic',sans-serif;color:var(--ink-soft);font-size:.76rem;margin-top:4px}
+.mailbox{max-width:460px;margin:30px auto 0;display:grid;gap:12px}
+.mailbox:empty{display:none}
+.mb-h{font-size:.76rem;letter-spacing:.2em;color:var(--ink-soft);text-align:center}
+.env{position:relative;background:var(--frame);border:2px solid var(--honey);border-radius:14px;padding:18px 18px 16px;
+  text-align:left;cursor:pointer;box-shadow:0 14px 34px -18px rgba(227,166,60,.55);overflow:hidden;width:100%;font:inherit;color:inherit}
+.env.wait{border-style:dashed;border-color:var(--paper-deep);box-shadow:none;cursor:default}
+.env .e-lb{font-family:'Kiwi Maru',serif;font-size:.96rem;color:var(--ink);letter-spacing:.04em}
+.env .e-sub{font-size:.76rem;color:var(--ink-soft);margin-top:4px}
+.env .e-seal{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;
+  background:var(--pero);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.env.wait .e-seal{background:var(--paper-deep);animation:none}
+.env:not(.wait) .e-seal{animation:bob 1.6s ease-in-out infinite}
+.env.opened{cursor:default;border-color:var(--pero)}
+.env .e-body{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--paper-deep)}
+.env.opened .e-body{display:block;animation:rise .6s ease}
+.env.opened .e-seal{display:none}
+.env .e-mine{font-size:.8rem;color:var(--ink-soft);line-height:1.7}
+.env .e-reply{font-family:'Kiwi Maru',serif;font-size:1.06rem;color:var(--ink);line-height:1.8;margin-top:8px}
+.env .e-sign{text-align:right;font-size:.78rem;color:var(--honey);margin-top:6px;letter-spacing:.1em}
+.post-count{text-align:center;font-size:.76rem;letter-spacing:.2em;color:var(--ink-soft);margin-top:40px}
+.post-list{margin-top:14px}
+.post-card{background:
+    repeating-linear-gradient(to bottom,transparent 0 27px,rgba(227,166,60,.13) 27px 28px),var(--frame);
+  border-radius:6px;padding:20px 22px 18px;border:1px solid var(--paper-deep);
+  box-shadow:0 14px 30px -20px rgba(36,26,20,.3);transform:rotate(var(--r,0deg))}
+.post-card .stamp{position:absolute;top:12px;right:14px;width:40px;height:48px;background:var(--frame);border:2px dashed var(--pero);
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;border-radius:3px}
+.post-card .mark{position:absolute;top:18px;right:44px;width:58px;height:58px;border-radius:50%;border:1.5px solid rgba(239,158,155,.75);
+  color:rgba(239,158,155,.95);font-size:.52rem;letter-spacing:.06em;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;line-height:1.35;transform:rotate(-12deg);font-family:'Nunito',sans-serif;font-weight:800;background:rgba(255,253,247,.6)}
+.post-card .mark b{font-size:.62rem}
+.post-card .to{font-size:.72rem;letter-spacing:.2em;color:var(--ink-soft)}
+.post-card .from{margin:2px 0 8px;padding-right:96px}
+.post-card .msg{padding-right:0;line-height:28px}
+.post-card .reply{margin-top:12px;border-top:1px dashed rgba(107,90,78,.3);padding-top:10px;font-size:.84rem}
+.post-card .reply b{font-family:'Kiwi Maru',serif;font-weight:400;color:var(--ink)}
+.post-card .reply .rk{color:var(--pero);font-weight:700;margin-right:6px}
+.post-card.pending .reply{color:var(--ink-soft);font-style:normal}
+
+/* ==== おしらせ(返事・ひみつ) ==== */
+.koma-toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,140%);z-index:120;
+  background:var(--ink);color:var(--paper);border:none;border-radius:999px;padding:13px 22px;font:inherit;font-size:.88rem;
+  letter-spacing:.06em;box-shadow:0 16px 40px -14px rgba(0,0,0,.55);transition:transform .5s cubic-bezier(.3,1.4,.5,1);
+  max-width:calc(100% - 32px);white-space:nowrap;cursor:pointer}
+.koma-toast.on{transform:translate(-50%,0)}
+.koma-toast b{color:var(--honey)}
+@media (prefers-reduced-motion:reduce){.env-fly{display:none}.cal-grid .cell.st.new .stp{animation:none}}
 </style>
 </head>
 <body>
@@ -1441,12 +1536,15 @@ a.door .lbl i{text-decoration:none}
   <section class="reveal">
     <span class="eyebrow">おてがみ</span>
     <h2>こまポスト</h2>
-    <p class="lead">こまへ、ひとことだけでも。「つかれた」でも「また来たよ」でも。<br>書くと、こまがそっとお返事します。世界のこま友の手紙と、ずっとここに。</p>
+    <p class="lead">こまへ、ひとことだけでも。「つかれた」でも「また来たよ」でも。<br>こまは手紙を読んで、ちゃんと考えてから お返事を書きます。<br>少しだけ時間がかかるので、また のぞきに来てね。</p>
+    <div class="mailbox" id="mailbox"></div>
     <div class="post-form">
       <input id="post-name" class="post-in" type="text" maxlength="16" placeholder="おなまえ(ニックネームでも)">
       <textarea id="post-body" class="post-in" rows="3" maxlength="120" placeholder="こまへ、ひとこと…"></textarea>
-      <button class="post-send" id="post-send">こまに とどける</button>
+      <button class="post-send" id="post-send">📮 こまに とどける</button>
     </div>
+    <div class="post-sent" id="post-sent"></div>
+    <p class="post-count" id="post-count"></p>
     <div class="post-list" id="post-list"></div>
   </section>
 </div>
@@ -1532,12 +1630,21 @@ a.door .lbl i{text-decoration:none}
   <section class="reveal">
     <span class="eyebrow">こよみ</span>
     <h2>こまカレンダー</h2>
-    <p class="lead">毎月11日は「こまの日」。あたらしい一コマが増えます。<br>その月の、フレブルとの暮らしのヒントも。</p>
+    <p class="lead">会いに来てくれた日に、こまが🐾をおします。<br>足あとが7つたまるごとに、ひみつの一コマがひとつ ひらきます。</p>
     <div class="cal-card">
       <div class="cal-head"><button id="cal-prev" aria-label="前の月">‹</button><span id="cal-title">—</span><button id="cal-next" aria-label="次の月">›</button></div>
       <div class="cal-week"><span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div>
       <div class="cal-grid" id="cal-grid"></div>
-      <div class="cal-legend"><span><i class="lg koma"></i>こまの日</span><span><i class="lg bd"></i>誕生日</span><span><i class="lg home"></i>お迎え日</span></div>
+      <div class="cal-legend"><span><i class="lg stamp"></i>来てくれた日</span><span><i class="lg koma"></i>こまの日</span><span><i class="lg bd"></i>誕生日</span><span><i class="lg home"></i>お迎え日</span></div>
+    </div>
+    <div class="ashi" id="ashi">
+      <p class="ashi-h">こまの足あと帳</p>
+      <p class="ashi-total" id="ashi-total"></p>
+      <div class="ashi-row" id="ashi-row"></div>
+      <p class="ashi-next" id="ashi-next"></p>
+      <div class="hm-reveal" id="hm-reveal"></div>
+      <p class="himitsu-h">ひみつの一コマ</p>
+      <div class="himitsu" id="himitsu"></div>
     </div>
     <div class="cal-tip" id="cal-tip"></div>
     <p class="lead" id="cal-note" style="margin-top:16px;font-size:.86rem"></p>
@@ -2725,6 +2832,79 @@ const KOMA_TOD = (function(h){
 })();
 
 
+// ⑤ こまの足あと帳(来た日に🐾、7つごとに ひみつの一コマ)
+(function(){
+  const KEY='koma_stamps', SEEN='koma_himitsu_seen', EVERY=7;
+  const pad=n=>String(n).padStart(2,'0');
+  const dkey=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  let arr=[]; try{ arr=JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){}
+  if(!Array.isArray(arr)) arr=[];
+  // 以前の来訪記録も、足あととして引きつぐ
+  try{ const v=JSON.parse(localStorage.getItem('koma_visit')||'{}'); if(v.last){ const k=dkey(new Date(v.last)); if(arr.indexOf(k)<0) arr.push(k); } }catch(e){}
+  const today=dkey(new Date());
+  let fresh='';
+  if(arr.indexOf(today)<0){ arr.push(today); fresh=today; }
+  arr.sort(); if(arr.length>800) arr=arr.slice(-800);
+  try{ localStorage.setItem(KEY, JSON.stringify(arr)); }catch(e){}
+  const set=new Set(arr);
+  const HIMITSU=[
+    {k:'night_sleep', t:'ぐっすりの、証拠。',   p:'まくらは、あごをのせるためにある。'},
+    {k:'dp_tongue',   t:'ぺろっ、のしゅんかん。', p:'しまい忘れたまま、こっちを見る。'},
+    {k:'dp_leo',      t:'へそ天の、ひみつ基地。', p:'ここでは、おなかを見せてもいい。'},
+    {k:'bk_out1',     t:'よるの、おさんぽ。',     p:'ひかる首輪で、夜の道をひとりじめ。'},
+    {k:'dp_stand',    t:'背中で、語る。',         p:'顔が見えなくても、こまはこま。'},
+    {k:'pen',         t:'サークル時代の、こま。', p:'世界がまだ、このくらいの広さだったころ。'}
+  ];
+  const total=arr.length, opened=Math.min(HIMITSU.length, Math.floor(total/EVERY));
+  let seen=0; try{ seen=+(localStorage.getItem(SEEN)||0); }catch(e){}
+  window.komaAshi={has:k=>set.has(k), fresh, total, opened, newly: opened>seen};
+
+  function draw(){
+    const tEl=document.getElementById('ashi-total'), rEl=document.getElementById('ashi-row'),
+          nEl=document.getElementById('ashi-next'), hEl=document.getElementById('himitsu');
+    if(!tEl) return;
+    tEl.innerHTML='これまでの足あと <b>'+total+'</b> こ';
+    const full = total>0 && total%EVERY===0;
+    const inRow = full ? EVERY : total % EVERY, done = opened>=HIMITSU.length;
+    let row='';
+    for(let i=0;i<EVERY;i++){
+      if(i<inRow) row+='<span class="on">🐾</span>';
+      else if(i===EVERY-1 && !done) row+='<span class="gift">🎁</span>';
+      else row+='<span></span>';
+    }
+    rEl.innerHTML=row;
+    if(done) nEl.textContent='ひみつの一コマは、ぜんぶ ひらいたよ。こま友の中の、こま友。';
+    else if(full) nEl.textContent='7こ そろった！ ひみつの一コマが ひらいたよ。つぎの足あとから、また7こ。';
+    else nEl.textContent='あと '+(EVERY-inRow)+' 回 会いに来ると、ひみつの一コマが ひらくよ。';
+    hEl.innerHTML=HIMITSU.map((h,i)=>{
+      if(i<opened) return '<button type="button" data-i="'+i+'"'+(i>=seen?' class="fresh"':'')+' aria-label="ひみつの一コマ「'+h.t+'」"><img src="'+(IMGS[h.k]||'')+'" alt="'+h.t+'"></button>';
+      return '<button type="button" class="lock" disabled><i>🔒</i>足あと '+((i+1)*EVERY)+'こ</button>';
+    }).join('');
+    hEl.querySelectorAll('button[data-i]').forEach(b=>b.addEventListener('click',()=>{
+      const h=HIMITSU[+b.dataset.i];
+      if(window.komaLbSingle) window.komaLbSingle(IMGS[h.k], '「'+h.t+'」 '+h.p);
+    }));
+  }
+  function reveal(){
+    // 新しく ひらいた一コマを、カレンダーを開いたときに見せる
+    if(!(opened>seen)) return;
+    const h=HIMITSU[opened-1], box=document.getElementById('hm-reveal'); if(!box) return;
+    box.innerHTML='<p class="hm-t">🎁 足あとが '+(opened*EVERY)+'こ。ひみつの一コマが ひらいたよ</p>'+
+      '<figure class="fr" style="--tilt:-.6deg"><span class="tape" aria-hidden="true"></span><span class="no">ひみつ</span><span class="era">NEW</span>'+
+      '<div class="ph"><img src="'+IMGS[h.k]+'" alt="'+h.t+'"></div><h3>「'+h.t+'」</h3><p>'+h.p+'</p></figure>';
+    box.classList.add('on');
+    try{ localStorage.setItem(SEEN, String(opened)); }catch(e){}
+    seen=opened; setTimeout(draw, 2500);
+    if(window.komaBlip) window.komaBlip(784,1047,.07);
+  }
+  document.addEventListener('DOMContentLoaded', draw);
+  if(document.readyState!=='loading') draw();
+  document.querySelectorAll('[data-room="room-cal"]').forEach(b=>b.addEventListener('click',()=>{
+    if(window.komaCalRender) window.komaCalRender();
+    setTimeout(reveal, 450);
+  }));
+})();
+
 // ④ こまカレンダー(こまの日・記念日・その月のフレブルケア)
 (function(){
   const grid = document.getElementById('cal-grid');
@@ -2743,8 +2923,9 @@ const KOMA_TOD = (function(h){
     '真夏。エアコンは必須。アスファルトは肉球やけどの危険、地面を手のひらで5秒確認を。',
     '残暑。まだ熱中症の季節です。おさんぽは朝はやく・夕方すずしい時間に。',
     'すごしやすい季節。フレブルは太りやすい犬種。適度な運動で体重管理を。',
-    'こまの日の月。乾燥がはじまります。目やに・鼻まわりのシワのケアを習慣に。',
-      ];
+    '朝晩が冷えこむ季節。乾燥もはじまります。目やに・鼻まわりのシワのケアを習慣に。',
+    '年末。寒さと乾燥が本番です。暖房の部屋は加湿を。大掃除のときは、洗剤や小物の誤飲に注意。'
+  ];
   const tipLinks = [
     ['care-fuyu.html','冬の乾燥・寒さ対策'],
     ['care-fuyu.html','冬の乾燥・寒さ対策'],
@@ -2774,22 +2955,28 @@ const KOMA_TOD = (function(h){
       else if(m===4 && d===6) cls += ' home';     // 5/6 お迎え日
       else if(d===11) cls += ' koma';             // 毎月11日
       if(y===today.getFullYear() && m===today.getMonth() && d===today.getDate()) cls += ' today';
-      cells += `<div class="${cls}">${d}</div>`;
+      const dk = y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+      let stp = '';
+      if(window.komaAshi && window.komaAshi.has(dk)){ cls += ' st'; if(window.komaAshi.fresh===dk) cls += ' new'; stp = '<span class="stp">🐾</span>'; }
+      cells += `<div class="${cls}">${d}${stp}</div>`;
     }
     grid.innerHTML = cells;
     const _tl = tipLinks[m] || ['manabu.html','こまと、まなぶ'];
     tipEl.innerHTML = '<span class="ct-lb">'+(m+1)+'月の、こま手帳</span>'+tips[m]+'<a class="ct-more" href="'+_tl[0]+'">→ '+_tl[1]+'</a>';
-    const started = new Date(2026,6,11);
     let msg = '';
     if(m===1) msg = '2月11日は、こまの誕生日。';
     else if(m===4) msg = '5月6日は、こまが家族になった日。';
-    if(ym <= started){
-      const vol = (y-2026)*12 + (m-6) + 1;
-      if(vol>=1) msg = (msg?msg+' ':'') + 'この月の11日、Vol.'+vol+' の一コマが増えました。';
-      else if(!msg) msg = 'この月は、まだこまがいませんでした。';
-    } else if(!msg){ msg = 'この月の11日、あたらしい一コマがふえます。'; }
+    const vol = (y-2026)*12 + (m-6) + 1;
+    const day11 = new Date(y,m,11); const t0 = new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    let v = '';
+    if(vol < 1) v = 'この月は、こまやすみが はじまる前。';
+    else if(day11 < t0) v = 'この月の11日は、Vol.'+vol+' のこまの日でした。';
+    else if(+day11 === +t0) v = 'きょうは、Vol.'+vol+' のこまの日。';
+    else v = 'この月の11日は、Vol.'+vol+' のこまの日。';
+    msg = (msg ? msg+' ' : '') + v;
     note.innerHTML = msg;
   }
+  window.komaCalRender = render;
   document.getElementById('cal-prev').addEventListener('click',()=>{ ym.setMonth(ym.getMonth()-1); render(); });
   document.getElementById('cal-next').addEventListener('click',()=>{ ym.setMonth(ym.getMonth()+1); render(); });
   render();
@@ -2909,42 +3096,130 @@ const KOMA_TOD = (function(h){
   render(); tally();
 })();
 
-// ③ こまポスト(Supabaseでみんなの手紙を共有)
+// ③ こまやすみ郵便局(みんなの手紙 + 時間差のお返事)
 (function(){
   const list = document.getElementById('post-list');
   if(!list) return;
-  const replies = ['よんだよ。','ありがとう。おしりふった。','また来てね。','うれしくて、ぐるぐるまわった。','なでたい。','おやつ、はんぶんこ。'];
+  const WAIT_H = 3;                       // お返事が とどくまでの時間
+  const MINE = 'koma_mail';
   const esc = s => (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const pick = a => a[Math.floor(Math.random()*a.length)];
+  // 手紙の中身を読んで、こまらしく お返事(しっぽは ないので、おしりで よろこぶ)
+  const RULES = [
+    [/つかれ|疲れ|しんど|ねむい|がんば|頑張|仕事|しごと|残業|大変|たいへん/, ['おつかれさま。となりで、いっしょに寝ようか。','がんばったね。こまのおしり、さわっていいよ。','きょうは もう、なにもしなくていい日。こまが見はってる。','そのまま、ここで ひと休み。こまも、ごろんする。']],
+    [/さみし|寂し|かなし|悲し|つらい|辛い|泣/, ['そばにいるよ。なにも言わなくていいから。','こまの寝息、ここで きいていって。すこしだけ、らくになるから。']],
+    [/おやすみ|眠|寝る|ねる|ねむ/, ['おやすみ。いい夢、はんぶんこしよう。','こまも、もうすぐ夢の中。また明日ね。','まくらに あごをのせて、まってる。おやすみ。']],
+    [/おはよ/, ['おはよう。こまは、ねぐせのまま。','おはよう。きょうも いってらっしゃいの、見はりばん。']],
+    [/かわい|可愛|カワイ|癒|いやさ|いやし|きゃわ/, ['しってる。でも、もう一回いって。','うれしくて、おしりが とまらない。','てれる。ちょっと、まるくなる。','ほめられたので、きょうは ずっと上目づかい。']],
+    [/すき|好き|♡|❤|💕|らぶ|ラブ/, ['こまも。会いに来てくれる人は、みんな だいすき。','すきって言われると、おしりが 勝手に うごく。']],
+    [/さんぽ|散歩|土手|おでかけ/, ['土手、いっしょに歩こう。ゆっくりね。','さんぽ、ということばで 起きあがった。']],
+    [/ごはん|おやつ|食べ|たべ|ウマ|うま|スイカ|すいか|梨|なし|納豆|なっとう|果物/, ['おやつの話？ しっかり、聞いてた。','スイカと、梨と、納豆が すき。おぼえておいてね。','よだれ、ちょっとだけ 出た。']],
+    [/ありがと|感謝/, ['こちらこそ。来てくれて、ありがとう。','ありがとうは、こまのほうだよ。']],
+    [/うちの子|うちの犬|わんこ|ワンコ|フレブル|ブヒ|ぶひ|犬/, ['おともだちにも、よろしく。においで あいさつしたい。','おうちの子にも、こまから 🐾 をひとつ。']],
+    [/また|来た|きた|はじめ|初め/, ['来てくれて、うれしい。ドアの前で、まってたよ。','また来てね。こまは、ずっとここにいるよ。']],
+    [/がんばる|ファイト|応援|おうえん/, ['おうえんしてる。こまは、ずっと こっちから見てる。']]
+  ];
+  const ANY = ['よんだよ。なんども、よんだ。','うれしくて、ぐるぐる まわった。','ありがとう。おしり、ふった。','たいせつに、しまっておくね。','なでてほしい、って顔で よんだ。','また来てね。まってる。'];
+  function replyFor(body){
+    for(const [re,arr] of RULES){ if(re.test(body)) return pick(arr); }
+    return pick(ANY);
+  }
+  const fixTail = t => (t||'').replace(/しっぽふった/g,'おしりふった').replace(/しっぽを?ふ/g,'おしりをふ');
+  const pm = iso => { const d=new Date(iso||Date.now()); return {y:String(d.getFullYear()).slice(2), md:(d.getMonth()+1)+'.'+d.getDate()}; };
+
+  let mine=[]; try{ mine=JSON.parse(localStorage.getItem(MINE)||'[]'); }catch(e){}
+  if(!Array.isArray(mine)) mine=[];
+  const saveMine=()=>{ try{ localStorage.setItem(MINE, JSON.stringify(mine.slice(-30))); }catch(e){} };
+  const ready = m => Date.now() - m.t >= WAIT_H*3600000;
+  const pendingOf = (name,body) => mine.find(m=>!ready(m) && m.name===name && m.body===body);
+
+  // ── とどいた お返事(自分の手紙) ──
+  function drawMailbox(){
+    const box=document.getElementById('mailbox'); if(!box) return;
+    const show=mine.slice().reverse().filter(m=>!m.opened || Date.now()-m.openedAt < 7*86400000).slice(0,3);
+    if(!show.length){ box.innerHTML=''; return; }
+    box.innerHTML='<p class="mb-h">あなたと こまの、やりとり</p>'+show.map(m=>{
+      if(!ready(m)){
+        const left=Math.max(1, Math.ceil((WAIT_H*3600000-(Date.now()-m.t))/3600000));
+        return '<div class="env wait"><p class="e-lb">こまが、お返事を書いています…</p><p class="e-sub">お昼寝から起きたら、とどきます(あと'+left+'時間くらい)</p><span class="e-seal">💤</span></div>';
+      }
+      return '<button type="button" class="env'+(m.opened?' opened':'')+'" data-id="'+m.id+'">'+
+        '<p class="e-lb">'+(m.opened?'こまからの お返事':'📮 こまから、お返事が とどいています')+'</p>'+
+        '<p class="e-sub">'+esc(m.name)+'さんへ'+(m.opened?'':' — タップで ひらく')+'</p><span class="e-seal">🐾</span>'+
+        '<div class="e-body"><p class="e-mine">あなたの手紙:「'+esc(m.body)+'」</p><p class="e-reply">'+esc(m.reply)+'</p><p class="e-sign">— こま より 🐾</p></div></button>';
+    }).join('');
+    box.querySelectorAll('.env[data-id]').forEach(el=>el.addEventListener('click',()=>{
+      const m=mine.find(x=>String(x.id)===el.dataset.id); if(!m || m.opened) return;
+      m.opened=true; m.openedAt=Date.now(); saveMine();
+      if(window.komaBlip) window.komaBlip(659,988,.07);
+      drawMailbox(); load();
+    }));
+  }
+  window.komaMailReady = () => mine.some(m=>ready(m) && !m.opened);
+
+  // ── みんなの手紙(はがき) ──
   function draw(arr){
-    if(!arr || !arr.length){ list.innerHTML = '<p class="post-empty">まだ手紙はありません。<br>最初のいっつうを、こまへ。</p>'; return; }
-    list.innerHTML = arr.map(l=>
-      `<div class="post-card"><div class="from">${esc(l.name)} より</div>
-       <div class="msg">${esc(l.body)}</div>
-       <div class="reply">こまから:<b>${esc(l.reply)}</b></div></div>`).join('');
+    arr=(arr||[]).filter(l=>!/^ZZTEST/i.test(l.name||''));
+    const c=document.getElementById('post-count');
+    if(c) c.textContent = arr.length ? 'こまに とどいた手紙 — '+arr.length+'通' : '';
+    if(!arr.length){ list.innerHTML = '<p class="post-empty">まだ手紙はありません。<br>最初のいっつうを、こまへ。</p>'; return; }
+    list.innerHTML = arr.map((l,i)=>{
+      const p=pm(l.created_at), wait=pendingOf(l.name,l.body);
+      const rot=((i*37)%5-2)*.35;
+      return `<div class="post-card${wait?' pending':''}" style="--r:${rot}deg">
+        <span class="stamp" aria-hidden="true">🐶</span>
+        <span class="mark" aria-hidden="true">こまやすみ<b>${p.y}.${p.md}</b>郵便局</span>
+        <div class="to">こまへ</div>
+        <div class="from">${esc(l.name)} より</div>
+        <div class="msg">${esc(l.body)}</div>
+        <div class="reply">${wait ? 'こまが、お返事を書いているところ…' : '<span class="rk">こまより</span><b>'+esc(fixTail(l.reply))+'</b>'}</div></div>`;
+    }).join('');
   }
   function localList(){ try{ return JSON.parse(localStorage.getItem('koma_letters')||'[]').slice().reverse(); }catch(e){ return []; } }
   async function load(){
     const rows = await sbGet('letters?select=*&order=created_at.desc&limit=100');
     draw(rows || localList());
   }
+
   const btn = document.getElementById('post-send');
   btn.addEventListener('click', async ()=>{
     const nameEl=document.getElementById('post-name'), bodyEl=document.getElementById('post-body');
-    const name=(nameEl.value||'ななし').trim().slice(0,16);
+    const name=(nameEl.value||'ななし').trim().slice(0,16) || 'ななし';
     const body=(bodyEl.value||'').trim();
     if(!body){ bodyEl.focus(); return; }
-    const reply=replies[Math.floor(Math.random()*replies.length)];
+    const reply=replyFor(body);
     btn.disabled=true;
+    const fly=document.createElement('div'); fly.className='env-fly'; document.body.appendChild(fly);
+    setTimeout(()=>fly.remove(),1400);
     const r=await sbSend('letters',{name, body:body.slice(0,500), reply});
     btn.disabled=false;
     if(!(r && r.ok)){
       try{ const a=JSON.parse(localStorage.getItem('koma_letters')||'[]'); a.push({name,body,reply,created_at:new Date().toISOString()}); localStorage.setItem('koma_letters',JSON.stringify(a)); }catch(e){}
     }
+    mine.push({id:Date.now(), t:Date.now(), name, body:body.slice(0,500), reply, opened:false}); saveMine();
     nameEl.value=''; bodyEl.value='';
+    const sent=document.getElementById('post-sent');
+    if(sent){ sent.innerHTML='📮 とどけたよ。<br>こまはいま、お昼寝中。起きたら読んで、お返事を書くね。<small>'+WAIT_H+'時間後くらいに、また のぞいてみてね。</small>'; sent.classList.remove('on'); void sent.offsetWidth; sent.classList.add('on'); }
     if(window.komaBlip) window.komaBlip(659,880,.07);
-    load();
+    drawMailbox(); load();
   });
-  load();
+  document.querySelectorAll('[data-room="room-post"]').forEach(b=>b.addEventListener('click',()=>{ drawMailbox(); }));
+  drawMailbox(); load();
+})();
+
+// おしらせ:お返事・ひみつの一コマ
+(function(){
+  let msg='', room='';
+  if(window.komaMailReady && window.komaMailReady()){ msg='📮 こまから <b>お返事</b>が とどいています'; room='room-post'; }
+  else if(window.komaAshi && window.komaAshi.newly){ msg='🎁 足あとが たまって、<b>ひみつの一コマ</b>が ひらいたよ'; room='room-cal'; }
+  if(!msg) return;
+  const t=document.createElement('button'); t.type='button'; t.className='koma-toast'; t.innerHTML=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>{ if(!document.querySelector('.room.open')) t.classList.add('on'); }, 2600);
+  const hide=()=>t.classList.remove('on');
+  setTimeout(hide, 11000);
+  document.querySelectorAll('[data-room]').forEach(x=>x.addEventListener('click',hide));
+  t.addEventListener('click',()=>{ hide(); const d=document.querySelector('[data-room="'+room+'"]'); if(d) d.click(); });
 })();
 
 // ライトボックス:一コマを、1枚ずつ大きく
@@ -2996,6 +3271,7 @@ const KOMA_TOD = (function(h){
     sx = null;
   });
   window.komaLbClose = close;
+window.komaLbSingle = showSingle;
 })();
 
 // こまの家:部屋の開閉
