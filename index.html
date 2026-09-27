@@ -934,6 +934,15 @@ a.door .lbl i{text-decoration:none}
 .nemu.dim .nm-chips,.nemu.dim .nm-end{opacity:.25;transition:opacity 1s}
 .hero .tod a{color:var(--honey);text-decoration:none;border-bottom:1px solid var(--honey);margin-left:4px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.nemu .nm-ph{animation:none}}
+
+/* 撮影:カメラを見ながら押せるシャッター */
+.photo-stage{scroll-margin-top:64px}
+.photo-controls{margin-top:16px}
+.photo-shutter{position:absolute;left:50%;bottom:48px;transform:translateX(-50%);z-index:20;width:70px;height:70px;border-radius:50%;
+  border:4px solid #fff;background:rgba(255,255,255,.35);box-shadow:0 4px 18px rgba(0,0,0,.35);padding:0;cursor:pointer;
+  -webkit-tap-highlight-color:transparent}
+.photo-shutter::after{content:"";position:absolute;inset:6px;border-radius:50%;background:#fff;transition:transform .12s}
+.photo-shutter:active::after{transform:scale(.86)}
 </style>
 </head>
 <body>
@@ -1680,6 +1689,14 @@ a.door .lbl i{text-decoration:none}
       <img class="photo-koma" id="photo-koma" data-k="cut" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="こま" draggable="false">
       <div class="photo-frameov" aria-hidden="true"></div>
       <div class="photo-datebar"><span id="photo-datetxt"></span><span>こまやすみ。</span></div>
+      <button type="button" class="photo-shutter" id="photo-shutter" aria-label="写真をとる" style="display:none"></button>
+    </div>
+    <div class="photo-controls">
+      <button class="photo-btn" id="photo-start">カメラを つかう</button>
+      <button class="photo-btn ghost" id="photo-shot" style="display:none">📸 とる</button>
+      <button class="photo-btn ghost" id="photo-save" style="display:none">保存する</button>
+      <button class="photo-btn ghost" id="photo-clear" style="display:none">スタンプ消す</button>
+      <button class="photo-btn ghost" id="photo-retry" style="display:none">もう一回</button>
     </div>
     <div class="photo-panel" id="photo-panel">
       <div class="pp-row"><span class="pp-lbl">モード</span>
@@ -1697,13 +1714,6 @@ a.door .lbl i{text-decoration:none}
         <div class="pp-chips" id="pp-emoji"></div></div>
       <div class="pp-row"><span class="pp-lbl">フレーム</span>
         <div class="pp-chips" id="pp-frames"></div></div>
-    </div>
-    <div class="photo-controls">
-      <button class="photo-btn" id="photo-start">カメラを つかう</button>
-      <button class="photo-btn ghost" id="photo-shot" style="display:none">📸 とる</button>
-      <button class="photo-btn ghost" id="photo-save" style="display:none">保存する</button>
-      <button class="photo-btn ghost" id="photo-clear" style="display:none">スタンプ消す</button>
-      <button class="photo-btn ghost" id="photo-retry" style="display:none">もう一回</button>
     </div>
     <p class="lead" id="photo-note" style="margin-top:18px;font-size:.82rem">こまやスタンプを、指でドラッグして置けます。スタンプはダブルタップで消せます。</p>
     <div class="kshare-wrap"><button class="kshare">🐾 こまやすみを、教える</button></div>
@@ -2834,6 +2844,7 @@ const KOMA_TOD = (function(h){
   function updateButtons(){
     bStart.style.display = (mode==='cam' && !live && !shown) ? '' : 'none';
     bShot.style.display  = ((mode==='cam'&&live)||(mode==='bg'&&!shown)) ? '' : 'none';
+    const sh=document.getElementById('photo-shutter'); if(sh) sh.style.display = (mode==='cam'&&live&&!shown) ? '' : 'none';
     bSave.style.display  = shown ? '' : 'none';
     bRetry.style.display = shown ? '' : 'none';
     bClear.style.display = (!shown && document.querySelector('.photo-stamp')) ? '' : 'none';
@@ -2882,6 +2893,9 @@ const KOMA_TOD = (function(h){
       ctx.textAlign='right'; ctx.fillText('こまやすみ。',W-W*0.04,H-bh*0.32); ctx.textAlign='left'; }
   }
 
+  const shutter=document.getElementById('photo-shutter');
+  if(shutter) shutter.addEventListener('click',e=>{ e.stopPropagation(); bShot.click(); });
+  bStart.addEventListener('click',()=>setTimeout(()=>{ const st=document.getElementById('photo-stage'); if(st) st.scrollIntoView({behavior:'smooth',block:'start'}); },700));
   bShot.addEventListener('click',()=>{
     const r=stage.getBoundingClientRect(); const S=2;
     canvas.width=r.width*S; canvas.height=r.height*S; const W=canvas.width,H=canvas.height;
