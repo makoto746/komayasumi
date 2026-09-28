@@ -943,12 +943,70 @@ a.door .lbl i{text-decoration:none}
   -webkit-tap-highlight-color:transparent}
 .photo-shutter::after{content:"";position:absolute;inset:6px;border-radius:50%;background:#fff;transition:transform .12s}
 .photo-shutter:active::after{transform:scale(.86)}
+
+/* ==== こまのうた「まんまる」歌詞 ==== */
+.ly-open{display:block;margin:34px auto 0;background:none;border:1.5px solid rgba(251,241,222,.35);border-radius:20px;padding:16px 26px;
+  color:var(--paper);font:inherit;cursor:pointer;min-width:230px}
+.ly-open:hover,.ly-open:focus-visible{border-color:var(--honey);outline:none}
+.ly-open .lo-k{display:block;font-size:.72rem;letter-spacing:.24em;opacity:.7}
+.ly-open b{display:block;font-family:'Kiwi Maru',serif;font-weight:500;font-size:1.25rem;letter-spacing:.14em;margin-top:2px}
+.ly-open .lo-s{display:block;font-size:.76rem;color:var(--honey);margin-top:4px;letter-spacing:.1em}
+.ly-link{color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.lyrics{position:fixed;inset:0;z-index:145;background:rgba(18,16,14,.6);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:calc(24px + env(safe-area-inset-top)) 14px calc(24px + env(safe-area-inset-bottom))}
+.lyrics.on{display:block;animation:roomIn .35s ease}
+.ly-in{position:relative;max-width:460px;margin:0 auto;background:var(--paper);border-radius:28px;padding:40px 24px 34px;text-align:center;
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.6)}
+.ly-x{position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;border:none;background:var(--paper-deep);color:var(--ink);
+  font-size:1.2rem;line-height:1;cursor:pointer}
+.ly-eyebrow{font-size:.74rem;letter-spacing:.3em;color:var(--honey)}
+.ly-title{font-family:'Kiwi Maru',serif;font-weight:500;font-size:2rem;letter-spacing:.2em;margin-top:6px;color:var(--ink)}
+.ly-ph{width:130px;height:130px;margin:20px auto 0;border-radius:50%;overflow:hidden;box-shadow:0 12px 30px -14px rgba(36,26,20,.5)}
+.ly-ph img{width:100%;height:100%;object-fit:cover}
+.ly-play{margin-top:18px;background:var(--honey);color:#241A14;border:none;border-radius:999px;padding:11px 24px;font:inherit;font-weight:700;
+  font-size:.86rem;letter-spacing:.08em;cursor:pointer}
+.ly-text{margin-top:30px;font-family:'Kiwi Maru',serif;color:var(--ink2);font-size:.98rem;line-height:2.15;letter-spacing:.06em}
+.ly-b{margin:0 0 30px}
+.ly-b.cho{color:var(--ink);background:rgba(227,166,60,.13);border-radius:18px;padding:16px 10px}
+.ly-b.bri{color:var(--ink-soft)}
+.ly-b.out{color:var(--pero)}
+.ly-end{font-size:1.2rem;margin-top:4px}
+.ly-close{margin-top:18px;background:none;border:1.5px solid var(--ink-soft);border-radius:999px;padding:10px 30px;font:inherit;color:var(--ink);cursor:pointer}
+
+/* はじめての順路:スマホでも1行に */
+@media (max-width:560px){
+  .route{flex-wrap:nowrap;gap:5px;max-width:380px;margin-left:auto;margin-right:auto}
+  .route-step{flex:1 1 0;min-width:0;padding:10px 4px;font-size:.8rem;letter-spacing:0;white-space:nowrap}
+  .route-arrow{flex:none;font-size:.72rem}
+}
 </style>
 </head>
 <body>
 
 <audio id="song" src="koma-song.mp3" loop preload="auto"></audio>
 <audio id="snore" src="koma-snore.mp3" loop preload="auto"></audio>
+<div class="lyrics" id="lyrics" aria-hidden="true" role="dialog" aria-label="こまのうた「まんまる」歌詞">
+  <div class="ly-in">
+    <button type="button" class="ly-x" data-ly-x aria-label="とじる">×</button>
+    <p class="ly-eyebrow">こまのうた</p>
+    <h3 class="ly-title">まんまる</h3>
+    <div class="ly-ph"><img id="ly-img" alt="こま"></div>
+    <button type="button" class="ly-play" id="ly-play">▶ 流しながら よむ</button>
+    <div class="ly-text">
+      <p class="ly-b ">特別な朝じゃなくても<br>君が起きてくるだけで<br>なんだか それだけで満たされて<br>不思議と 笑えてしまうんだ<br>まんまるの瞳 ショートボディ<br>まんまるの瞳 ショートボディ<br>足元で くるくる回って<br>しっぽの代わりに お尻ふって<br>全身で 好きって 伝えてくる</p>
+      <p class="ly-b ">うまくいかない日も<br>無理しなくていいよって<br>君がそばにいるだけで<br>心が ほどけていくんだ</p>
+      <p class="ly-b cho">こま 君がいてくれるだけで<br>色のなかった毎日に<br>そっと 光が差してくる<br>何もできない 私のことも<br>まるごと 包んでくれるんだ<br>ずっと ずっと そばにいて</p>
+      <p class="ly-b ">土手の帰り道 ふらり端に寄って<br>川に落ちそうで ひやっとしたね<br>今では 笑って話せる思い出<br>君を見てるだけで 満たされる<br>おうちでボール 追いかけっこして<br>スイカを頬ばる その顔が好き<br>なんでもない はずの一日が<br>どうしようもなく 愛おしい</p>
+      <p class="ly-b cho">こま 君がいてくれるだけで<br>色のなかった毎日に<br>そっと 光が差してくる<br>何もできない 私のことも<br>まるごと 包んでくれるんだ<br>ずっと ずっと そばにいて</p>
+      <p class="ly-b bri">夜更けに帰った 玄関で<br>全力で駆けてくる 足音<br>それだけで あぁ 帰ってきたって<br>心から 思えるんだ<br>君のいない世界なんて<br>色を失くしたみたいで<br>想像も したくないから<br>どうか もう少し そばにいて</p>
+      <p class="ly-b cho">こま 君がいてくれるだけで<br>色のなかった毎日が<br>こんなに あたたかくなる<br>何もできない 私のことも<br>まるごと 愛してくれるから<br>ずっと ずっと そばにいて</p>
+      <p class="ly-b out">こま おかえり また明日<br>君と 笑い合っていたい<br>(また明日… また明日…)<br>こま おかえり おやすみ<br>ずっと ここで 笑っててね</p>
+    </div>
+    <p class="ly-end">🐾</p>
+    <button type="button" class="ly-close" data-ly-x>とじる</button>
+  </div>
+</div>
+
 <div class="sheet" id="ha-sheet" aria-hidden="true"><div class="sheet-in" role="dialog" aria-label="ホーム画面に追加">
   <h3>こまを、ホーム画面に</h3>
   <div class="sh-tabs"><button type="button" data-os="ios">iPhone</button><button type="button" data-os="and">Android</button></div>
@@ -1804,6 +1862,7 @@ a.door .lbl i{text-decoration:none}
   <img class="night-logo" data-k="logo" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" style="border-radius:50%">
   <p class="matane" id="matane">またね。</p>
   <p style="margin-top:18px;font-size:.9rem;letter-spacing:.08em">世界のこま友へ——こまは、ずっと見てるよ。</p>
+  <button type="button" class="ly-open" data-lyrics><span class="lo-k">こまのうた</span><b>「まんまる」</b><span class="lo-s">歌詞を ひらく ›</span></button>
   <div class="meet">
     <p class="meet-h">こまに、また会える場所</p>
     <div class="meet-row">
@@ -1818,7 +1877,7 @@ a.door .lbl i{text-decoration:none}
     <span class="v-label">これまでに会いに来てくれた、こま友</span>
     <span class="v-num" id="v-num">— <b>ずっと見てるよ</b></span>
   </div>
-  <p class="copy">こま — koma &nbsp;|&nbsp; since 2025 &nbsp;|&nbsp; BGM:こまのうた「まんまる」</p>
+  <p class="copy">こま — koma &nbsp;|&nbsp; since 2025 &nbsp;|&nbsp; BGM:<a class="ly-link" data-lyrics>こまのうた「まんまる」</a></p>
 </footer>
 
 <div class="snd-toast" id="snd-toast" aria-live="polite"></div>
@@ -3466,6 +3525,27 @@ const KOMA_TOD = (function(h){
   box.addEventListener('click',wake);
   document.querySelectorAll('[data-nemu],[data-nemu-top]').forEach(b=>b.addEventListener('click',open));
   window.komaNemu=open;
+})();
+
+
+// ⑨ こまのうた「まんまる」歌詞
+(function(){
+  const box=document.getElementById('lyrics'); if(!box) return;
+  const im=document.getElementById('ly-img'); if(im && IMGS.hero) im.src=IMGS.hero;
+  const play=document.getElementById('ly-play'), snd=document.getElementById('snd'), song=document.getElementById('song');
+  const isSong=()=> snd && snd.getAttribute('aria-pressed')==='true' && snd.textContent.trim()==='♪';
+  function label(){ play.textContent = (song && !song.paused && isSong()) ? '♪ いま、流れています' : '▶ 流しながら よむ'; }
+  play.addEventListener('click',()=>{
+    if(!snd) return;
+    let n=0; while(!isSong() && n<3){ snd.click(); n++; }
+    setTimeout(label,1200);
+  });
+  function open(){ box.classList.add('on'); box.setAttribute('aria-hidden','false'); box.scrollTop=0; label(); }
+  function close(){ box.classList.remove('on'); box.setAttribute('aria-hidden','true'); }
+  document.querySelectorAll('[data-lyrics]').forEach(b=>b.addEventListener('click',e=>{ e.preventDefault(); open(); }));
+  box.querySelectorAll('[data-ly-x]').forEach(b=>b.addEventListener('click',close));
+  box.addEventListener('click',e=>{ if(e.target===box) close(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape' && box.classList.contains('on')) close(); });
 })();
 
 // おしらせ:お返事・ひみつの一コマ
