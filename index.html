@@ -979,6 +979,15 @@ a.door .lbl i{text-decoration:none}
   .route-step{flex:1 1 0;min-width:0;padding:10px 4px;font-size:.8rem;letter-spacing:0;white-space:nowrap}
   .route-arrow{flex:none;font-size:.72rem}
 }
+
+/* こまと、まなぶ の扉 */
+.mn-badge{display:inline-block;vertical-align:middle;margin-left:6px;background:var(--honey);color:#241A14;border-radius:999px;
+  padding:2px 10px;font-family:'Zen Maru Gothic',sans-serif;font-size:.7rem;letter-spacing:.06em;font-weight:700}
+.mn-badge b{font-size:.84rem}
+.door .lbl .mn-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.door .lbl .mn-tags span{background:var(--paper);border:1px solid var(--paper-deep);border-radius:999px;padding:3px 10px;
+  font-family:'Zen Maru Gothic',sans-serif;font-size:.72rem;letter-spacing:.02em;color:var(--ink-soft)}
+.door .lbl .mn-go{display:block;margin-top:10px;font-family:'Zen Maru Gothic',sans-serif;font-size:.8rem;font-weight:700;color:var(--honey);letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -1207,7 +1216,9 @@ a.door .lbl i{text-decoration:none}
       </button>
       <a class="door wide" href="manabu.html">
         <span class="ph"><img data-k="pillow" style="object-position:center 18%" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></span>
-        <span class="lbl">こまと、まなぶ<i>フレブルのケア読みもの・毎日のヒント</i></span>
+        <span class="lbl">こまと、まなぶ <span class="mn-badge">読みもの <b id="mn-count">17</b>本</span><i>獣医・専門機関の情報をもとに、フレブルと長く元気に暮らすヒントを まとめています。</i>
+          <span class="mn-tags"><span>🌡️ 暑さ・寒さ</span><span>🍚 体重とごはん</span><span>💬 きもちのサイン</span><span>🐾 長生きのひみつ</span></span>
+          <span class="mn-go">読みものを ひらく →</span></span>
       </a>
       
     </div>
@@ -3546,6 +3557,15 @@ const KOMA_TOD = (function(h){
   box.querySelectorAll('[data-ly-x]').forEach(b=>b.addEventListener('click',close));
   box.addEventListener('click',e=>{ if(e.target===box) close(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape' && box.classList.contains('on')) close(); });
+})();
+
+
+// こまと、まなぶ:記事数を一覧ページから自動で数える
+(function(){
+  const el=document.getElementById('mn-count'); if(!el || location.protocol==='file:') return;
+  fetch('manabu.html',{cache:'no-cache'}).then(r=>r.ok?r.text():'').then(t=>{
+    const n=(t.match(/class="card"/g)||[]).length; if(n>0) el.textContent=n;
+  }).catch(()=>{});
 })();
 
 // おしらせ:お返事・ひみつの一コマ
