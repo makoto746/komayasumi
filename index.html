@@ -988,6 +988,61 @@ a.door .lbl i{text-decoration:none}
 .door .lbl .mn-tags span{background:var(--paper);border:1px solid var(--paper-deep);border-radius:999px;padding:3px 10px;
   font-family:'Zen Maru Gothic',sans-serif;font-size:.72rem;letter-spacing:.02em;color:var(--ink-soft)}
 .door .lbl .mn-go{display:block;margin-top:10px;font-family:'Zen Maru Gothic',sans-serif;font-size:.8rem;font-weight:700;color:var(--honey);letter-spacing:.06em}
+
+/* ==== 月刊こま ==== */
+.mag-wrap{padding:0 24px;max-width:520px;margin:0 auto}
+.mag-cover{position:relative;display:block;width:100%;aspect-ratio:4/5;border:none;padding:0;border-radius:24px;overflow:hidden;cursor:pointer;
+  background:#2a211b;color:#FBF1DE;text-align:left;font:inherit;box-shadow:0 26px 60px -26px rgba(36,26,20,.6)}
+.mag-cover .mc-ph,.mag-cover .mc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mag-cover .mc-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,16,13,.55) 0%,rgba(20,16,13,0) 30%,rgba(20,16,13,0) 50%,rgba(20,16,13,.78) 100%)}
+.mag-cover:hover .mc-ph img{transform:scale(1.03)}
+.mag-cover .mc-ph img{transition:transform .6s ease}
+.mc-top{position:absolute;left:22px;right:22px;top:18px;display:flex;align-items:flex-end;justify-content:space-between}
+.mc-name{font-family:'Kiwi Maru',serif;font-weight:500;font-size:clamp(2rem,9vw,2.8rem);letter-spacing:.12em;line-height:1;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.mc-no{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.14em;text-align:right;line-height:1.5;opacity:.95}
+.mc-mid{position:absolute;left:22px;right:22px;bottom:78px}
+.mc-kicker{display:inline-block;background:var(--honey);color:#241A14;font-size:.68rem;font-weight:700;letter-spacing:.14em;border-radius:999px;padding:3px 12px}
+.mc-title{display:block;font-family:'Kiwi Maru',serif;font-size:1.3rem;letter-spacing:.06em;line-height:1.55;margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.mc-bot{position:absolute;left:22px;right:22px;bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mc-read{background:#FBF1DE;color:#241A14;border-radius:999px;padding:9px 20px;font-weight:700;font-size:.86rem;letter-spacing:.1em}
+.mc-cd{font-size:.72rem;opacity:.85;text-align:right;line-height:1.5}
+.mc-cd b{color:var(--honey);font-size:1.05rem;padding:0 2px}
+.mag-room{max-width:560px;margin:0 auto;padding:22px 20px 60px}
+.mag-hero{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 56px -26px rgba(36,26,20,.55);background:#2a211b;color:#FBF1DE}
+.mag-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mag-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,16,13,.5),rgba(20,16,13,0) 32%,rgba(20,16,13,0) 55%,rgba(20,16,13,.75))}
+.mag-hero .mh-t{position:absolute;z-index:1;left:20px;right:20px;top:18px;display:flex;justify-content:space-between;align-items:flex-end}
+.mag-hero .mh-b{position:absolute;z-index:1;left:20px;right:20px;bottom:20px}
+.mag-sec{margin-top:34px}
+.mag-sec-h{display:flex;align-items:baseline;gap:10px;font-family:'Kiwi Maru',serif;font-size:1.08rem;letter-spacing:.08em;color:var(--ink);
+  border-bottom:1.5px solid var(--paper-deep);padding-bottom:8px}
+.mag-sec-h span{font-family:'Nunito',sans-serif;font-weight:800;font-size:.66rem;letter-spacing:.2em;color:var(--honey)}
+.mag-papa{margin-top:14px;background:var(--frame);border-radius:18px;padding:18px 20px;font-size:.95rem;line-height:1.95;color:var(--ink2);box-shadow:0 12px 30px -20px rgba(36,26,20,.3)}
+.mag-papa small{display:block;text-align:right;color:var(--ink-soft);font-size:.78rem;margin-top:6px}
+.mag-news{margin-top:12px;list-style:none;padding:0}
+.mag-news li{position:relative;padding:9px 0 9px 26px;border-bottom:1px dashed var(--paper-deep);font-size:.92rem;line-height:1.7;color:var(--ink2)}
+.mag-news li::before{content:"🐾";position:absolute;left:0;top:9px;font-size:.8rem}
+.mag-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.mag-photos button{aspect-ratio:1;border:none;padding:0;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--paper-deep)}
+.mag-photos img{width:100%;height:100%;object-fit:cover;display:block}
+.mag-art{display:block;margin-top:12px;background:var(--frame);border-radius:16px;padding:14px 18px;text-decoration:none;color:var(--ink);box-shadow:0 12px 30px -20px rgba(36,26,20,.3)}
+.mag-art b{font-family:'Kiwi Maru',serif;font-weight:500;font-size:1rem;display:block}
+.mag-art span{font-size:.8rem;color:var(--honey);font-weight:700}
+.mag-rank{margin-top:12px;display:flex;align-items:center;gap:14px;background:var(--frame);border-radius:16px;padding:12px 14px;box-shadow:0 12px 30px -20px rgba(36,26,20,.3)}
+.mag-rank img{width:70px;height:70px;border-radius:12px;object-fit:cover}
+.mag-rank p{font-family:'Kiwi Maru',serif;font-size:.95rem;line-height:1.6}
+.mag-rank small{display:block;color:var(--ink-soft);font-family:'Zen Maru Gothic',sans-serif;font-size:.78rem}
+.mag-btn{display:inline-block;margin-top:12px;background:var(--honey);color:#241A14;border:none;border-radius:999px;padding:11px 22px;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer}
+.mag-koma{margin-top:36px;text-align:center;font-family:'Kiwi Maru',serif;font-size:1.02rem;line-height:1.9;color:var(--ink)}
+.mag-koma .who{display:block;font-size:.74rem;letter-spacing:.24em;color:var(--pero);margin-bottom:6px}
+.mag-back{margin-top:50px}
+.mag-bn{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.mag-bn button{position:relative;aspect-ratio:4/5;border:none;padding:0;border-radius:12px;overflow:hidden;cursor:pointer;background:#2a211b;color:#FBF1DE;font:inherit}
+.mag-bn button img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.mag-bn button::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,16,13,.75),rgba(20,16,13,0) 60%)}
+.mag-bn button span{position:absolute;z-index:1;left:8px;right:8px;bottom:7px;text-align:left;font-size:.68rem;line-height:1.4;font-weight:700;letter-spacing:.04em}
+.mag-bn button.on{box-shadow:0 0 0 3px var(--honey)}
+.mag-empty{margin-top:12px;font-size:.86rem;color:var(--ink-soft)}
 </style>
 </head>
 <body>
@@ -1151,11 +1206,14 @@ a.door .lbl i{text-decoration:none}
     </div>
   </section>
 
-  <div style="padding:0 24px"><div class="next-issue">
-      <p class="vol" id="vol">月刊こま</p>
-      <p class="cd" id="countdown">…</p>
-          </div>
-</div>
+  <div class="mag-wrap">
+    <button type="button" class="mag-cover" data-room="room-mag" aria-label="月刊こま 今月号を読む">
+      <span class="mc-ph"><img id="mc-img" alt=""></span>
+      <span class="mc-top"><span class="mc-name">月刊こま</span><span class="mc-no" id="mc-no"></span></span>
+      <span class="mc-mid"><span class="mc-kicker">今月の特集</span><span class="mc-title" id="mc-title"></span></span>
+      <span class="mc-bot"><span class="mc-read">読む →</span><span class="mc-cd"><span id="vol"></span> <span id="countdown"></span></span></span>
+    </button>
+  </div>
 
   <section class="reveal" id="doors-sec">
     <span class="eyebrow">おへや</span>
@@ -1832,6 +1890,17 @@ a.door .lbl i{text-decoration:none}
   </section>
 </div>
 
+
+<div class="room" id="room-mag" aria-hidden="true">
+  <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">月刊こま</span><span style="width:70px"></span></div>
+  <section class="mag-room">
+    <div id="mag-view"></div>
+    <div class="mag-back">
+      <p class="mag-sec-h"><span>BACK NUMBER</span>バックナンバー</p>
+      <div class="mag-bn" id="mag-bn"></div>
+    </div>
+  </section>
+</div>
 
 <div class="room" id="room-cal" aria-hidden="true">
   <div class="room-head"><button class="back" data-close>← もどる</button><span class="rh">こまカレンダー</span><span style="width:70px"></span></div>
@@ -2710,12 +2779,12 @@ const KOMA_TOD = (function(h){
   const volNum = Math.max(1, (next.getFullYear()-2026)*12 + (next.getMonth()-6) + 1);
   const vol = document.getElementById('vol');
   const cd = document.getElementById('countdown');
-  vol.textContent = '月刊こま — Vol.' + volNum + (volNum===1 ? ' 創刊号' : '');
+  vol.textContent = 'つぎの号(Vol.' + volNum + ')まで';
   if(now.getDate() === 11){
-    cd.innerHTML = 'きょうは、<b style="font-size:1.2em">こまの日</b>。新しい一コマが届く日。';
+    vol.textContent=''; cd.innerHTML = 'きょうは <b>発売日</b>';
   } else {
     const days = Math.ceil((next - new Date(now.getFullYear(),now.getMonth(),now.getDate())) / 86400000);
-    cd.innerHTML = 'つぎの一コマまで、あと<b>' + days + '</b>日';
+    cd.innerHTML = 'あと<b>' + days + '</b>日';
   }
 })();
 
@@ -3345,6 +3414,7 @@ const KOMA_TOD = (function(h){
     const top=document.getElementById('vote-top');
     if(top){
       let best='',bv=0; cands.forEach(([k])=>{ if((counts[k]||0)>bv){bv=counts[k];best=k;} });
+      window.komaVoteTop = best ? {k:best, cap:capOf(best), n:bv} : null;
       top.innerHTML = best ? `<img src="${IMGS_S(best)}" alt="">
         <p class="vt-r">いまの1位は「${capOf(best)}」（${bv}票）
         <span class="vt-n">1位のコマは、<a href="https://www.tiktok.com/@koma_log" target="_blank" rel="noopener">TikTok @koma_log</a> に登場します。</span></p>` : '';
@@ -3659,11 +3729,88 @@ const KOMA_TOD = (function(h){
   }).catch(()=>{});
 })();
 
+
+// ⑩ 月刊こま(毎月11日に発売。表紙・中身・バックナンバー)
+(function(){
+  const ART={
+    jumyo:{t:'いぬは、むかしより長生きになった。',h:'care-jumyo.html'},
+    sukinshippu:{t:'「だいすき」の、つたえかた。',h:'care-sukinshippu.html'}
+  };
+  // 号ごとの中身。papa(パパのひとこと)は、書いた号だけ表示されます
+  const ISSUES={
+    1:{cover:'tongue',   title:'こまやすみ、はじまりました。', koma:'はじめまして。こまです。ここは、わたしの おうち。ゆっくりしていってね。',
+       news:['こまのサイト「こまやすみ。」が、ひらきました。'], papa:''},
+    2:{cover:'sunflower',title:'ひまわりと、夏のこま。', koma:'あついのは、とっても にがて。すずしい部屋で、夏をのりきったよ。', news:[], papa:''},
+    3:{cover:'osuwari',  title:'こま座りと、おかえり待ち。', koma:'会いに来てくれた日に、🐾をおすことにしたよ。7つたまったら、ひみつの一コマ。',
+       photos:['osuwari','osuwari2','suika','kago','udemakura','tablepeek','chair2','wait_hall','wait_door'],
+       arts:['jumyo','sukinshippu'],
+       news:['カレンダーに「こまの足あと帳」と「ひみつの一コマ」ができました。','こまポストが「こまやすみ郵便局」に。お返事は、すこし時間をおいて とどきます。','トップのこまが、見る時間によって表情をかえるように。','毎月11日に、待ち受け画像のおくりもの。','眠れない夜は「こまと、いっしょに寝る」。本犬のいびきつき。','テーマ曲「まんまる」の歌詞ページができました。','写真集に、新しい章「こま座り」。'],
+       papa:''},
+    4:{cover:'gaze',     title:'ソファの、見はりばん。', koma:'10月は、梨の季節。こまは、ちゃんと覚えてるよ。', papa:''}
+  };
+  const WP={1:'leo',2:'hero',3:'window',4:'look',5:'chair',6:'stairs',7:'tongue',8:'sunflower',9:'peek',10:'gaze',11:'flat',12:'night_sleep'};
+  const esc=t=>(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const now=new Date();
+  let cy=now.getFullYear(), cm=now.getMonth()+1;
+  if(now.getDate()<11){ cm-=1; if(cm<1){ cm=12; cy-=1; } }
+  const CUR=Math.max(1,(cy-2026)*12+(cm-7)+1);
+  const ym=v=>{ const t=6+(v-1); return {y:2026+Math.floor(t/12), m:t%12+1}; };
+  function issue(v){
+    const d=ISSUES[v]||{}, t=ym(v);
+    return Object.assign({cover:WP[t.m]||'hero', title:t.m+'月の、こま。', koma:'今月も、会いに来てくれて ありがとう。', news:[], photos:[], arts:[], papa:''}, d, {v, y:t.y, m:t.m});
+  }
+  const label=it=>it.m+'月号　Vol.'+it.v+(it.v===1?' 創刊号':'');
+
+  // トップの表紙
+  const cur=issue(CUR);
+  const ci=document.getElementById('mc-img'); if(ci && IMGS[cur.cover]){ ci.src=IMGS[cur.cover]; ci.alt=cur.title; }
+  const no=document.getElementById('mc-no'); if(no) no.innerHTML=cur.y+'<br>'+label(cur).replace('　','<br>');
+  const tt=document.getElementById('mc-title'); if(tt) tt.textContent=cur.title;
+
+  const view=document.getElementById('mag-view'), bn=document.getElementById('mag-bn');
+  let shown=CUR;
+  function render(v){
+    shown=v; const it=issue(v); const isCur=v===CUR;
+    let h='<div class="mag-hero"><img src="'+(IMGS[it.cover]||'')+'" alt="'+esc(it.title)+'">'+
+      '<div class="mh-t"><span class="mc-name">月刊こま</span><span class="mc-no">'+it.y+'<br>'+label(it).replace('　','<br>')+'</span></div>'+
+      '<div class="mh-b"><span class="mc-kicker">'+(isCur?'今月の特集':'この号の特集')+'</span><span class="mc-title">'+esc(it.title)+'</span></div></div>';
+    if(it.papa) h+='<div class="mag-sec"><p class="mag-sec-h"><span>FROM PAPA</span>パパのひとこと</p><div class="mag-papa">'+esc(it.papa).replace(/\n/g,'<br>')+'<small>— パパ</small></div></div>';
+    if(it.news.length) h+='<div class="mag-sec"><p class="mag-sec-h"><span>NEWS</span>'+it.m+'月の できごと</p><ul class="mag-news">'+it.news.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></div>';
+    const ph=it.photos.filter(k=>IMGS[k]);
+    if(ph.length) h+='<div class="mag-sec"><p class="mag-sec-h"><span>NEW PHOTOS</span>新しい一コマ</p><div class="mag-photos">'+ph.map(k=>'<button type="button" data-k="'+k+'"><img src="'+IMGS[k]+'" alt="" loading="lazy"></button>').join('')+'</div><button type="button" class="mag-btn" data-go="room-book">写真集で ぜんぶ見る →</button></div>';
+    const arts=it.arts.map(a=>ART[a]).filter(Boolean);
+    if(arts.length) h+='<div class="mag-sec"><p class="mag-sec-h"><span>READ</span>こまと、まなぶ</p>'+arts.map(a=>'<a class="mag-art" href="'+a.h+'"><b>'+esc(a.t)+'</b><span>読む →</span></a>').join('')+'</div>';
+    if(isCur){
+      const vt=window.komaVoteTop;
+      h+='<div class="mag-sec"><p class="mag-sec-h"><span>RANKING</span>人気コマ総選挙</p>'+
+        (vt&&IMGS[vt.k] ? '<div class="mag-rank"><img src="'+IMGS[vt.k]+'" alt=""><p>いまの1位は「'+esc(vt.cap)+'」<small>'+vt.n+'票 ・ 投票は いつでも受付中</small></p></div>' : '<p class="mag-empty">いまの1位は、総選挙の部屋で。</p>')+
+        '<button type="button" class="mag-btn" data-go="room-vote">推しこまに 一票 →</button></div>';
+      h+='<div class="mag-sec"><p class="mag-sec-h"><span>GIFT</span>今月の待ち受け</p><p class="mag-empty">'+it.m+'月の待ち受け画像を、カレンダーの部屋で プレゼント中。</p><button type="button" class="mag-btn" data-go="room-cal">待ち受けを もらう →</button></div>';
+    }
+    h+='<p class="mag-koma"><span class="who">こまより</span>'+esc(it.koma)+'</p>';
+    view.innerHTML=h;
+    view.querySelectorAll('.mag-photos button').forEach(b=>b.addEventListener('click',()=>{ if(window.komaLbSingle) window.komaLbSingle(IMGS[b.dataset.k],''); }));
+    view.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{
+      const c=document.querySelector('#room-mag [data-close]'); if(c) c.click();
+      setTimeout(()=>{ const d=document.querySelector('.door[data-room="'+b.dataset.go+'"], [data-room="'+b.dataset.go+'"]'); if(d) d.click(); },350);
+    }));
+    let bh='';
+    for(let x=CUR;x>=1;x--){ const b=issue(x); bh+='<button type="button" data-v="'+x+'"'+(x===v?' class="on"':'')+'><img src="'+(IMGS[b.cover]||'')+'" alt="" loading="lazy"><span>'+b.m+'月号<br>Vol.'+x+'</span></button>'; }
+    bn.innerHTML=bh;
+    bn.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ render(+b.dataset.v); const r=document.getElementById('room-mag'); if(r) r.scrollTo({top:0,behavior:'smooth'}); }));
+    try{ localStorage.setItem('koma_mag_seen', String(CUR)); }catch(e){}
+  }
+  document.querySelectorAll('[data-room="room-mag"]').forEach(b=>b.addEventListener('click',()=>render(CUR)));
+  let seen=0; try{ seen=+(localStorage.getItem('koma_mag_seen')||0); }catch(e){}
+  window.komaMagNew = now.getDate()>=11 && now.getDate()<=17 && seen<CUR ? label(cur) : '';
+})();
+
 // おしらせ:お返事・ひみつの一コマ
 (function(){
   let msg='', room='';
   if(window.komaMailReady && window.komaMailReady()){ msg='📮 こまから <b>お返事</b>が とどいています'; room='room-post'; }
   else if(window.komaAshi && window.komaAshi.newly){ msg='🎁 足あとが たまって、<b>ひみつの一コマ</b>が ひらいたよ'; room='room-cal'; }
+  else if(window.komaMagNew){ msg='📖 <b>月刊こま</b> '+window.komaMagNew.split('　')[0]+'、発売です'; room='room-mag'; }
   else if(window.komaWpNew){ msg='🎁 こまの日の <b>待ち受け</b>が とどいたよ'; room='room-cal'; }
   if(!msg) return;
   const t=document.createElement('button'); t.type='button'; t.className='koma-toast'; t.innerHTML=msg;
