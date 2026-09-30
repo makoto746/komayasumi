@@ -2055,7 +2055,7 @@ const IMGS = {
   stairs2: 'img/stairs2.webp'
 };
 // 画像:写真集や扉の小さな枠には軽い版、部屋の中の画像は開いたときに読み込む
-const IMGS_S = k => { const u=IMGS[k]; return (u && u.indexOf('img/')===0) ? u.replace('img/','img/s/') : u; };
+const IMGS_S = k => IMGS[k];
 document.querySelectorAll('img[data-k]').forEach(im=>{
   const k=im.dataset.k; if(!IMGS[k]) return;
   const small = im.closest('#room-book .ph, .door .ph, .vote-item');
