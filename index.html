@@ -1043,12 +1043,76 @@ a.door .lbl i{text-decoration:none}
 .mag-bn button span{position:absolute;z-index:1;left:8px;right:8px;bottom:7px;text-align:left;font-size:.68rem;line-height:1.4;font-weight:700;letter-spacing:.04em}
 .mag-bn button.on{box-shadow:0 0 0 3px var(--honey)}
 .mag-empty{margin-top:12px;font-size:.86rem;color:var(--ink-soft)}
+
+/* ==== 読みものを、曲を止めずに開く ==== */
+.reader{position:fixed;inset:0;z-index:135;background:var(--paper);display:none;flex-direction:column}
+.reader.on{display:flex;animation:roomIn .35s ease}
+.reader-bar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 14px 10px;
+  background:rgba(23,19,16,.92);color:#FBF1DE}
+.reader-x{background:none;border:none;color:#FBF1DE;font:inherit;font-weight:700;font-size:.9rem;letter-spacing:.06em;cursor:pointer;padding:4px 0}
+.reader-note{font-size:.7rem;color:var(--honey);letter-spacing:.06em}
+.reader iframe{flex:1;width:100%;border:0;background:var(--paper)}
+
+/* ==== こまみくじ:何回も引きたくなる ==== */
+.mk-today{display:none;margin:22px auto 0;width:fit-content;background:var(--frame);border-radius:999px;padding:7px 18px;font-size:.84rem;color:var(--ink-soft);box-shadow:0 8px 20px -14px rgba(36,26,20,.35)}
+.mk-today.on{display:block}
+.mk-today b{color:var(--honey);font-family:'Kiwi Maru',serif;font-size:1rem;margin-left:4px}
+.mk-shake{font-size:2.6rem;margin:22px auto 0;line-height:1;display:block;width:fit-content;transform-origin:50% 90%}
+.mk-shake.go{animation:mkShake .65s ease}
+@keyframes mkShake{0%,100%{transform:rotate(0)}15%{transform:rotate(-18deg)}30%{transform:rotate(16deg)}45%{transform:rotate(-14deg)}60%{transform:rotate(12deg)}75%{transform:rotate(-6deg)}}
+.mikuji-btn{margin-top:14px}
+.mk-hint{margin-top:12px;font-size:.76rem;color:var(--ink-soft);line-height:1.7}
+.mikuji-card{scroll-margin-top:66px;margin-top:22px}
+.mrank.sec{color:#8E6BB8;text-shadow:0 0 22px rgba(142,107,184,.45)}
+.mk-new{display:inline-block;background:var(--pero);color:#fff;border-radius:999px;padding:2px 10px;font-size:.7rem;font-weight:700;letter-spacing:.06em;margin-right:4px;animation:pop .5s ease}
+.mikuji-card .mikuji-actions{display:none}
+.mk-bar{position:sticky;bottom:0;z-index:5;display:none;gap:8px;align-items:center;justify-content:center;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(243,227,198,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-top:1px solid rgba(107,90,78,.12)}
+.mk-bar.on{display:flex}
+.mk-bar button{border-radius:999px;font:inherit;font-weight:700;font-size:.88rem;letter-spacing:.06em;padding:12px 16px;border:2px solid var(--ink);cursor:pointer}
+.mk-bar .mk-again{flex:1.4;background:var(--ink);color:var(--paper);max-width:220px}
+.mk-bar .mk-sh{background:var(--honey);border-color:var(--honey);color:var(--ink)}
+.mk-bar .mk-z{background:transparent;color:var(--ink);font-size:.78rem;padding:12px 12px}
+.mk-zukan{max-width:560px;margin:34px auto 0;background:var(--frame);border-radius:22px;padding:6px 18px;text-align:left;box-shadow:0 14px 40px -24px rgba(36,26,20,.35);scroll-margin-top:66px}
+.mk-zukan summary{cursor:pointer;list-style:none;padding:14px 0;font-family:'Kiwi Maru',serif;font-size:1.02rem;letter-spacing:.08em;display:flex;justify-content:space-between}
+.mk-zukan summary::-webkit-details-marker{display:none}
+.mk-zukan summary span{font-family:'Nunito',sans-serif;font-weight:800;color:var(--honey)}
+.mk-zlead{font-size:.8rem;color:var(--ink-soft);line-height:1.7}
+.mk-zgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 18px}
+.mk-zgrid .zk{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:none;padding:0;background:var(--paper-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;font:inherit;cursor:pointer}
+.mk-zgrid .zk img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mk-zgrid .zk b{position:absolute;left:0;right:0;bottom:0;padding:14px 2px 4px;background:linear-gradient(to top,rgba(20,16,13,.75),transparent);color:#fff;font-size:.62rem;letter-spacing:.04em;text-align:center}
+.mk-zgrid .zk.lock{cursor:default;color:var(--ink-soft)}
+.mk-zgrid .zk.lock i{font-style:normal;font-size:1.3rem;opacity:.5}
+.mk-zgrid .zk.lock b{position:static;background:none;color:var(--ink-soft);padding:2px 0 0}
+.mk-zgrid .zk.lock.sec{background:linear-gradient(135deg,#E6DDF0,#F3E3C6)}
+.mk-zgrid .zk.super{box-shadow:0 0 0 2px var(--pero)}
+.mk-zgrid .zk.sec{box-shadow:0 0 0 2px #8E6BB8}
+@media (max-width:600px){
+  .mikuji-card .ph{aspect-ratio:16/11;margin:12px 16px 0}
+  .mrank-row{padding:16px 18px 0}
+  .mrank{font-size:1.7rem}
+  .mikuji-body{padding:14px 20px 4px}
+  .stars{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin:12px 18px 0;max-width:none;font-size:.86rem}
+  .stars .row{padding:3px 0}
+  .stars .cat{font-size:.76rem;letter-spacing:.1em}
+  .stars .val{font-size:.86rem;letter-spacing:.06em}
+  .mlucky{margin-top:10px}
+  .madvice{margin:8px 16px 18px}
+}
+@media (prefers-reduced-motion:reduce){.mk-shake.go{animation:none}}
 </style>
 </head>
 <body>
 
 <audio id="song" src="koma-song.mp3" loop preload="auto"></audio>
 <audio id="snore" src="koma-snore.mp3" loop preload="auto"></audio>
+<div class="reader" id="reader" aria-hidden="true">
+  <div class="reader-bar"><button type="button" class="reader-x" id="reader-x">← こまやすみに もどる</button><span class="reader-note">♪ 曲は そのまま流れています</span></div>
+  <iframe id="reader-f" title="こまと、まなぶ" src="about:blank"></iframe>
+</div>
+
 <div class="lyrics" id="lyrics" aria-hidden="true" role="dialog" aria-label="こまのうた「まんまる」歌詞">
   <div class="ly-in">
     <button type="button" class="ly-x" data-ly-x aria-label="とじる">×</button>
@@ -1421,8 +1485,11 @@ a.door .lbl i{text-decoration:none}
     <section id="mikuji" class="mikuji-inner reveal">
       <span class="eyebrow">うらない</span>
       <h2>こまみくじ</h2>
-      <p class="lead">超大吉・大吉・中吉・小吉・末吉。こまが、きょうのあなたを占います。<br>だいじょうぶ。<b>こまみくじに、凶はありません。</b><br>…ごくまれに、超激レアが出るとか。</p>
+      <p class="lead">ぜんぶで43種類。超大吉・大吉・中吉・小吉・末吉、そして ひみつの「シークレット」。<br>こまが、きょうのあなたを占います。<br>だいじょうぶ。<b>こまみくじに、凶はありません。</b><br>…ごくまれに、超激レアが出るとか。</p>
+      <p class="mk-today" id="mk-today"></p>
+      <div class="mk-shake" id="mk-shake" aria-hidden="true">🎋</div>
       <button class="mikuji-btn" id="draw">こまみくじを引く</button>
+      <p class="mk-hint">1日1回目が「きょうの本みくじ」。そのあとは、おかわりで図鑑あつめ。</p>
       <div class="mikuji-card" id="mcard" aria-live="polite">
         <div class="mrank-row">
           <p class="mrank" id="mrank">大吉</p>
@@ -1441,7 +1508,17 @@ a.door .lbl i{text-decoration:none}
         </div>
       </div>
       <p class="mikuji-note" id="mnote"></p>
+      <details class="mk-zukan" id="mk-zukan">
+        <summary>こまみくじ図鑑 <span id="mk-zcount"></span></summary>
+        <p class="mk-zlead">引いたことのある みくじが、ここに集まります。シークレットは、ほんとうに めったに出ません。</p>
+        <div class="mk-zgrid" id="mk-zgrid"></div>
+      </details>
     </section>
+  </div>
+  <div class="mk-bar" id="mk-bar">
+    <button type="button" class="mk-z" id="mk-bar-z">図鑑</button>
+    <button type="button" class="mk-again" id="mk-again2">🎋 もう一回</button>
+    <button type="button" class="mk-sh" id="mk-share2">送る</button>
   </div>
 
   
@@ -2639,10 +2716,32 @@ const KOMA_TOD = (function(h){
     {r:'末吉', rare:'', img:'dp_leo', s:[2,4,2,2,3],
      jp:'おなかを見せて、力を抜く日。信じられる場所で、ゆるんでいい。',
      en:'Show your belly and relax today. Let your guard down where it\'s safe.',
-     lucky:'やさいスープ', adv:'弱さを見せられる相手が、本物の味方。'}
+     lucky:'やさいスープ', adv:'弱さを見せられる相手が、本物の味方。'},
+    // ── ここから追加分 ──
+    {r:'大吉', rare:'', img:'sunflower', s:[5,4,4,4,4], jp:'お日さまのほうを向くだけで、運が上向く日。', en:'', lucky:'かぼちゃクッキー', adv:'明るいほうへ、顔を向けよう。'},
+    {r:'大吉', rare:'', img:'chair2', s:[4,4,5,3,4], jp:'ちょっと背のびすると、見える景色が変わる日。', en:'', lucky:'りんご', adv:'のぞいてみたら、案外いける。'},
+    {r:'大吉', rare:'', img:'bk_out1', s:[5,4,3,4,4], jp:'夜道でも、ひかる首輪みたいに 目印になれる日。', en:'', lucky:'ジャーキー', adv:'自分らしさは、暗いところでこそ光る。'},
+    {r:'大吉', rare:'', img:'bday_cake', s:[5,5,4,4,4], jp:'なんでもない日を、お祝いにしていい日。', en:'', lucky:'ささみケーキ', adv:'記念日は、自分で決めていい。'},
+    {r:'中吉', rare:'', img:'osuwari2', s:[3,4,3,4,3], jp:'きちんとしなくても、ちゃんと伝わる日。', en:'', lucky:'たまごボーロ', adv:'くずしても、こまはこま。'},
+    {r:'中吉', rare:'', img:'tablepeek', s:[3,3,4,3,4], jp:'だまって待っていると、いいものが回ってくる日。', en:'', lucky:'チーズ', adv:'無言の圧は、意外と効く。'},
+    {r:'中吉', rare:'', img:'kago', s:[4,3,3,3,3], jp:'ちょっとくらいの失敗は、おでかけで吹きとぶ日。', en:'', lucky:'さつまいも', adv:'まぶたが ぷっくりしても、前を向けばいい。'},
+    {r:'中吉', rare:'', img:'bk_face1', s:[3,3,3,4,3], jp:'鼻をひくひくさせると、いい予感がする日。', en:'', lucky:'ささみ', adv:'気になったら、まずにおいをかいでみる。'},
+    {r:'小吉', rare:'', img:'pen', s:[3,3,2,3,3], jp:'はじめの一歩は、小さな囲いの中からでいい日。', en:'', lucky:'ミルク', adv:'世界は、少しずつ広げればいい。'},
+    {r:'小吉', rare:'', img:'wait_hall', s:[2,3,3,3,3], jp:'ろうかの奥で待つみたいに、静かに力をためる日。', en:'', lucky:'白身魚', adv:'待っている時間も、ちゃんと前に進んでる。'},
+    {r:'小吉', rare:'', img:'bk_sleep1', s:[3,3,2,3,3], jp:'ねむい日は、ねむいままでいい日。', en:'', lucky:'カッテージチーズ', adv:'あくびは、がんばったしるし。'},
+    {r:'小吉', rare:'', img:'cut', s:[3,2,3,3,3], jp:'シワの数だけ、味が出る日。', en:'', lucky:'鶏むね肉', adv:'しかめっつらも、見る人が見れば かわいい。'},
+    {r:'末吉', rare:'', img:'dp_tongue', s:[2,3,2,3,3], jp:'うっかり舌を出したままでも、だれも気にしない日。', en:'', lucky:'レタス', adv:'完璧じゃなくて、だいじょうぶ。'},
+    // ── シークレット(めったに出ない) ──
+    {r:'おかえり吉', sec:1, rare:'シークレット 🐾', img:'wait_door', s:[5,5,5,5,5], jp:'いちばん聞きたい「ただいま」が、ちゃんと届く日。', en:'', lucky:'ささみ', adv:'待つ時間も、しあわせの一部。'},
+    {r:'スイカ吉', sec:1, rare:'シークレット 🐾', img:'suika', s:[5,5,4,5,5], jp:'「ひとくちだけ」が、最高のごちそうになる日。', en:'', lucky:'スイカ', adv:'全力で味わえば、少しでも満たされる。'},
+    {r:'おしり吉', sec:1, rare:'シークレット 🐾', img:'osuwari', s:[5,5,5,4,5], jp:'しっぽがなくても、うれしい気持ちは ちゃんと伝わる日。', en:'', lucky:'梨', adv:'よろこびは、体ぜんぶで表していい。'},
+    {r:'うでまくら吉', sec:1, rare:'シークレット 🐾', img:'udemakura', s:[5,4,5,5,5], jp:'たよれるものが、じつは自分の中にある日。', en:'', lucky:'ヨーグルト', adv:'まくらがなければ、自分の手で。'},
+    {r:'ぐっすり吉', sec:1, rare:'シークレット 🐾', img:'night_sleep', s:[5,5,4,5,5], jp:'よく眠った人から、いいことが起きる日。', en:'', lucky:'ホットミルク', adv:'寝るのも、だいじな仕事。'},
+    {r:'まんまる吉', sec:1, rare:'シークレット 🐾', img:'hero', s:[5,5,5,5,4], jp:'まんまるの瞳で見つめたら、たいていのことは許される日。', en:'', lucky:'納豆', adv:'上目づかいは、最終兵器。'}
   ];
+  F.forEach((f,i)=>{ f.id='m'+i; });
   // 重み:超大吉はレア
-  const W = F.map(f => f.r==='超大吉' ? 4 : f.r==='大吉' ? 9 : f.r==='中吉' ? 10 : f.r==='小吉' ? 8 : 7);
+  const W = F.map(f => f.sec ? 1.3 : f.r==='超大吉' ? 4 : f.r==='大吉' ? 9 : f.r==='中吉' ? 10 : f.r==='小吉' ? 8 : 7);
   const CATS = ['運勢','恋愛','仕事','学校','お金'];
   let cur = null;
   const card = document.getElementById('mcard');
@@ -2653,13 +2752,50 @@ const KOMA_TOD = (function(h){
     for(let i=0;i<F.length;i++){ r -= W[i]; if(r<0) return F[i]; }
     return F[F.length-1];
   }
+  // 図鑑・きょうの本みくじ・おかわり回数
+  const dkey = (d=>d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())(new Date());
+  let book={}, today=null, cnt=0;
+  try{ book=JSON.parse(localStorage.getItem('koma_mk_book')||'{}'); }catch(e){}
+  try{ const t=JSON.parse(localStorage.getItem('koma_mk_today')||'null'); if(t && t.d===dkey){ today=t; cnt=t.n||0; } }catch(e){}
+  const saveAll=()=>{ try{ localStorage.setItem('koma_mk_book',JSON.stringify(book)); localStorage.setItem('koma_mk_today',JSON.stringify({d:dkey,id:today&&today.id,r:today&&today.r,n:cnt})); }catch(e){} };
+  const rankCls = f => f.sec ? 'sec' : f.r==='超大吉' ? 'super' : '';
+  function drawZukan(){
+    const got=F.filter(f=>book[f.id]).length;
+    const zc=document.getElementById('mk-zcount'); if(zc) zc.textContent=got+' / '+F.length;
+    const bar=document.getElementById('mk-bar-z'); if(bar) bar.textContent='図鑑 '+got+'/'+F.length;
+    const grid=document.getElementById('mk-zgrid'); if(!grid) return;
+    grid.innerHTML=F.map(f=>{
+      if(!book[f.id]) return '<span class="zk lock'+(f.sec?' sec':'')+'"><i>'+(f.sec?'？':'？')+'</i><b>'+(f.sec?'シークレット':f.r)+'</b></span>';
+      return '<button type="button" class="zk '+rankCls(f)+'" data-id="'+f.id+'"><img src="'+(IMGS[f.img]||'')+'" alt="" loading="lazy"><b>'+f.r+'</b></button>';
+    }).join('');
+    grid.querySelectorAll('button[data-id]').forEach(b=>b.addEventListener('click',()=>{ const f=F.find(x=>x.id===b.dataset.id); if(f) show(f,{replay:true}); }));
+  }
+  function drawToday(){
+    const el=document.getElementById('mk-today'); if(!el) return;
+    if(today){ el.innerHTML='きょうの本みくじ:<b>'+today.r+'</b>'+(cnt>1?'　おかわり '+(cnt-1)+'回':''); el.classList.add('on'); }
+  }
+  let busy=false;
   function draw(){
-    let f; do { f = weightedPick(); } while (cur && f === cur);
+    if(busy) return; busy=true;
+    const btns=[document.getElementById('draw'),document.getElementById('mk-again2')];
+    const box=document.getElementById('mk-shake'); if(box){ box.classList.remove('go'); void box.offsetWidth; box.classList.add('go'); }
+    if(window.komaBlip) window.komaBlip(440, 523, .05);
+    setTimeout(()=>{ busy=false;
+      let f; do { f = weightedPick(); } while (cur && f === cur);
+      const isNew=!book[f.id];
+      book[f.id]=(book[f.id]||0)+1; cnt++;
+      if(!today){ today={id:f.id,r:f.r}; }
+      saveAll(); show(f,{isNew}); drawZukan(); drawToday();
+    }, 650);
+  }
+  function show(f,o){
+    o=o||{};
     cur = f;
     const rk = document.getElementById('mrank');
     rk.textContent = f.r;
     rk.classList.toggle('super', f.r==='超大吉');
-    document.getElementById('mrare').textContent = f.rare;
+    rk.classList.toggle('sec', !!f.sec);
+    document.getElementById('mrare').innerHTML = (o.isNew?'<span class="mk-new">NEW! 図鑑に登録</span> ':'') + (f.rare||'');
     document.getElementById('mimg').src = IMGS[f.img];
     document.getElementById('mjp').textContent = f.jp;
     
@@ -2668,12 +2804,21 @@ const KOMA_TOD = (function(h){
     document.getElementById('mlucky').textContent = f.lucky;
     document.getElementById('madvice').textContent = f.adv;
     card.classList.remove('show'); void card.offsetWidth; card.classList.add('show');
+    document.getElementById('mk-bar').classList.add('on');
+    setTimeout(()=>{ const room=document.getElementById('room-mikuji'); let y=0, el=card;
+      while(el && el!==room){ y+=el.offsetTop; el=el.offsetParent; }
+      if(room) room.scrollTo({top:Math.max(0,y-62),behavior:'smooth'}); },40);
+    if(o.replay) return;
     if(window.komaBlip) window.komaBlip(659, 880, .07);
-    document.getElementById('draw').textContent = 'きょうのこまみくじ';
-    if(f.r==='超大吉' && window.komaGacha) window.komaGacha(f);
+    document.getElementById('draw').textContent = 'もう一回 引く';
+    if((f.r==='超大吉' || f.sec) && window.komaGacha) window.komaGacha(f);
   }
   document.getElementById('draw').addEventListener('click', draw);
   document.getElementById('again').addEventListener('click', draw);
+  document.getElementById('mk-again2').addEventListener('click', draw);
+  document.getElementById('mk-share2').addEventListener('click', ()=>document.getElementById('share').click());
+  document.getElementById('mk-bar-z').addEventListener('click', ()=>{ const z=document.getElementById('mk-zukan'); if(z){ z.open=true; z.scrollIntoView({behavior:'smooth',block:'start'}); } });
+  drawZukan(); drawToday();
   document.getElementById('share').addEventListener('click', async ()=>{
     const s = cur.s;
     const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://makoto746.github.io/komayasumi/\n#こまやすみ #こまみくじ`;
@@ -3328,6 +3473,7 @@ const KOMA_TOD = (function(h){
   const nicks = ['むちむちの破壊神','ソファの支配者','上目遣いの魔術師','よだれの錬金術師','なんでも食べる伝説'];
   window.komaGacha = function(f){
     g.querySelector('.gacha-photo img').src = IMGS[f.img] || IMGS.antler;
+    const gr=g.querySelector('.gacha-rare'); if(gr) gr.textContent = f.sec ? 'シークレット「'+f.r+'」' : '超激レア';
     g.querySelector('.gacha-nickname').textContent = '二つ名:' + nicks[Math.floor(Math.random()*nicks.length)];
     g.classList.add('open'); g.setAttribute('aria-hidden','false');
     // ファンファーレ(音符ボタンONのとき)
@@ -3803,6 +3949,42 @@ const KOMA_TOD = (function(h){
   document.querySelectorAll('[data-room="room-mag"]').forEach(b=>b.addEventListener('click',()=>render(CUR)));
   let seen=0; try{ seen=+(localStorage.getItem('koma_mag_seen')||0); }catch(e){}
   window.komaMagNew = now.getDate()>=11 && now.getDate()<=17 && seen<CUR ? label(cur) : '';
+})();
+
+
+// ⑪ 曲が流れているときは「こまと、まなぶ」を重ねて開く(ページ移動で曲が止まらないように)
+(function(){
+  const box=document.getElementById('reader'), fr=document.getElementById('reader-f'), x=document.getElementById('reader-x');
+  if(!box) return;
+  const playing=()=>['song','snore'].some(id=>{ const a=document.getElementById(id); return a && !a.paused && a.volume>0; });
+  let opened=false;
+  function open(href){
+    fr.src=href; box.classList.add('on'); box.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+    if(!opened){ try{ history.pushState({komaReader:1},'',location.href); }catch(e){} }
+    opened=true;
+  }
+  function close(fromPop){
+    if(!opened) return; opened=false;
+    box.classList.remove('on'); box.setAttribute('aria-hidden','true'); fr.src='about:blank';
+    if(!document.querySelector('.room.open')) document.body.style.overflow='';
+    if(!fromPop){ try{ history.back(); }catch(e){} }
+  }
+  document.addEventListener('click',e=>{
+    const a=e.target.closest && e.target.closest('a[href]'); if(!a) return;
+    const h=a.getAttribute('href')||'';
+    if(!/^(manabu|care-[a-z0-9-]+)\.html(#.*)?$/.test(h)) return;
+    if(!playing() || e.metaKey || e.ctrlKey || a.target==='_blank') return;
+    e.preventDefault(); open(h);
+  },true);
+  x.addEventListener('click',()=>close(false));
+  addEventListener('popstate',()=>{ if(opened) close(true); });
+  // 記事の中の「こまやすみ。」や「ホームへ」を押したら、重ねた画面を閉じる
+  fr.addEventListener('load',()=>{
+    try{
+      const path=fr.contentWindow.location.pathname;
+      if(fr.src!=='about:blank' && (/\/$/.test(path) || /index\.html$/.test(path))){ close(false); }
+    }catch(e){}
+  });
 })();
 
 // おしらせ:お返事・ひみつの一コマ
