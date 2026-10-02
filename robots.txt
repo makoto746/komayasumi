@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://komayasumi.com/sitemap.xml

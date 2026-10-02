@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>こまと、まなぶ｜フレンチブルドッグと暮らすヒント｜こまやすみ</title>
 <meta name="description" content="フレンチブルドッグと長く元気に暮らすための、やさしいケア読みもの。こま(French Bulldog)といっしょに、からだの健康・きもちと行動・毎日のくらしを、テーマごとにまなびます。">
-<link rel="canonical" href="https://makoto746.github.io/komayasumi/manabu.html">
+<link rel="canonical" href="https://komayasumi.com/manabu.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="こまやすみ。">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="https://makoto746.github.io/komayasumi/manabu.html">
+<meta property="og:url" content="https://komayasumi.com/manabu.html">
 <meta property="og:title" content="こまと、まなぶ｜フレンチブルドッグと暮らすヒント">
 <meta property="og:description" content="フレブルと長く元気に暮らすための、やさしいケア読みもの。テーマごとに、一つずつ。">
-<meta property="og:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
+<meta property="og:image" content="https://komayasumi.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="こまと、まなぶ｜フレンチブルドッグと暮らすヒント">
-<meta name="twitter:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
+<meta name="twitter:image" content="https://komayasumi.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -58,6 +58,10 @@ footer{background:#171310;color:rgba(251,241,222,.72);text-align:center;padding:
 footer .matane{font-family:'Kiwi Maru',serif;font-size:1.3rem;letter-spacing:.2em;color:var(--paper)}
 footer .copy{font-size:.72rem;letter-spacing:.14em;margin-top:16px;color:rgba(251,241,222,.45)}
 footer a{color:var(--honey)}
+
+.card .thumb{display:block;aspect-ratio:16/7;overflow:hidden;background:var(--paper-deep)}
+.card .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.card:hover .thumb img{transform:scale(1.05)}
 </style>
 </head>
 <body>
@@ -77,6 +81,7 @@ footer a{color:var(--honey)}
 
   <div class="cards" id="cards">
     <a class="card" data-cat="karada" href="care-natsu.html">
+      <span class="thumb"><img src="img/dp_tongue.webp" alt="" loading="lazy" style="object-position:50% 3%"></span>
       <div class="body">
         <span class="tag">いちばん大事</span>
         <h2>夏の暑さ・熱中症対策</h2>
@@ -85,6 +90,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="karada" href="care-jumyo.html">
+      <span class="thumb"><img src="img/night_sleep.webp" alt="" loading="lazy" style="object-position:50% 45%"></span>
       <div class="body">
         <span class="tag">あたらしい記事</span>
         <h2>いぬは、むかしより長生きになった</h2>
@@ -93,6 +99,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="karada" href="care-kao.html">
+      <span class="thumb"><img src="img/cut.webp" alt="" loading="lazy" style="object-position:50% 50%"></span>
       <div class="body">
         <span class="tag">お手入れ</span>
         <h2>顔の「シワ」と「鼻」のケア</h2>
@@ -101,6 +108,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="karada" href="care-taiju.html">
+      <span class="thumb"><img src="img/chair.webp" alt="" loading="lazy" style="object-position:50% 22%"></span>
       <div class="body">
         <span class="tag">食事・健康</span>
         <h2>体重管理と毎日のごはん</h2>
@@ -109,6 +117,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="karada" href="care-fuyu.html">
+      <span class="thumb"><img src="img/leo.webp" alt="" loading="lazy" style="object-position:50% 30%"></span>
       <div class="body">
         <span class="tag">季節のケア</span>
         <h2>冬の乾燥・寒さ対策</h2>
@@ -117,6 +126,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="karada" href="care-kushami.html">
+      <span class="thumb"><img src="img/face.webp" alt="" loading="lazy" style="object-position:50% 40%"></span>
       <div class="body">
         <span class="tag">からだ・けんこう</span>
         <h2>「クシュン！」は、大丈夫？</h2>
@@ -125,6 +135,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="karada" href="care-undou.html">
+      <span class="thumb"><img src="img/ball.webp" alt="" loading="lazy" style="object-position:50% 45%"></span>
       <div class="body">
         <span class="tag">からだ・けんこう</span>
         <h2>動きたい、を満たしてあげる</h2>
@@ -133,6 +144,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-sukinshippu.html">
+      <span class="thumb"><img src="img/hero.webp" alt="" loading="lazy" style="object-position:50% 30%"></span>
       <div class="body">
         <span class="tag">あたらしい記事</span>
         <h2>「だいすき」の、つたえかた</h2>
@@ -141,6 +153,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-unaru.html">
+      <span class="thumb"><img src="img/gaze.webp" alt="" loading="lazy" style="object-position:50% 42%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>「ううー」の、ほんとの気持ち</h2>
@@ -149,6 +162,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-natsukanai.html">
+      <span class="thumb"><img src="img/sunflower.webp" alt="" loading="lazy" style="object-position:50% 78%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>こまと、なかよくなるには</h2>
@@ -157,6 +171,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-sonkei.html">
+      <span class="thumb"><img src="img/wait_door.webp" alt="" loading="lazy" style="object-position:50% 92%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>こまが、心をあずける人</h2>
@@ -165,6 +180,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-sign.html">
+      <span class="thumb"><img src="img/stairs.webp" alt="" loading="lazy" style="object-position:50% 72%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>こまの、こえなき ことば</h2>
@@ -173,6 +189,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-hyojo.html">
+      <span class="thumb"><img src="img/flat.webp" alt="" loading="lazy" style="object-position:50% 45%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>顔は、気持ちの窓</h2>
@@ -181,6 +198,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-senaka.html">
+      <span class="thumb"><img src="img/dp_stand.webp" alt="" loading="lazy" style="object-position:50% 35%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>背中には、意味がある</h2>
@@ -189,6 +207,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-fukigen.html">
+      <span class="thumb"><img src="img/dp_sofa.webp" alt="" loading="lazy" style="object-position:50% 8%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>ちょっと、ごきげんななめ</h2>
@@ -197,6 +216,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kimochi" href="care-nezou.html">
+      <span class="thumb"><img src="img/upside.webp" alt="" loading="lazy" style="object-position:50% 45%"></span>
       <div class="body">
         <span class="tag">こころ・行動</span>
         <h2>寝顔にも、意味がある</h2>
@@ -205,6 +225,7 @@ footer a{color:var(--honey)}
       </div>
     </a>
     <a class="card" data-cat="kurashi" href="care-rusuban.html">
+      <span class="thumb"><img src="img/wait_hall.webp" alt="" loading="lazy" style="object-position:50% 40%"></span>
       <div class="body">
         <span class="tag">くらし・おせわ</span>
         <h2>おるすばん、じょうずにできるかな</h2>

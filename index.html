@@ -8,18 +8,19 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="こまやすみ。">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="https://makoto746.github.io/komayasumi/">
+<meta property="og:url" content="https://komayasumi.com/">
 <meta property="og:title" content="こまやすみ。— また、こまに会いに来た。">
 <meta property="og:description" content="世界のどこかで、誰かがこまやすみ。フレンチブルドッグ「こま」に会える場所。つかれたら、ここへ。">
-<meta property="og:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
+<meta property="og:image" content="https://komayasumi.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ソファでこちらを見つめるフレンチブルドッグのこま">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="こまやすみ。— また、こまに会いに来た。">
 <meta name="twitter:description" content="フレンチブルドッグ「こま」に会える場所。つかれたら、ここへ。">
-<meta name="twitter:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
+<meta name="twitter:image" content="https://komayasumi.com/og-image.jpg">
 <link rel="icon" id="fav" href="">
+<link rel="canonical" href="https://komayasumi.com/">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#12100E">
@@ -2571,7 +2572,7 @@ const KOMA_TOD = (function(h){
   if(tsubuTx) tsubuTx.textContent='「'+tsubu+'」';
   const shareB=document.getElementById('td-share');
   if(shareB) shareB.addEventListener('click', async ()=>{
-    const URL='https://makoto746.github.io/komayasumi/';
+    const URL='https://komayasumi.com/';
     const t='きょうの、こまのひとこと。\n「'+tsubu+'」\n— こまやすみ。 '+URL+'\n#こまやすみ';
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。',text:t}); }catch(e){} }
     else { try{ await navigator.clipboard.writeText(t); const o=shareB.textContent; shareB.textContent='コピーしました'; setTimeout(()=>shareB.textContent=o,1600);}catch(e){} }
@@ -2821,7 +2822,7 @@ const KOMA_TOD = (function(h){
   drawZukan(); drawToday();
   document.getElementById('share').addEventListener('click', async ()=>{
     const s = cur.s;
-    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://makoto746.github.io/komayasumi/\n#こまやすみ #こまみくじ`;
+    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://komayasumi.com/\n#こまやすみ #こまみくじ`;
     const note = document.getElementById('mnote');
     if(navigator.share){
       try{ await navigator.share({title:'こまみくじ', text:t}); }catch(e){}
@@ -4076,7 +4077,7 @@ window.komaLbSingle = showSingle;
 
 // 共有:友だちに教える
 (function(){
-  const URL='https://makoto746.github.io/komayasumi/';
+  const URL='https://komayasumi.com/';
   const TXT='フレンチブルドッグ「こま」に会える場所。つかれたら、ここで こまやすみ。 #こまやすみ';
   async function share(btn){
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。', text:TXT, url:URL}); }catch(e){} }
