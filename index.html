@@ -8,19 +8,18 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="こまやすみ。">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="https://komayasumi.com/">
+<meta property="og:url" content="https://makoto746.github.io/komayasumi/">
 <meta property="og:title" content="こまやすみ。— また、こまに会いに来た。">
 <meta property="og:description" content="世界のどこかで、誰かがこまやすみ。フレンチブルドッグ「こま」に会える場所。つかれたら、ここへ。">
-<meta property="og:image" content="https://komayasumi.com/og-image.jpg">
+<meta property="og:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ソファでこちらを見つめるフレンチブルドッグのこま">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="こまやすみ。— また、こまに会いに来た。">
 <meta name="twitter:description" content="フレンチブルドッグ「こま」に会える場所。つかれたら、ここへ。">
-<meta name="twitter:image" content="https://komayasumi.com/og-image.jpg">
+<meta name="twitter:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
 <link rel="icon" id="fav" href="">
-<link rel="canonical" href="https://komayasumi.com/">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#12100E">
@@ -1103,6 +1102,12 @@ a.door .lbl i{text-decoration:none}
   .madvice{margin:8px 16px 18px}
 }
 @media (prefers-reduced-motion:reduce){.mk-shake.go{animation:none}}
+
+.mk-zgrid .zk.lock.lim{background:linear-gradient(135deg,#FBE1C8,#F3E3C6)}
+.mk-zgrid .zk.lock.lim b{font-size:.56rem;line-height:1.3;padding:2px 3px 0}
+.mk-zgrid .zk.lock.now{box-shadow:0 0 0 2px var(--honey);animation:bob 1.8s ease-in-out infinite}
+.mk-zgrid .zk em{font-style:normal;font-size:.52rem;color:#fff;background:var(--honey);border-radius:999px;padding:1px 6px;margin-top:3px}
+.mk-hint b{color:var(--honey)}
 </style>
 </head>
 <body>
@@ -1486,7 +1491,7 @@ a.door .lbl i{text-decoration:none}
     <section id="mikuji" class="mikuji-inner reveal">
       <span class="eyebrow">うらない</span>
       <h2>こまみくじ</h2>
-      <p class="lead">ぜんぶで43種類。超大吉・大吉・中吉・小吉・末吉、そして ひみつの「シークレット」。<br>こまが、きょうのあなたを占います。<br>だいじょうぶ。<b>こまみくじに、凶はありません。</b><br>…ごくまれに、超激レアが出るとか。</p>
+      <p class="lead">ぜんぶで<b id="mk-total">100</b>種類。いつでも出るみくじに、季節・時間・こまの日の限定、そして ひみつの「シークレット」。<br>こまが、きょうのあなたを占います。<br>だいじょうぶ。<b>こまみくじに、凶はありません。</b><br>…ごくまれに、超激レアが出るとか。</p>
       <p class="mk-today" id="mk-today"></p>
       <div class="mk-shake" id="mk-shake" aria-hidden="true">🎋</div>
       <button class="mikuji-btn" id="draw">こまみくじを引く</button>
@@ -2199,7 +2204,50 @@ const IMGS = {
   mv3: 'mv3.webp',
   mv4: 'mv4.webp',
   mv5: 'mv5.webp',
-  stairs2: 'img/stairs2.webp'
+  stairs2: 'img/stairs2.webp',
+  m_avocado: 'img/m_avocado.webp',
+  m_balcony: 'img/m_balcony.webp',
+  m_bd1: 'img/m_bd1.webp',
+  m_bd2: 'img/m_bd2.webp',
+  m_bdbib: 'img/m_bdbib.webp',
+  m_bdwall: 'img/m_bdwall.webp',
+  m_blanketeye: 'img/m_blanketeye.webp',
+  m_cake: 'img/m_cake.webp',
+  m_cakeeat: 'img/m_cakeeat.webp',
+  m_carpet: 'img/m_carpet.webp',
+  m_chair3: 'img/m_chair3.webp',
+  m_chairsleep: 'img/m_chairsleep.webp',
+  m_chew: 'img/m_chew.webp',
+  m_doya: 'img/m_doya.webp',
+  m_float: 'img/m_float.webp',
+  m_hesoten2: 'img/m_hesoten2.webp',
+  m_hesoten3: 'img/m_hesoten3.webp',
+  m_hoodie: 'img/m_hoodie.webp',
+  m_hyou1: 'img/m_hyou1.webp',
+  m_hyou2: 'img/m_hyou2.webp',
+  m_hyou3: 'img/m_hyou3.webp',
+  m_lap: 'img/m_lap.webp',
+  m_legs: 'img/m_legs.webp',
+  m_leobed: 'img/m_leobed.webp',
+  m_leoblanket: 'img/m_leoblanket.webp',
+  m_nosesleep: 'img/m_nosesleep.webp',
+  m_pawblanket: 'img/m_pawblanket.webp',
+  m_pig: 'img/m_pig.webp',
+  m_pinkblanket: 'img/m_pinkblanket.webp',
+  m_puppy2: 'img/m_puppy2.webp',
+  m_ribbon: 'img/m_ribbon.webp',
+  m_rock: 'img/m_rock.webp',
+  m_rock2: 'img/m_rock2.webp',
+  m_sakura1: 'img/m_sakura1.webp',
+  m_sakura2: 'img/m_sakura2.webp',
+  m_sakura3: 'img/m_sakura3.webp',
+  m_sakura4: 'img/m_sakura4.webp',
+  m_sakuraeda: 'img/m_sakuraeda.webp',
+  m_sofaface: 'img/m_sofaface.webp',
+  m_sofalook: 'img/m_sofalook.webp',
+  m_stairs3: 'img/m_stairs3.webp',
+  m_stretch: 'img/m_stretch.webp',
+  m_tanpopo: 'img/m_tanpopo.webp'
 };
 // 画像:写真集や扉の小さな枠には軽い版、部屋の中の画像は開いたときに読み込む
 const IMGS_S = k => IMGS[k];
@@ -2572,7 +2620,7 @@ const KOMA_TOD = (function(h){
   if(tsubuTx) tsubuTx.textContent='「'+tsubu+'」';
   const shareB=document.getElementById('td-share');
   if(shareB) shareB.addEventListener('click', async ()=>{
-    const URL='https://komayasumi.com/';
+    const URL='https://makoto746.github.io/komayasumi/';
     const t='きょうの、こまのひとこと。\n「'+tsubu+'」\n— こまやすみ。 '+URL+'\n#こまやすみ';
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。',text:t}); }catch(e){} }
     else { try{ await navigator.clipboard.writeText(t); const o=shareB.textContent; shareB.textContent='コピーしました'; setTimeout(()=>shareB.textContent=o,1600);}catch(e){} }
@@ -2738,11 +2786,77 @@ const KOMA_TOD = (function(h){
     {r:'おしり吉', sec:1, rare:'シークレット 🐾', img:'osuwari', s:[5,5,5,4,5], jp:'しっぽがなくても、うれしい気持ちは ちゃんと伝わる日。', en:'', lucky:'梨', adv:'よろこびは、体ぜんぶで表していい。'},
     {r:'うでまくら吉', sec:1, rare:'シークレット 🐾', img:'udemakura', s:[5,4,5,5,5], jp:'たよれるものが、じつは自分の中にある日。', en:'', lucky:'ヨーグルト', adv:'まくらがなければ、自分の手で。'},
     {r:'ぐっすり吉', sec:1, rare:'シークレット 🐾', img:'night_sleep', s:[5,5,4,5,5], jp:'よく眠った人から、いいことが起きる日。', en:'', lucky:'ホットミルク', adv:'寝るのも、だいじな仕事。'},
-    {r:'まんまる吉', sec:1, rare:'シークレット 🐾', img:'hero', s:[5,5,5,5,4], jp:'まんまるの瞳で見つめたら、たいていのことは許される日。', en:'', lucky:'納豆', adv:'上目づかいは、最終兵器。'}
+    {r:'まんまる吉', sec:1, rare:'シークレット 🐾', img:'hero', s:[5,5,5,5,4], jp:'まんまるの瞳で見つめたら、たいていのことは許される日。', en:'', lucky:'納豆', adv:'上目づかいは、最終兵器。'},
+    // ── 2026.10 追加:いつでも出る ──
+    {r:'大吉', rare:'', img:'m_carpet', s:[5,4,4,4,4], jp:'ふわふわの上に座るみたいに、気持ちがやわらかくなる日。', en:'', lucky:'たまごボーロ', adv:'お気に入りの場所で、ひと呼吸。'},
+    {r:'大吉', rare:'', img:'m_sofaface', s:[5,4,4,4,4], jp:'あごをのせて待っていたら、いい知らせが届く日。', en:'', lucky:'チーズ', adv:'待つのが上手な人に、運はくる。'},
+    {r:'大吉', rare:'', img:'m_chew', s:[4,4,5,4,4], jp:'こつこつ噛みしめたぶんだけ、味が出る日。', en:'', lucky:'ヤクチーズ', adv:'ながく続けたものが、いちばん強い。'},
+    {r:'中吉', rare:'', img:'m_hesoten2', s:[3,4,3,3,4], jp:'ぜんぶ見せても、だいじょうぶな日。安心が、いちばんの運。', en:'', lucky:'ヨーグルト', adv:'おなかを出せる場所を、ひとつ持とう。'},
+    {r:'中吉', rare:'', img:'m_sofalook', s:[3,3,4,3,4], jp:'ちょっと首をかしげると、見え方が変わる日。', en:'', lucky:'ブロッコリー', adv:'角度をかえて、もう一度。'},
+    {r:'中吉', rare:'', img:'m_puppy2', s:[4,3,3,4,3], jp:'はじめてのことに、目をまるくしていい日。', en:'', lucky:'ミルク', adv:'わからないは、わくわくの入口。'},
+    {r:'中吉', rare:'', img:'m_leobed', s:[3,4,3,3,3], jp:'ほっぺたをのせられる場所が、運をくれる日。', en:'', lucky:'さつまいも', adv:'よりかかれるものに、よりかかろう。'},
+    {r:'小吉', rare:'', img:'m_rock', s:[3,3,3,3,2], jp:'すきまの奥に、思わぬ発見がある日。のぞいてみて。', en:'', lucky:'にんじん', adv:'寄り道は、冒険のはじまり。'},
+    {r:'小吉', rare:'', img:'m_blanketeye', s:[2,3,3,3,3], jp:'もうちょっとだけ、ぬくぬくしていい日。', en:'', lucky:'かぼちゃ', adv:'あったかいところから、ゆっくり出よう。'},
+    {r:'小吉', rare:'', img:'m_stairs3', s:[3,3,2,3,3], jp:'のぼるか、待つか。どっちを選んでも、正解の日。', en:'', lucky:'りんご', adv:'まよったら、ふりかえってみて。'},
+    {r:'末吉', rare:'', img:'m_rock2', s:[2,3,2,3,3], jp:'一歩ずつ確かめながら進めば、ちゃんと渡れる日。', en:'', lucky:'さつまいも', adv:'あせらず、足もとを見て。'},
+    {r:'末吉', rare:'', img:'m_hesoten3', s:[2,3,2,2,3], jp:'くらい日も、おなかを出して寝れば、あしたは明るい日。', en:'', lucky:'おかゆ', adv:'眠れば、だいたいリセット。'},
+    // ── 季節限定 ──
+    {r:'お正月吉', lim:'1月限定', mon:[1], rare:'1月限定', img:'leo', s:[5,4,4,5,5], jp:'もこもこにくるまって、いい一年をはじめる日。', en:'', lucky:'おもち(犬用)', adv:'ことしも、ゆっくり いこう。'},
+    {r:'ぬくぬく吉', lim:'12〜1月限定', mon:[12,1], rare:'冬限定', img:'m_leoblanket', s:[4,5,3,4,4], jp:'おふとんの中が、世界でいちばん安全な日。', en:'', lucky:'ホットミルク', adv:'寒い日は、無理に外に出なくていい。'},
+    {r:'おでかけ吉', lim:'12〜2月限定', mon:[12,1,2], rare:'冬限定', img:'m_hoodie', s:[4,4,4,4,3], jp:'ちょっと寒くても、外に出れば いいにおいに出会える日。', en:'', lucky:'さつまいも', adv:'あったかくして、いってらっしゃい。'},
+    {r:'クリスマス吉', lim:'12月限定', mon:[12], rare:'12月限定', img:'m_pinkblanket', s:[5,5,4,4,5], jp:'ほしかったものより、ほしかった時間が届く日。', en:'', lucky:'ささみケーキ', adv:'いちばんのプレゼントは、となりにいること。'},
+    {r:'おたんじょう吉', lim:'2月限定', mon:[2], rare:'誕生月限定 🎂', img:'m_bdbib', s:[5,5,5,5,5], jp:'うまれてきてくれて、ありがとうの日。あなたにも、こまにも。', en:'', lucky:'わんこケーキ', adv:'おめでとうは、何回言ってもいい。'},
+    {r:'ケーキ吉', lim:'2月限定', mon:[2], rare:'誕生月限定 🎂', img:'m_cakeeat', s:[5,4,4,4,5], jp:'ごほうびを、まっすぐ味わっていい日。', en:'', lucky:'バナナ', adv:'うれしいときは、顔まで使って よろこぶ。'},
+    {r:'パーティー吉', lim:'2月限定', mon:[2], rare:'誕生月限定 🎂', img:'m_bdwall', s:[5,5,4,4,4], jp:'みんなが、あなたのために集まってくれる日。', en:'', lucky:'りんご', adv:'主役の日は、どっしり座っていればいい。'},
+    {r:'よいどれ吉', lim:'2月限定', mon:[2], rare:'誕生月限定 🎂', img:'m_bd1', s:[4,5,3,4,4], jp:'はしゃぎすぎて、白目でねむるくらいが ちょうどいい日。', en:'', lucky:'ヤギミルク', adv:'たのしんだあとは、ぐっすり。'},
+    {r:'まんぷく吉', lim:'2月限定', mon:[2], rare:'誕生月限定 🎂', img:'m_bd2', s:[4,4,4,4,5], jp:'おなかいっぱいの幸せを、おなかで受けとめる日。', en:'', lucky:'ケーキのいちご', adv:'満たされたら、あおむけで休もう。'},
+    {r:'ごちそう吉', lim:'2月限定', mon:[2], rare:'誕生月限定 🎂', img:'m_cake', s:[5,4,4,4,5], jp:'目の前のごちそうに、気づける日。', en:'', lucky:'バナナとりんご', adv:'待てたら、いちばんおいしい。'},
+    {r:'はやざき吉', lim:'2〜3月限定', mon:[2,3], rare:'早春限定 🌸', img:'m_hyou2', s:[5,4,4,4,4], jp:'まだ寒くても、春はもう咲きはじめている日。', en:'', lucky:'いちご', adv:'いちばん乗りで、季節をかぎにいこう。'},
+    {r:'ヒョウ柄吉', lim:'2〜3月限定', mon:[2,3], rare:'早春限定 🌸', img:'m_hyou1', s:[4,4,4,4,4], jp:'お気に入りの服を着ると、強くなれる日。', en:'', lucky:'さつまいも', adv:'ちょっと派手なくらいが、ちょうどいい。'},
+    {r:'うしろ姿吉', lim:'2〜3月限定', mon:[2,3], rare:'早春限定 🌸', img:'m_hyou3', s:[4,4,3,4,4], jp:'前を向いて歩けば、景色がついてくる日。', en:'', lucky:'にんじん', adv:'ふりかえらなくても、だいじょうぶ。'},
+    {r:'お花見吉', lim:'3〜4月限定', mon:[3,4], rare:'春限定 🌸', img:'m_sakura2', s:[5,4,4,5,4], jp:'見上げるだけで、気持ちが晴れる日。', en:'', lucky:'さくらもち(犬用)', adv:'ときどき、空を見よう。'},
+    {r:'くんくん吉', lim:'3〜4月限定', mon:[3,4], rare:'春限定 🌸', img:'m_sakura1', s:[4,4,4,4,4], jp:'足もとに、春のにおいが落ちている日。', en:'', lucky:'キャベツ', adv:'下を向くのも、悪くない。'},
+    {r:'ひなたぼっこ吉', lim:'3〜4月限定', mon:[3,4], rare:'春限定 🌸', img:'m_sakura3', s:[4,5,3,4,4], jp:'あったかい場所で、ごろんとしていい日。', en:'', lucky:'白身魚', adv:'休むのも、春のたのしみ。'},
+    {r:'さんぽ吉', lim:'3〜4月限定', mon:[3,4], rare:'春限定 🌸', img:'m_sakura4', s:[4,4,4,4,3], jp:'いつもの土手が、いつもよりきれいに見える日。', en:'', lucky:'りんご', adv:'同じ道でも、季節がかわれば新しい。'},
+    {r:'さくら吉', lim:'3〜4月限定', mon:[3,4], rare:'春限定 🌸', img:'m_sakuraeda', s:[5,4,4,4,4], jp:'こまが見上げていた桜みたいに、ふわっと花ひらく日。', en:'', lucky:'いちご', adv:'つぼみの時間も、ちゃんと前に進んでる。'},
+    {r:'たんぽぽ吉', lim:'4〜5月限定', mon:[4,5], rare:'春限定 🌼', img:'m_tanpopo', s:[5,5,4,4,4], jp:'ちいさな幸せに、鼻を近づけてみる日。', en:'', lucky:'ブロッコリー', adv:'においをかげば、だいたいわかる。'},
+    {r:'家族記念日吉', lim:'5月限定', mon:[5], rare:'5月限定', img:'pen', s:[5,5,5,5,5], jp:'あたらしい家族に出会えた、とくべつな月。', en:'', lucky:'ミルク', adv:'出会えたことに、ありがとう。'},
+    {r:'梅雨吉', lim:'6月限定', mon:[6], rare:'6月限定 ☔', img:'window', s:[3,4,4,4,3], jp:'雨の日は、窓から世界をながめる日。', en:'', lucky:'きゅうり', adv:'晴れを待つ時間も、わるくない。'},
+    {r:'うきわ吉', lim:'7〜8月限定', mon:[7,8], rare:'夏限定 🌊', img:'m_float', s:[5,4,4,5,4], jp:'うかんでいれば、なんとかなる日。', en:'', lucky:'スイカ', adv:'力を抜いたほうが、うまくいく。'},
+    {r:'ひんやり吉', lim:'7〜8月限定', mon:[7,8], rare:'夏限定 🌊', img:'m_balcony', s:[3,4,3,4,4], jp:'つめたい場所を見つける天才になれる日。', en:'', lucky:'きゅうり', adv:'あつい日は、がんばらないのが正解。'},
+    {r:'なつやすみ吉', lim:'8月限定', mon:[8], rare:'8月限定', img:'sunflower', s:[5,4,3,5,4], jp:'ひまわりみたいに、明るいほうを向く日。', en:'', lucky:'スイカ', adv:'水分補給と、お昼寝を わすれずに。'},
+    {r:'お月見吉', lim:'9月限定', mon:[9], rare:'9月限定 🌕', img:'night_sleep', s:[4,5,4,4,4], jp:'まんまるの月みたいに、まるくおさまる日。', en:'', lucky:'おだんご(犬用)', adv:'夜は、ゆっくり空を見よう。'},
+    {r:'梨吉', lim:'9〜10月限定', mon:[9,10], rare:'秋限定 🍐', img:'tablepeek', s:[5,4,4,4,5], jp:'こまの大好きな梨が、いちばんおいしい季節。いいことも、みずみずしい日。', en:'', lucky:'梨', adv:'旬のものを、旬のうちに。'},
+    {r:'おいも吉', lim:'10〜11月限定', mon:[10,11], rare:'秋限定 🍠', img:'m_leobed', s:[4,4,4,4,5], jp:'焼きいもの においがしたら、いいことの合図の日。', en:'', lucky:'焼きいも', adv:'あったかいものは、分けあうとおいしい。'},
+    {r:'いい肉球吉', lim:'11月限定', mon:[11], rare:'11月限定 🐾', img:'m_pawblanket', s:[4,5,4,4,4], jp:'ちいさな一歩の積みかさねが、ちゃんと形になる日。', en:'', lucky:'りんご', adv:'肉球のお手入れも、わすれずに。'},
+    // ── 特別な日 ──
+    {r:'おたんじょうび吉', lim:'2月11日だけ', mon:[2], day:11, rare:'こまの誕生日限定 🎂', img:'m_bdwall', s:[5,5,5,5,5], jp:'きょうは、こまの誕生日。いっしょにお祝いしてくれて、ありがとう。', en:'', lucky:'わんこケーキ', adv:'うれしい日は、みんなでよろこぼう。'},
+    {r:'おむかえ記念日吉', lim:'5月6日だけ', mon:[5], day:6, rare:'家族になった日限定', img:'chair2', s:[5,5,5,5,5], jp:'こまが、この家の家族になった日。出会いに、ありがとうの日。', en:'', lucky:'いつものおやつ', adv:'あたりまえの毎日が、いちばんの宝物。'},
+    {r:'元日吉', lim:'1月1日だけ', mon:[1], day:1, rare:'元日限定 🎍', img:'m_carpet', s:[5,5,5,5,5], jp:'あけましておめでとう。ことしも、ゆっくり いい年になる日。', en:'', lucky:'おもち(犬用)', adv:'はじまりの日は、のんびりでいい。'},
+    {r:'おおみそか吉', lim:'12月31日だけ', mon:[12], day:31, rare:'大みそか限定', img:'night_sleep', s:[5,5,4,5,5], jp:'一年ぶんの「おつかれさま」を、自分に言っていい日。', en:'', lucky:'年越しささみ', adv:'ことしも、よくがんばりました。'},
+    {r:'週末吉', lim:'土日だけ', wd:[0,6], rare:'週末限定', img:'m_sofaface', s:[4,5,3,5,4], jp:'予定がなくても、ちゃんといい休日になる日。', en:'', lucky:'チーズ', adv:'なにもしない、をやってみよう。'},
+    {r:'こまの日吉', lim:'毎月11日だけ', day:11, rare:'こまの日限定 🐾', img:'look', s:[5,5,5,5,5], jp:'きょうは こまの日。会いに来てくれて、ありがとうの日。', en:'', lucky:'いつものおやつ', adv:'月に一度は、こまやすみ。'},
+    // ── 時間限定 ──
+    {r:'おはよう吉', lim:'朝5〜9時だけ', hr:[5,9], rare:'朝限定 ☀', img:'m_chair3', s:[5,4,4,4,4], jp:'まっすぐ前を見ていれば、いいことが向こうから来る日。', en:'', lucky:'ささみジャーキー', adv:'背すじをのばすと、気分ものびる。'},
+    {r:'のびのび吉', lim:'朝5〜9時だけ', hr:[5,9], rare:'朝限定 ☀', img:'m_stretch', s:[4,4,3,4,4], jp:'ぐーんと伸びをすると、運も伸びる日。', en:'', lucky:'バナナ', adv:'からだをのばすと、心もほぐれる。'},
+    {r:'おひるね吉', lim:'昼13〜15時だけ', hr:[13,15], rare:'昼限定', img:'m_lap', s:[4,5,3,4,4], jp:'ひざの上で、ひと眠りしていい日。', en:'', lucky:'ヨーグルト', adv:'15分の昼寝が、午後を変える。'},
+    {r:'おまちかね吉', lim:'夕方17〜20時だけ', hr:[17,20], rare:'夕方限定', img:'wait_hall', s:[4,5,4,4,4], jp:'待っていた人が、もうすぐ帰ってくる日。', en:'', lucky:'ささみ', adv:'おかえりの準備を しておこう。'},
+    {r:'ねんね吉', lim:'夜22〜5時だけ', hr:[22,5], rare:'夜限定 🌙', img:'m_nosesleep', s:[3,5,3,4,4], jp:'きょうは、もうがんばらなくていい日。', en:'', lucky:'ホットミルク', adv:'おやすみは、いちばんのごほうび。'},
+    {r:'すやすや吉', lim:'夜22〜5時だけ', hr:[22,5], rare:'夜限定 🌙', img:'m_chairsleep', s:[3,4,3,4,4], jp:'すわったままでも、眠れるくらい安心な日。', en:'', lucky:'白湯', adv:'つかれたら、その場で休もう。'},
+    {r:'よふかし吉', lim:'夜22〜5時だけ', hr:[22,5], rare:'夜限定 🌙', img:'m_avocado', s:[3,4,4,4,3], jp:'眠れない夜は、だきまくらを ぎゅっとする日。', en:'', lucky:'カッテージチーズ', adv:'目をとじるだけでも、からだは休まる。'},
+    // ── シークレット(追加分) ──
+    {r:'ふたつむすび吉', sec:1, rare:'シークレット 🐾', img:'m_ribbon', s:[5,5,5,5,5], jp:'いつもとちがう自分を、たのしめる日。にあってるよ。', en:'', lucky:'いちご', adv:'イメチェンは、だいたい成功する。'},
+    {r:'なかま吉', sec:1, rare:'シークレット 🐾', img:'m_pig', s:[5,5,4,5,5], jp:'ことばが通じなくても、なかよくなれる日。', en:'', lucky:'りんご', adv:'まずは、となりに いてみよう。'},
+    {r:'ドヤ吉', sec:1, rare:'シークレット 🐾', img:'m_doya', s:[5,5,5,5,5], jp:'なにもしてないのに、なぜか自信がわいてくる日。', en:'', lucky:'ジャーキー', adv:'その顔のまま、堂々と。'},
+    {r:'そばにいる吉', sec:1, rare:'シークレット 🐾', img:'m_legs', s:[5,5,5,5,5], jp:'いちばん安心できる場所は、だいすきな人のそばの日。', en:'', lucky:'ささみ', adv:'くっついていいよ。'}
   ];
   F.forEach((f,i)=>{ f.id='m'+i; });
   // 重み:超大吉はレア
-  const W = F.map(f => f.sec ? 1.3 : f.r==='超大吉' ? 4 : f.r==='大吉' ? 9 : f.r==='中吉' ? 10 : f.r==='小吉' ? 8 : 7);
+  const NOW = new Date(), NM = NOW.getMonth()+1, NH = NOW.getHours(), ND = NOW.getDate();
+  const inHr = h => h[0]<=h[1] ? (NH>=h[0] && NH<h[1]) : (NH>=h[0] || NH<h[1]);
+  const avail = f => (!f.mon || f.mon.indexOf(NM)>=0) && (!f.hr || inHr(f.hr)) && (!f.day || f.day===ND) && (!f.wd || f.wd.indexOf(NOW.getDay())>=0);
+  const isLim = f => !!(f.mon || f.hr || f.day || f.wd);
+  const W = F.map(f => !avail(f) ? 0 : f.sec ? 1.3 : f.day ? 30 : isLim(f) ? 6 : f.r==='超大吉' ? 4 : f.r==='大吉' ? 9 : f.r==='中吉' ? 10 : f.r==='小吉' ? 8 : 7);
   const CATS = ['運勢','恋愛','仕事','学校','お金'];
   let cur = null;
   const card = document.getElementById('mcard');
@@ -2766,7 +2880,7 @@ const KOMA_TOD = (function(h){
     const bar=document.getElementById('mk-bar-z'); if(bar) bar.textContent='図鑑 '+got+'/'+F.length;
     const grid=document.getElementById('mk-zgrid'); if(!grid) return;
     grid.innerHTML=F.map(f=>{
-      if(!book[f.id]) return '<span class="zk lock'+(f.sec?' sec':'')+'"><i>'+(f.sec?'？':'？')+'</i><b>'+(f.sec?'シークレット':f.r)+'</b></span>';
+      if(!book[f.id]) return '<span class="zk lock'+(f.sec?' sec':isLim(f)?' lim'+(avail(f)?' now':''):'')+'"><i>？</i><b>'+(f.sec?'シークレット':isLim(f)?f.lim:f.r)+'</b>'+(isLim(f)&&avail(f)?'<em>いま出るよ</em>':'')+'</span>';
       return '<button type="button" class="zk '+rankCls(f)+'" data-id="'+f.id+'"><img src="'+(IMGS[f.img]||'')+'" alt="" loading="lazy"><b>'+f.r+'</b></button>';
     }).join('');
     grid.querySelectorAll('button[data-id]').forEach(b=>b.addEventListener('click',()=>{ const f=F.find(x=>x.id===b.dataset.id); if(f) show(f,{replay:true}); }));
@@ -2820,9 +2934,11 @@ const KOMA_TOD = (function(h){
   document.getElementById('mk-share2').addEventListener('click', ()=>document.getElementById('share').click());
   document.getElementById('mk-bar-z').addEventListener('click', ()=>{ const z=document.getElementById('mk-zukan'); if(z){ z.open=true; z.scrollIntoView({behavior:'smooth',block:'start'}); } });
   drawZukan(); drawToday();
+  { const t=document.getElementById('mk-total'); if(t) t.textContent=F.length; }
+  { const nowLim=F.filter(f=>isLim(f)&&avail(f)); const h=document.querySelector('.mk-hint'); if(h && nowLim.length) h.innerHTML+='<br>いまだけの限定みくじ:<b>'+nowLim.map(f=>f.r).join('・')+'</b>'; }
   document.getElementById('share').addEventListener('click', async ()=>{
     const s = cur.s;
-    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://komayasumi.com/\n#こまやすみ #こまみくじ`;
+    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://makoto746.github.io/komayasumi/\n#こまやすみ #こまみくじ`;
     const note = document.getElementById('mnote');
     if(navigator.share){
       try{ await navigator.share({title:'こまみくじ', text:t}); }catch(e){}
@@ -4077,7 +4193,7 @@ window.komaLbSingle = showSingle;
 
 // 共有:友だちに教える
 (function(){
-  const URL='https://komayasumi.com/';
+  const URL='https://makoto746.github.io/komayasumi/';
   const TXT='フレンチブルドッグ「こま」に会える場所。つかれたら、ここで こまやすみ。 #こまやすみ';
   async function share(btn){
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。', text:TXT, url:URL}); }catch(e){} }
