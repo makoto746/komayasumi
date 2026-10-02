@@ -8,18 +8,19 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="こまやすみ。">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="https://makoto746.github.io/komayasumi/">
+<meta property="og:url" content="https://komayasumi.com/">
 <meta property="og:title" content="こまやすみ。— また、こまに会いに来た。">
 <meta property="og:description" content="世界のどこかで、誰かがこまやすみ。フレンチブルドッグ「こま」に会える場所。つかれたら、ここへ。">
-<meta property="og:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
+<meta property="og:image" content="https://komayasumi.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ソファでこちらを見つめるフレンチブルドッグのこま">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="こまやすみ。— また、こまに会いに来た。">
 <meta name="twitter:description" content="フレンチブルドッグ「こま」に会える場所。つかれたら、ここへ。">
-<meta name="twitter:image" content="https://makoto746.github.io/komayasumi/og-image.jpg">
+<meta name="twitter:image" content="https://komayasumi.com/og-image.jpg">
 <link rel="icon" id="fav" href="">
+<link rel="canonical" href="https://komayasumi.com/">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#12100E">
@@ -1108,6 +1109,34 @@ a.door .lbl i{text-decoration:none}
 .mk-zgrid .zk.lock.now{box-shadow:0 0 0 2px var(--honey);animation:bob 1.8s ease-in-out infinite}
 .mk-zgrid .zk em{font-style:normal;font-size:.52rem;color:#fff;background:var(--honey);border-radius:999px;padding:1px 6px;margin-top:3px}
 .mk-hint b{color:var(--honey)}
+
+/* ==== こまみくじ:運勢を点数で ==== */
+.stars.gauges{display:block;max-width:420px;margin:16px auto 0;padding:0 22px}
+.mk-total{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:12px;padding:10px 14px;border-radius:16px;
+  background:linear-gradient(135deg,#FFF6E4,#FBE7C6)}
+.mk-total .tl{font-size:.74rem;letter-spacing:.16em;color:var(--ink-soft)}
+.mk-total b{font-family:'Nunito',sans-serif;font-weight:800;font-size:2rem;color:var(--honey);line-height:1}
+.mk-total .tj{font-family:'Kiwi Maru',serif;font-size:.9rem;color:var(--ink);background:#fff;border-radius:999px;padding:3px 12px}
+.gauges .g{position:relative;display:grid;grid-template-columns:22px 3.2em 1fr 3.4em;align-items:center;gap:8px;padding:6px 0}
+.gauges .gi{font-size:.95rem;text-align:center}
+.gauges .gc{font-size:.8rem;font-weight:700;letter-spacing:.08em;color:var(--ink-soft)}
+.gauges .gb{height:10px;border-radius:999px;background:var(--paper-deep);overflow:hidden}
+.gauges .gb i{display:block;height:100%;width:var(--w);border-radius:999px;background:linear-gradient(90deg,#F4C873,var(--honey));
+  animation:gauge .9s cubic-bezier(.2,.8,.3,1) both}
+@keyframes gauge{from{width:0}}
+.gauges b{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.06rem;color:var(--ink);text-align:right}
+.gauges em{position:absolute;right:calc(3.4em + 10px);top:-5px;font-style:normal;font-size:.56rem;font-weight:800;letter-spacing:.06em;color:#fff;
+  background:var(--pero);border-radius:999px;padding:1px 7px;animation:pop .5s ease .8s both}
+.gauges .g.over .gb i{background:linear-gradient(90deg,#FFD36B,#FF9E6B,#EF6F8F);box-shadow:0 0 10px rgba(255,158,107,.7)}
+.gauges .g.over b{color:#E2665A}
+.gauges .g.inf .gb i{background:linear-gradient(90deg,#FF6B6B,#FFD36B,#6BE38B,#6BB8FF,#B57BFF);background-size:200% 100%;animation:gauge .9s both,rainbow 2s linear infinite}
+@keyframes rainbow{to{background-position:200% 0}}
+.gauges .g.inf b{color:#8E6BB8;font-size:1.3rem}
+.gauges .g.inf em{background:#8E6BB8}
+.stars.t-rare .mk-total{background:linear-gradient(135deg,#FFE9D6,#FFD1C4)}
+.stars.t-sec .mk-total{background:linear-gradient(135deg,#EFE4FA,#FFE2EC)}
+.stars.t-sec .mk-total b{color:#8E6BB8}
+@media (max-width:600px){ .stars.gauges{padding:0 16px;margin:12px auto 0} .gauges .g{padding:4px 0} .mk-total b{font-size:1.7rem} }
 </style>
 </head>
 <body>
@@ -1495,7 +1524,7 @@ a.door .lbl i{text-decoration:none}
       <p class="mk-today" id="mk-today"></p>
       <div class="mk-shake" id="mk-shake" aria-hidden="true">🎋</div>
       <button class="mikuji-btn" id="draw">こまみくじを引く</button>
-      <p class="mk-hint">1日1回目が「きょうの本みくじ」。そのあとは、おかわりで図鑑あつめ。</p>
+      <p class="mk-hint">1日1回目が「きょうの本みくじ」。そのあとは、おかわりで図鑑あつめ。<br>運勢は100点満点。レアは120点、シークレットは…1000点!?</p>
       <div class="mikuji-card" id="mcard" aria-live="polite">
         <div class="mrank-row">
           <p class="mrank" id="mrank">大吉</p>
@@ -2620,7 +2649,7 @@ const KOMA_TOD = (function(h){
   if(tsubuTx) tsubuTx.textContent='「'+tsubu+'」';
   const shareB=document.getElementById('td-share');
   if(shareB) shareB.addEventListener('click', async ()=>{
-    const URL='https://makoto746.github.io/komayasumi/';
+    const URL='https://komayasumi.com/';
     const t='きょうの、こまのひとこと。\n「'+tsubu+'」\n— こまやすみ。 '+URL+'\n#こまやすみ';
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。',text:t}); }catch(e){} }
     else { try{ await navigator.clipboard.writeText(t); const o=shareB.textContent; shareB.textContent='コピーしました'; setTimeout(()=>shareB.textContent=o,1600);}catch(e){} }
@@ -2861,6 +2890,26 @@ const KOMA_TOD = (function(h){
   let cur = null;
   const card = document.getElementById('mcard');
   const stars = n => '★'.repeat(n) + '☆'.repeat(5-n);
+  // 運勢の点数:ふつうは100点まで。レア(超大吉・特別な日)は120点まで、シークレットは1つが1000点に
+  const ICONS = ['🍀','💗','💼','📚','💰'];
+  const rnd = (a,b) => a + Math.floor(Math.random()*(b-a+1));
+  const tierOf = f => f.sec ? 'sec' : (f.r==='超大吉' || f.day) ? 'rare' : 'normal';
+  function scoresFor(f){
+    const t = tierOf(f);
+    let v = f.s.map(n => Math.max(30, Math.min(100, 40 + n*12 + rnd(-8, 4))));
+    if(t==='rare') v = v.map((x,i) => f.s[i]>=5 ? rnd(101,120) : x);
+    if(t==='sec'){ v = v.map(() => rnd(100,120)); v[rnd(0,4)] = 1000; }
+    return v;
+  }
+  function judge(sum){
+    if(sum>=1000) return '伝説級';
+    if(sum>=500) return '限界突破';
+    if(sum>=450) return '絶好調';
+    if(sum>=390) return 'いい感じ';
+    if(sum>=330) return 'まずまず';
+    return 'のんびり';
+  }
+  let curScores = [0,0,0,0,0];
   function weightedPick(){
     const tot = W.reduce((a,b)=>a+b,0);
     let r = Math.random()*tot;
@@ -2914,8 +2963,21 @@ const KOMA_TOD = (function(h){
     document.getElementById('mimg').src = IMGS[f.img];
     document.getElementById('mjp').textContent = f.jp;
     
-    document.getElementById('mstars').innerHTML = CATS.map((c,i)=>
-      `<div class="row"><span class="cat">${c}</span><span class="val">${stars(f.s[i])}</span></div>`).join('');
+    const sc = scoresFor(f); curScores = sc;
+    const sum = sc.reduce((a,b)=>a+b,0);
+    const box = document.getElementById('mstars');
+    box.className = 'stars gauges t-'+tierOf(f);
+    box.innerHTML = '<div class="mk-total"><span class="tl">こまパワー</span><b data-to="'+sum+'">0</b><span class="tj">'+judge(sum)+'</span></div>' +
+      CATS.map((c,i)=>{
+        const v=sc[i], cls = v>=1000 ? ' inf' : v>100 ? ' over' : '';
+        return `<div class="g${cls}"><span class="gi">${ICONS[i]}</span><span class="gc">${c}</span>`+
+          `<span class="gb"><i style="--w:${Math.min(100,v)}%"></i></span><b data-to="${v}">0</b>`+
+          (v>=1000?'<em>MAX∞</em>':v>100?'<em>限界突破</em>':'')+`</div>`; }).join('');
+    // 数字が くるくる増える
+    const nums = box.querySelectorAll('b[data-to]'), t0 = performance.now(), D = 900;
+    (function tick(now){ const p = Math.min(1,(now-t0)/D), e = 1-Math.pow(1-p,3);
+      nums.forEach(n=>{ n.textContent = Math.round(+n.dataset.to * e); });
+      if(p<1) requestAnimationFrame(tick); })(t0);
     document.getElementById('mlucky').textContent = f.lucky;
     document.getElementById('madvice').textContent = f.adv;
     card.classList.remove('show'); void card.offsetWidth; card.classList.add('show');
@@ -2938,7 +3000,8 @@ const KOMA_TOD = (function(h){
   { const nowLim=F.filter(f=>isLim(f)&&avail(f)); const h=document.querySelector('.mk-hint'); if(h && nowLim.length) h.innerHTML+='<br>いまだけの限定みくじ:<b>'+nowLim.map(f=>f.r).join('・')+'</b>'; }
   document.getElementById('share').addEventListener('click', async ()=>{
     const s = cur.s;
-    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\n運勢${stars(s[0])}\n恋愛${stars(s[1])}\n仕事${stars(s[2])}\n学校${stars(s[3])}\nお金${stars(s[4])}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://makoto746.github.io/komayasumi/\n#こまやすみ #こまみくじ`;
+    const v = curScores, sm = v.reduce((a,b)=>a+b,0);
+    const t = `【こまみくじ】${cur.r}\n「${cur.jp}」\nこまパワー ${sm}(${judge(sm)})\n🍀運勢${v[0]} 💗恋愛${v[1]} 💼仕事${v[2]}\n📚学校${v[3]} 💰お金${v[4]}\nラッキーおやつ:${cur.lucky}\n\n— こまやすみ。 https://komayasumi.com/\n#こまやすみ #こまみくじ`;
     const note = document.getElementById('mnote');
     if(navigator.share){
       try{ await navigator.share({title:'こまみくじ', text:t}); }catch(e){}
@@ -4193,7 +4256,7 @@ window.komaLbSingle = showSingle;
 
 // 共有:友だちに教える
 (function(){
-  const URL='https://makoto746.github.io/komayasumi/';
+  const URL='https://komayasumi.com/';
   const TXT='フレンチブルドッグ「こま」に会える場所。つかれたら、ここで こまやすみ。 #こまやすみ';
   async function share(btn){
     if(navigator.share){ try{ await navigator.share({title:'こまやすみ。', text:TXT, url:URL}); }catch(e){} }
