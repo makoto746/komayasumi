@@ -413,6 +413,8 @@ header.paper .sndbtn[aria-pressed="true"]{background:var(--honey);color:#241A14}
 .photo-bg[data-bg="niji"]{background:linear-gradient(180deg,#FFD9D9,#FFE9CC,#FFFACC,#D9F2D9,#D9E8FF,#E6D9FF)}
 .photo-bg[data-bg="honey"]{background:linear-gradient(160deg,#F0C069,#E3A63C)}
 .photo-stage video,.photo-stage #photo-result{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.photo-stage #photo-result{-webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto;z-index:7}
+.photo-stage.saveflash{box-shadow:0 0 0 4px #E3A63C;transition:box-shadow .3s}
 .photo-koma{position:absolute;left:50%;top:52%;width:auto;height:auto;max-width:56%;max-height:64%;transform:translate(-50%,-50%);
   filter:drop-shadow(0 10px 16px rgba(0,0,0,.4));cursor:grab;touch-action:none;z-index:3;user-select:none}
 .photo-stamp{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) rotate(var(--rot,0deg));
@@ -3605,14 +3607,49 @@ const KOMA_TOD = (function(h){
     if(curFrame!=='date'){ ctx.font='700 '+(W*0.04)+'px "Kiwi Maru",sans-serif'; ctx.fillStyle='rgba(255,253,247,.9)';
       ctx.textAlign='left'; ctx.textBaseline='alphabetic'; ctx.fillText('こまやすみ。',W*0.04,H-W*0.045); }
     result.src=canvas.toDataURL('image/jpeg',.92);
+    lastBlob=null; try{ canvas.toBlob(b=>{ lastBlob=b; },'image/jpeg',.92); }catch(e){}
     result.style.display=''; cam.style.display='none'; bg.style.display='none';
     shown=true; updateButtons();
     if(stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; live=false; }
     note.textContent='「保存する」でスマホに保存。「もう一回」でやり直し。';
   });
 
-  bSave.addEventListener('click',()=>{ const a=document.createElement('a'); a.href=result.src; a.download='koma_'+Date.now()+'.jpg'; a.click(); });
-  bRetry.addEventListener('click',()=>{ result.style.display='none'; shown=false;
+  // 保存：①共有シート(スマホ) → ②ダウンロード(パソコン) → ③長押しで保存(アプリ内ブラウザ・iPhone)
+  let lastBlob=null, saving=false;
+  function dataUrlToBlob(u){ const [h,b]=u.split(','); const bin=atob(b); const a=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) a[i]=bin.charCodeAt(i); return new Blob([a],{type:(h.match(/:(.*?);/)||[,'image/jpeg'])[1]}); }
+  function longPressGuide(){
+    note.textContent='📷 上の写真を「長押し」して、「写真に保存」(または「画像を保存」)を選んでね。';
+    stage.scrollIntoView({behavior:'smooth',block:'center'});
+    stage.classList.add('saveflash'); setTimeout(()=>stage.classList.remove('saveflash'),1600);
+  }
+  bSave.addEventListener('click',()=>{
+    if(saving || !shown) return; saving=true; setTimeout(()=>saving=false,1500);
+    const ua=navigator.userAgent||'';
+    const inApp=/Instagram|FBAN|FBAV|FB_IAB|Line\/|TikTok|musical_ly|Bytedance|BytedanceWebview|Twitter/i.test(ua);
+    const isIOS=/iP(hone|ad|od)/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints>1);
+    if(inApp){ longPressGuide(); return; }
+    let blob=lastBlob; if(!blob){ try{ blob=dataUrlToBlob(result.src); }catch(e){ longPressGuide(); return; } }
+    const name='koma_'+Date.now()+'.jpg';
+    let file=null; try{ file=new File([blob],name,{type:'image/jpeg'}); }catch(e){}
+    if(file && navigator.canShare && navigator.share){
+      let ok=false; try{ ok=navigator.canShare({files:[file]}); }catch(e){}
+      if(ok){
+        navigator.share({files:[file],title:'こまと記念撮影'})
+          .then(()=>{ note.textContent='保存・共有できたよ🐾 また撮りに来てね。'; })
+          .catch(e=>{ if(e && e.name==='AbortError') return; longPressGuide(); });
+        return;
+      }
+    }
+    if(isIOS){ longPressGuide(); return; }
+    try{
+      const u=URL.createObjectURL(blob); const a=document.createElement('a');
+      a.href=u; a.download=name; a.rel='noopener'; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(u),10000);
+      note.textContent='保存したよ🐾 見つからないときは、写真を長押し(右クリック)して保存してね。';
+    }catch(e){ longPressGuide(); }
+  });
+  bRetry.addEventListener('click',()=>{ result.style.display='none'; shown=false; lastBlob=null;
     if(mode==='bg') bg.style.display=''; updateButtons();
     note.textContent = mode==='bg' ? '背景を選んで「とる」。' : 'もう一度どうぞ。'; });
 
