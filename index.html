@@ -1051,6 +1051,11 @@ a.door .lbl i{text-decoration:none}
 .mag-bn button.on{box-shadow:0 0 0 3px var(--honey)}
 .mag-empty{margin-top:12px;font-size:.86rem;color:var(--ink-soft)}
 .mag-sec{scroll-margin-top:70px}
+.mag-diary{margin-top:12px;list-style:none;padding:0;border-left:2px dashed var(--honey);margin-left:6px}
+.mag-diary li{position:relative;padding:4px 0 14px 18px}
+.mag-diary li::before{content:"";position:absolute;left:-7px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--honey)}
+.mag-diary b{font-family:'Kiwi Maru',serif;font-weight:500;font-size:.92rem;color:var(--ink)}
+.mag-diary p{margin-top:2px;font-size:.92rem;line-height:1.85;color:var(--ink2)}
 .mag-toc{margin-top:22px;background:var(--frame);border-radius:18px;padding:14px 16px 10px;box-shadow:0 12px 30px -20px rgba(36,26,20,.3)}
 .mag-toc p{font-family:'Kiwi Maru',serif;font-size:.86rem;letter-spacing:.14em;color:var(--ink-soft);margin-bottom:6px}
 .mag-toc button{display:inline-flex;align-items:baseline;gap:6px;margin:0 14px 6px 0;background:none;border:none;padding:2px 0;font:inherit;font-size:.9rem;font-weight:700;color:var(--ink);cursor:pointer}
@@ -4255,6 +4260,7 @@ const KOMA_TOD = (function(h){
     ouchi:{t:'フレブルにやさしい、おうちづくり',h:'care-ouchi.html'},
     odekake:{t:'フレブルと、はじめてのおでかけ',h:'care-odekake.html'},
     bousai:{t:'犬といっしょの、防災のそなえ',h:'care-bousai.html'},
+    rusuban:{t:'おるすばん、じょうずにできるかな',h:'care-rusuban.html'},
     natsu:{t:'夏の暑さ・熱中症対策',h:'care-natsu.html'},
     fuyu:{t:'冬の乾燥・寒さ対策',h:'care-fuyu.html'}
   };
@@ -4289,12 +4295,14 @@ const KOMA_TOD = (function(h){
                'こまには、しっぽがありません。そのかわり、おしり全体をふって、うれしい気持ちを伝えます。おしりごと、ぶんぶん。',
                '人も犬も、みんな大好き。さわってくれる人のところには、すぐに行きます。ソファからじっとこっちを見ているのは、きっと「つぎはだれが来るかな」の見はりばん。'],
          photos:['wait_hall','wait_door']},
-       arts:['sukinshippu'],
+       diary:[['10月18日（日）','パパのサッカー大会の応援で、荒川の河川敷へ。草の「ノギ」をパクッとしてしまい、3回も吐いて、家族みんなで心配しました。'],
+              ['10月25日（日）','小学校のバザーの日。日曜日なのに、朝からだれもいない。こまは、おうちでひとり おるすばん。']],
+       arts:['sukinshippu','rusuban'],
        news:['「こまと、おさんぽ」ができました。おさんぽを記録すると、さんぽ図鑑の一コマがひらきます。','こまみくじが100種類に。点数つきになりました。','こまやすみの住所が「komayasumi.com」になりました。','Pinterestに「こまの一コマ」ボードができました。'],
        papa:''},
-    5:{cover:'m_rock',   title:'土手のおさんぽと、ちいさな事件。', koma:'草は、においをかぐだけにします。……たぶん。',
-       feature:{lead:'こまは、土手のおさんぽが大好き。でも先日、その土手で、ちいさな事件がありました。',
-         body:['いつもの土手を歩いていたとき、こまが知らない草をパクッ。そのあと、3回も吐いてしまいました。口の中には、草のトゲまでささっていました。',
+    5:{cover:'m_rock',   title:'河川敷と、ちいさな事件。', koma:'草は、においをかぐだけにします。……たぶん。',
+       feature:{lead:'こまは、川ぞいのおさんぽが大好き。でも10月、その河川敷で、ちいさな事件がありました。',
+         body:['10月18日の日曜日。パパのサッカー大会を応援しに、家族で荒川の河川敷へ。こまは、草の穂先にある「ノギ」をパクッ。そのあと3回も吐いてしまい、家族みんなで心配しました。口の中には、トゲまでささっていました。',
                'においをかぐのも、気になるものを口で確かめるのも、犬にとってはふつうのこと。だからこそ、どの植物があぶないのかを、家族が知っておくことにしました。',
                'そこで今月は「こまと、まなぶ」に、危ない植物の記事をつくりました。ツツジ、イチイ、スイセン、ネギの仲間のノビル……。実物の写真つきなので、おさんぽの前に、ぜひ一度。'],
          photos:['m_sakura4','m_tanpopo'], more:'shokubutsu'},
@@ -4357,6 +4365,7 @@ const KOMA_TOD = (function(h){
       const cells=[['年齢',ageAt(it.y,it.m)]].concat(n.w?[['体重',n.w]]:[]).concat(n.like?[['すきなもの',n.like]]:[]).concat(n.play?[['すきなあそび',n.play]]:[]).concat(n.fav?[['すきな場所',n.fav]]:[]);
       body+=sec('mg-now','NOW','こまのいま','<div class="mag-now">'+cells.map(c=>'<div><small>'+c[0]+'</small><b>'+esc(c[1])+'</b></div>').join('')+'</div>');
     }
+    if(it.diary&&it.diary.length){ toc.push(['mg-diary','こまの日記']); body+=sec('mg-diary','DIARY',it.m+'月の こま日記','<ul class="mag-diary">'+it.diary.map(d=>'<li><b>'+esc(d[0])+'</b><p>'+esc(d[1])+'</p></li>').join('')+'</ul>'); }
     if(it.news.length){ toc.push(['mg-news','できごと']); body+=sec('mg-news','NEWS',it.m+'月の できごと','<ul class="mag-news">'+it.news.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul>'); }
     const ph=it.photos.filter(k=>IMGS[k]);
     if(ph.length){ toc.push(['mg-photo','新しい一コマ']); body+=sec('mg-photo','NEW PHOTOS','新しい一コマ','<div class="mag-photos">'+ph.map(k=>'<button type="button" data-k="'+k+'"><img src="'+IMGS[k]+'" alt="" loading="lazy"></button>').join('')+'</div><button type="button" class="mag-btn" data-go="room-book">写真集で ぜんぶ見る →</button>'); }
