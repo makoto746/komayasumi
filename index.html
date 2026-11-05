@@ -580,6 +580,10 @@ header.paper .sndbtn[aria-pressed="true"]{background:var(--honey);color:#241A14}
   border:1.5px solid rgba(251,241,222,.4);background:rgba(0,0,0,.25);color:#FBF1DE;font-size:1.5rem;line-height:1}
 .lb-prev{left:12px}.lb-next{right:12px}
 .lb.single .lb-nav,.lb.single .lb-cnt{display:none}
+.lb-pin{margin-top:14px;display:inline-flex;align-items:center;gap:6px;border:1.5px solid rgba(251,241,222,.45);border-radius:999px;padding:8px 18px;color:#FBF1DE;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-decoration:none}
+.lb-pin::before{content:"";width:9px;height:9px;border-radius:50%;background:#E60023}
+.lb-pin:hover{background:rgba(251,241,222,.08)}
+.lb-pin[hidden]{display:none}
 
 /* ---- profile / boop ---- */
 .profile-card{margin-top:52px;background:var(--frame);border-radius:30px;box-shadow:0 24px 70px -28px rgba(36,26,20,.32);
@@ -2318,6 +2322,7 @@ a.door .lbl i{text-decoration:none}
   <button class="lb-nav lb-next" id="lb-next" aria-label="次の一コマ">›</button>
   <p class="lb-cap" id="lb-cap"></p>
   <p class="lb-cnt" id="lb-cnt"></p>
+  <a class="lb-pin" id="lb-pin" href="#" target="_blank" rel="noopener">Pinterestに保存</a>
 </div>
 
 <script>
@@ -4594,6 +4599,15 @@ const KOMA_TOD = (function(h){
   const cap = document.getElementById('lb-cap');
   const cnt = document.getElementById('lb-cnt');
   let list = [], idx = 0;
+  const pin = document.getElementById('lb-pin');
+  function setPin(src, c){
+    if(!pin) return;
+    let abs=''; try{ abs=new URL(src, location.href).href; }catch(e){}
+    if(!/^https:\/\//.test(abs) || /\/mv\d*\.webp/.test(abs)){ pin.hidden=true; return; }
+    pin.hidden=false;
+    const d=(c? c.replace(/\s+/g,' ').trim()+'｜' : '')+'フレンチブルドッグのこま｜こまやすみ';
+    pin.href='https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent('https://komayasumi.com/?from=pin')+'&media='+encodeURIComponent(abs)+'&description='+encodeURIComponent(d);
+  }
   function collect(){
     list = [...document.querySelectorAll('#room-book .fr')].filter(f=>f.querySelector('.ph img')).map(f=>({
       src: (function(im){ const k=im.dataset.k; return (k && IMGS[k]) ? IMGS[k] : im.src; })(f.querySelector('.ph img')),
@@ -4604,12 +4618,12 @@ const KOMA_TOD = (function(h){
   function show(i){
     idx = (i + list.length) % list.length;
     const it = list[idx];
-    img.src = it.src; cap.textContent = it.cap; cnt.textContent = it.no;
+    img.src = it.src; cap.textContent = it.cap; cnt.textContent = it.no; setPin(it.src, it.cap);
     lb.classList.remove('single');
     lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
   }
   function showSingle(src, c){
-    img.src = src; cap.textContent = c;
+    img.src = src; cap.textContent = c; setPin(src, c);
     lb.classList.add('single');
     lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
   }
