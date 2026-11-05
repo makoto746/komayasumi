@@ -101,6 +101,19 @@ table.pl td:first-child{font-weight:700;color:var(--ink);width:34%}
 .lv{display:inline-block;font-size:.7rem;font-weight:800;border-radius:999px;padding:1px 9px;margin-left:4px;vertical-align:1px}
 .lv.hi{background:#C96A5E;color:#fff}.lv.md{background:var(--honey);color:#fff}
 .note{font-size:.86rem;color:var(--ink-soft)}
+.plc{display:flex;flex-direction:column;gap:12px;margin:16px 0}
+.pc{display:flex;gap:14px;background:var(--frame);border-radius:16px;padding:12px;box-shadow:0 10px 26px -20px rgba(36,26,20,.4)}
+.pc img{width:112px;height:84px;object-fit:cover;border-radius:10px;flex:none;background:var(--paper-deep)}
+.pc .pt{flex:1;min-width:0}
+.pc .pn{font-family:'Kiwi Maru',serif;font-weight:500;color:var(--ink);font-size:1rem;line-height:1.5;margin-right:2px}
+.pc p{margin:4px 0 0;font-size:.88rem;line-height:1.8}
+.lv{margin-left:0}
+.twin{display:flex;gap:12px;margin:14px 0}
+.twin figure{flex:1;background:var(--frame);border-radius:14px;padding:8px;text-align:center}
+.twin img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;display:block}
+.twin figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px;line-height:1.5}
+.credit{font-size:.72rem;color:var(--ink-soft);margin-top:10px;line-height:1.8}
+.credit a{color:var(--ink-soft);text-decoration:underline}
 </style>
 </head>
 <body>
@@ -123,24 +136,27 @@ table.pl td:first-child{font-weight:700;color:var(--ink);width:34%}
   </div>
 
   <h2>とくに気をつけたい植物</h2>
-  <table class="pl">
-    <tr><th>植物</th><th>どんな心配があるか</th></tr>
-    <tr><td>ツツジ・サツキ<span class="lv hi">とても危険</span></td><td>公園や生け垣でよく見かけます。葉や花に毒があり、よだれ・嘔吐・下痢のほか、ふらつきや心臓の異常につながることも。重いと命にかかわります。</td></tr>
-    <tr><td>イチイ<span class="lv hi">とても危険</span></td><td>庭木や生け垣に使われます。葉や種に強い毒があり、少しの量でも心臓に影響して急変することがあります。赤い実の中の種も危険です。</td></tr>
-    <tr><td>スイセン<span class="lv md">注意</span></td><td>とくに球根に毒が多く、嘔吐・下痢・よだれなど。たくさん食べると、けいれんや心臓の異常が出ることも。</td></tr>
-    <tr><td>チューリップ<span class="lv md">注意</span></td><td>球根に多く、口の中の刺激やよだれ、嘔吐・下痢など。掘り返し遊びに注意。</td></tr>
-    <tr><td>アジサイ<span class="lv md">注意</span></td><td>葉や花を食べると、嘔吐・下痢など。梅雨の散歩道でよく見かけます。</td></tr>
-    <tr><td>アイビー（ヘデラ）<span class="lv md">注意</span></td><td>観葉植物や壁のつたでおなじみ。嘔吐・下痢・よだれ、おなかの痛みなど。</td></tr>
-    <tr><td>トチノキの実<br><small>（マロニエも）</small><span class="lv md">注意</span></td><td>秋に落ちる実（トチの実）や葉で、嘔吐・下痢など。拾い食いに注意。</td></tr>
-    <tr><td>ルバーブ<span class="lv md">注意</span></td><td>家庭菜園で育てることも。葉にシュウ酸が多く、よだれ・ふるえのほか、たくさん食べると腎臓に負担がかかることがあります。</td></tr>
-    <tr><td>タマネギ・ニンニク・ネギ類<span class="lv hi">とても危険</span></td><td>植物としても食べ物としても危険。血液（赤血球）がこわれて貧血になることがあり、<b>症状が数日おくれて出る</b>ことも。土手に生える<b>ノビル</b>もネギの仲間です。</td></tr>
-  </table>
+  <div class="plc">
+    <div class="pc"><img src="img/pl_tsutsuji.webp" alt="ツツジ・サツキ" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">ツツジ・サツキ</b><span class="lv hi">とても危険</span><p>公園や生け垣でよく見かけます。葉や花に毒があり、よだれ・嘔吐・下痢のほか、ふらつきや心臓の異常につながることも。重いと命にかかわります。</p></div></div>
+    <div class="pc"><img src="img/pl_ichii.webp" alt="イチイ" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">イチイ</b><span class="lv hi">とても危険</span><p>庭木や生け垣に使われます。葉や種に強い毒があり、少しの量でも心臓に影響して急変することがあります。赤い実の中の種も危険です。</p></div></div>
+    <div class="pc"><img src="img/pl_nobiru.webp" alt="タマネギ・ニンニク・ネギ類（写真はノビル）" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">タマネギ・ニンニク・ネギ類（写真はノビル）</b><span class="lv hi">とても危険</span><p>植物としても食べ物としても危険。血液（赤血球）がこわれて貧血になることがあり、<b>症状が数日おくれて出る</b>ことも。土手に生える<b>ノビル</b>もネギの仲間です。</p></div></div>
+    <div class="pc"><img src="img/pl_suisen.webp" alt="スイセン" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">スイセン</b><span class="lv md">注意</span><p>とくに球根に毒が多く、嘔吐・下痢・よだれなど。たくさん食べると、けいれんや心臓の異常が出ることも。</p></div></div>
+    <div class="pc"><img src="img/pl_tulip.webp" alt="チューリップ" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">チューリップ</b><span class="lv md">注意</span><p>球根に多く、口の中の刺激やよだれ、嘔吐・下痢など。掘り返し遊びに注意。</p></div></div>
+    <div class="pc"><img src="img/pl_ajisai.webp" alt="アジサイ" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">アジサイ</b><span class="lv md">注意</span><p>葉や花を食べると、嘔吐・下痢など。梅雨の散歩道でよく見かけます。</p></div></div>
+    <div class="pc"><img src="img/pl_ivy.webp" alt="アイビー（ヘデラ）" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">アイビー（ヘデラ）</b><span class="lv md">注意</span><p>観葉植物や壁のつたでおなじみ。嘔吐・下痢・よだれ、おなかの痛みなど。</p></div></div>
+    <div class="pc"><img src="img/pl_tochi.webp" alt="トチノキの実（マロニエも）" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">トチノキの実（マロニエも）</b><span class="lv md">注意</span><p>秋に落ちる実（トチの実）や葉で、嘔吐・下痢など。拾い食いに注意。</p></div></div>
+    <div class="pc"><img src="img/pl_rhubarb.webp" alt="ルバーブ" loading="lazy" width="240" height="180"><div class="pt"><b class="pn">ルバーブ</b><span class="lv md">注意</span><p>家庭菜園で育てることも。葉にシュウ酸が多く、よだれ・ふるえのほか、たくさん食べると腎臓に負担がかかることがあります。</p></div></div>
+  </div>
   <p class="note">※ ここにあるのは代表的なものだけです。ほかにも、ユリ（とくに猫に危険）、キョウチクトウ、スズラン、ポトスなど、注意が必要な植物はたくさんあります。名前がわからない植物は、「食べさせない」がいちばん安全です。</p>
 
   <figure class="art-pol"><img src="img/m_rock.webp" alt="土手のおさんぽ。楽しいけど、草むらには気をつけて。" style="object-position:55% 70%"><figcaption>土手のおさんぽ。楽しいけど、<br>草むらには気をつけて。</figcaption></figure>
 
   <h2>土手・草むらの、もうひとつのこわさ</h2>
   <p>こまのときのように、散歩道の草むらには「毒」以外の危険もあります。</p>
+  <div class="twin">
+    <figure><img src="img/pl_enoko.webp" alt="エノコログサの仲間の穂" loading="lazy" width="240" height="180"><figcaption>エノコログサの仲間<br>穂先が刺さりやすい</figcaption></figure>
+    <figure><img src="img/pl_azami.webp" alt="アザミのトゲのある葉" loading="lazy" width="240" height="180"><figcaption>アザミ<br>葉のトゲに注意</figcaption></figure>
+  </div>
   <ul class="dos">
     <li><b>トゲ・とがった種。</b>アザミのようなトゲのある草や、エノコログサ（ねこじゃらし）などイネ科の穂先は、口の中・鼻・耳・指のあいだにささりやすく、奥に入りこむこともあります。</li>
     <li><b>除草剤や農薬。</b>道ばたや畑のそばの草には、薬がまかれていることがあります。見た目ではわかりません。</li>
@@ -179,6 +195,18 @@ table.pl td:first-child{font-weight:700;color:var(--ink);width:34%}
     <a href="https://www.akc.org/expert-advice/health/foxtails-theyre-dangerous-dogs/" target="_blank" rel="noopener">Foxtails: They’re Dangerous for Dogs — AKC</a> ／
     <a href="https://www.vetmed.ucdavis.edu/node/13881" target="_blank" rel="noopener">Foxtails Pose Serious Health Risks to Animals — UC Davis</a>
   </div>
+  <p class="credit">植物の写真：Wikimedia Commons より（トリミング・縮小しています）。
+    ツツジ：lienyuan lee（<a href="https://creativecommons.org/licenses/by/3.0/deed.ja" target="_blank" rel="noopener">CC BY 3.0</a>）／
+    イチイ：Dalgial（<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 3.0</a>）／
+    ノビル：Qwert1234（<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 4.0</a>）／
+    スイセン：Zachi Evenor（<a href="https://creativecommons.org/licenses/by/2.0/deed.ja" target="_blank" rel="noopener">CC BY 2.0</a>）／
+    チューリップ：Igor123121（<a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank" rel="noopener">CC BY 4.0</a>）／
+    アジサイ：Raul654（<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 3.0</a>）／
+    アイビー：Hladac（<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 4.0</a>）／
+    トチノキの実：Daderot（CC0）／
+    ルバーブ：David J. Stang（<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 4.0</a>）／
+    エノコログサの仲間：Kropsoq（<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 3.0</a>）／
+    アザミ：Dalgial（<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 3.0</a>）</p>
 
   <div class="navlinks">
     <a href="manabu.html">ほかの記事を読む</a>
