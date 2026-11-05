@@ -377,7 +377,7 @@ footer a{color:var(--honey)}
   var box=document.getElementById('cards'); if(!q||!box) return;
   var cards=[].slice.call(box.querySelectorAll('.card[data-cat]'));
   var order=cards.slice(), idx=null, loading=null;
-  var SYN={'あつ':['暑','熱中症'],'さむ':['寒','冬'],'ごはん':['ご飯','食','ごはん'],'さんぽ':['散歩','さんぽ'],'るすばん':['留守番','るすばん'],'びょういん':['病院','受診','獣医'],'しょくぶつ':['植物','草'],'たいじゅう':['体重','太','肥満'],'はしる':['走','ランニング'],'ぼうさい':['防災','災害','避難']};
+  var SYN={'あつ':['暑','熱中症'],'さむ':['寒','冬'],'ごはん':['ご飯','食','ごはん'],'さんぽ':['散歩','さんぽ'],'るすばん':['留守番','るすばん'],'びょういん':['病院','受診','獣医'],'しょくぶつ':['植物','草'],'たいじゅう':['体重','太','肥満'],'はしる':['走','ランニング'],'ぼうさい':['防災','災害','避難'],'はみがき':['歯みがき','歯磨き','歯周病'],'おふろ':['お風呂','風呂','シャンプー'],'くびわ':['首輪','ハーネス'],'よぼう':['予防','ワクチン','注射'],'こども':['子ども','子供']};
   function norm(s){ s=(s||'').normalize('NFKC').toLowerCase(); return s.replace(/[ァ-ヶ]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-0x60); }); }
   function load(){ if(idx||loading) return loading; loading=fetch('search-index.json',{cache:'no-cache'}).then(function(r){ return r.ok?r.json():[]; }).then(function(a){ idx={}; a.forEach(function(d){ idx[d.h]=d; }); run(); }).catch(function(){ idx={}; }); return loading; }
   function esc(t){ return t.replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
