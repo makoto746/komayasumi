@@ -62,6 +62,21 @@ footer a{color:var(--honey)}
 .card .thumb{display:block;aspect-ratio:16/7;overflow:hidden;background:var(--paper-deep)}
 .card .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .card:hover .thumb img{transform:scale(1.05)}
+.search{position:relative;max-width:520px;margin:30px auto 0}
+.search input{width:100%;-webkit-appearance:none;appearance:none;background:var(--frame);border:2px solid var(--paper-deep);border-radius:999px;padding:14px 48px 14px 46px;font:inherit;font-size:1rem;color:var(--ink);outline:none;box-shadow:0 12px 30px -22px rgba(36,26,20,.35)}
+.search input:focus{border-color:var(--honey)}
+.search::before{content:"";position:absolute;left:18px;top:50%;width:14px;height:14px;margin-top:-9px;border:2.5px solid var(--honey);border-radius:50%}
+.search::after{content:"";position:absolute;left:31px;top:50%;width:8px;height:2.5px;margin-top:5px;background:var(--honey);transform:rotate(45deg);border-radius:2px}
+.search input::-webkit-search-cancel-button{display:none}
+#q-x{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;border:none;background:var(--paper-deep);color:var(--ink);font-size:1.1rem;line-height:1;cursor:pointer}
+#q-x[hidden]{display:none}
+.qchips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;max-width:560px;margin:12px auto 0;font-size:.76rem;color:var(--ink-soft)}
+.qchip{background:none;border:1.4px dashed var(--honey);border-radius:999px;padding:4px 12px;font:inherit;font-size:.8rem;font-weight:700;color:var(--ink);cursor:pointer}
+.qchip:hover{background:rgba(227,166,60,.12)}
+.q-res{text-align:center;font-size:.86rem;color:var(--ink2);margin:12px 0 0;min-height:1em}
+.q-res b{color:var(--honey)}
+.snip{margin-top:8px;font-size:.84rem;line-height:1.8;color:var(--ink-soft);background:var(--paper);border-radius:10px;padding:8px 12px}
+.snip mark{background:rgba(227,166,60,.35);color:var(--ink);border-radius:3px;padding:0 2px}
 </style>
 </head>
 <body>
@@ -70,6 +85,13 @@ footer a{color:var(--honey)}
   <span class="eyebrow">KOMA & LEARN</span>
   <h1>こまと、まなぶ</h1>
   <p class="lead">こま（フレンチブルドッグ）と、長く元気に暮らすために。<br>やさしいケアのヒントを、テーマごとに、一つずつ。</p>
+
+  <div class="search">
+    <input type="search" id="q" placeholder="キーワードでさがす（例：暑さ、ノギ、おるすばん）" autocomplete="off" enterkeyhint="search" aria-label="記事をキーワードでさがす">
+    <button type="button" id="q-x" aria-label="けす" hidden>×</button>
+  </div>
+  <div class="qchips"><span>たとえば：</span><button type="button" class="qchip">暑さ</button><button type="button" class="qchip">寒さ</button><button type="button" class="qchip">ごはん</button><button type="button" class="qchip">体重</button><button type="button" class="qchip">植物</button><button type="button" class="qchip">おるすばん</button><button type="button" class="qchip">病院</button></div>
+  <p class="q-res" id="q-res" aria-live="polite"></p>
 
   <div class="filter" id="filter">
     <button class="fchip on" data-f="all">すべて<span class="c">22</span></button>
@@ -301,6 +323,55 @@ footer a{color:var(--honey)}
       if(hint) hint.textContent=labels[cat]||labels.all;
     });
   });
+})();
+</script>
+<script>
+// キーワード検索(本文まで探せる。search-index.json は記事を足したときに作りなおす)
+(function(){
+  var q=document.getElementById('q'), qx=document.getElementById('q-x'), res=document.getElementById('q-res');
+  var box=document.getElementById('cards'); if(!q||!box) return;
+  var cards=[].slice.call(box.querySelectorAll('.card[data-cat]'));
+  var order=cards.slice(), idx=null, loading=null;
+  var SYN={'あつ':['暑','熱中症'],'さむ':['寒','冬'],'ごはん':['ご飯','食','ごはん'],'さんぽ':['散歩','さんぽ'],'るすばん':['留守番','るすばん'],'びょういん':['病院','受診','獣医'],'しょくぶつ':['植物','草'],'たいじゅう':['体重','太','肥満'],'はしる':['走','ランニング'],'ぼうさい':['防災','災害','避難']};
+  function norm(s){ s=(s||'').normalize('NFKC').toLowerCase(); return s.replace(/[ァ-ヶ]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-0x60); }); }
+  function load(){ if(idx||loading) return loading; loading=fetch('search-index.json',{cache:'no-cache'}).then(function(r){ return r.ok?r.json():[]; }).then(function(a){ idx={}; a.forEach(function(d){ idx[d.h]=d; }); run(); }).catch(function(){ idx={}; }); return loading; }
+  function esc(t){ return t.replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function alts(t){ var a=[t]; Object.keys(SYN).forEach(function(k){ if(t.indexOf(k)>=0||(k.indexOf(t)>=0&&t.length>=2)) a=a.concat(SYN[k].map(norm)); }); return a; }
+  function setCat(){ document.querySelectorAll('.fchip').forEach(function(x){ x.classList.toggle('on',x.dataset.f==='all'); }); }
+  function clearSnips(){ box.querySelectorAll('.snip').forEach(function(e){ e.remove(); }); }
+  function run(){
+    var v=q.value.trim(); qx.hidden=!v; clearSnips();
+    try{ var u=new URL(location.href); if(v) u.searchParams.set('q',v); else u.searchParams.delete('q'); history.replaceState(null,'',u); }catch(e){}
+    if(!v){ order.forEach(function(c){ c.style.display=''; box.appendChild(c); }); res.textContent=''; var on=document.querySelector('.fchip.on'); if(on&&on.dataset.f!=='all') on.click(); return; }
+    setCat();
+    var terms=norm(v).split(/\s+/).filter(Boolean).map(alts);
+    var hits=[];
+    order.forEach(function(c){
+      var h=c.getAttribute('href'), d=idx&&idx[h];
+      var head=norm(c.textContent), body=d?norm(d.x):'', raw=d?d.x:'';
+      var score=0, ok=terms.every(function(al){
+        var got=0; al.forEach(function(t){ var a=head.split(t).length-1, b=body.split(t).length-1; got+=a*5+b; }); score+=got; return got>0;
+      });
+      c.style.display=ok?'':'none';
+      if(ok){
+        hits.push([score,c]);
+        if(raw){ var nb=norm(raw), t0=null, p=-1; terms[0].some(function(t){ p=nb.indexOf(t); if(p>=0){ t0=t; return true; } return false; });
+          if(p>=0){ var s=Math.max(0,p-28), e=Math.min(raw.length,p+t0.length+40);
+            var sn=document.createElement('p'); sn.className='snip';
+            sn.innerHTML=(s>0?'…':'')+esc(raw.slice(s,p))+'<mark>'+esc(raw.slice(p,p+t0.length))+'</mark>'+esc(raw.slice(p+t0.length,e))+(e<raw.length?'…':'');
+            var go=c.querySelector('.go'); if(go) go.parentNode.insertBefore(sn,go); } }
+      }
+    });
+    hits.sort(function(a,b){ return b[0]-a[0]; }).forEach(function(x){ box.appendChild(x[1]); });
+    order.forEach(function(c){ if(c.style.display==='none') box.appendChild(c); });
+    res.innerHTML=hits.length? '「'+esc(v)+'」の記事が <b>'+hits.length+'本</b> 見つかったよ。' : '「'+esc(v)+'」は見つからなかったよ。ほかの言葉でもさがしてみてね。'+(idx?'':'（本文の検索を準備中…）');
+  }
+  var tm; q.addEventListener('input',function(){ load(); clearTimeout(tm); tm=setTimeout(run,120); });
+  q.addEventListener('focus',load);
+  qx.addEventListener('click',function(){ q.value=''; run(); q.focus(); });
+  document.querySelectorAll('.qchip').forEach(function(b){ b.addEventListener('click',function(){ q.value=b.textContent; load(); run(); }); });
+  document.querySelectorAll('.fchip').forEach(function(b){ b.addEventListener('click',function(){ if(q.value){ q.value=''; clearSnips(); order.forEach(function(c){ box.appendChild(c); }); res.textContent=''; qx.hidden=true; try{ var u=new URL(location.href); u.searchParams.delete('q'); history.replaceState(null,'',u); }catch(e){} } },true); });
+  try{ var p0=new URL(location.href).searchParams.get('q'); if(p0){ q.value=p0; load(); run(); } }catch(e){}
 })();
 </script>
 </body>
