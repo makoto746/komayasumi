@@ -88,14 +88,14 @@ header nav a:hover,header nav .nl:hover{color:var(--honey)}
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero .veil{position:absolute;inset:0;background:
   linear-gradient(to bottom, rgba(18,16,14,.42) 0%, rgba(18,16,14,0) 32%, rgba(18,16,14,0) 52%, rgba(18,16,14,.86) 92%)}
-.hero .inner{position:relative;z-index:2;text-align:center;padding:0 24px calc(60px + env(safe-area-inset-bottom))}
+.hero .inner{position:relative;z-index:2;text-align:center;padding:0 24px calc(16px + env(safe-area-inset-bottom))}
 .hero .greet{color:rgba(251,241,222,.85);font-size:.9rem;letter-spacing:.26em;opacity:0;animation:rise 1s ease .3s forwards}
 .hero h1{color:#FBF1DE;font-size:clamp(3rem,11vw,5.4rem);letter-spacing:.12em;line-height:1.25;margin-top:10px;
   text-shadow:0 4px 40px rgba(0,0,0,.45);opacity:0;animation:rise 1.1s ease .55s forwards}
 .hero .tag{color:rgba(251,241,222,.82);font-size:clamp(.92rem,2.8vw,1.05rem);margin-top:12px;opacity:0;animation:rise 1.1s ease .85s forwards}
 .hero .tag .en{color:rgba(251,241,222,.62)}
-.hero .hint{margin-top:34px;color:rgba(251,241,222,.55);font-size:.7rem;letter-spacing:.34em;opacity:0;animation:rise 1s ease 1.2s forwards}
-.hero .hint::after{content:"";display:block;width:1px;height:40px;background:rgba(251,241,222,.5);margin:10px auto 0}
+.hero .now-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:4px;color:#FBF1DE;
+  font-size:.85rem;letter-spacing:.08em;text-underline-offset:.28em}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
 section{padding:104px 24px;max-width:1040px;margin:0 auto}
@@ -108,7 +108,11 @@ h2{font-size:clamp(1.7rem,5.4vw,2.5rem);letter-spacing:.12em;text-align:center}
 
 
 /* ---- いまのこま ---- */
-.now-card{max-width:680px;margin:48px auto 0;background:var(--frame);border-radius:28px;overflow:hidden;
+#now{padding-block:clamp(36px,5vw,64px) clamp(32px,4vw,56px);scroll-margin-top:60px}
+#now:focus{outline:none}
+#now:focus-visible h2{text-decoration:underline;text-decoration-color:var(--honey);text-underline-offset:.22em}
+#now .lead{margin-top:12px}
+.now-card{max-width:680px;margin:24px auto 0;background:var(--frame);border-radius:28px;overflow:hidden;
   box-shadow:0 24px 70px -28px rgba(36,26,20,.35);display:grid;grid-template-columns:200px 1fr}
 .now-illust{background:#F6E8CE;display:flex;align-items:center;justify-content:center;padding:18px}
 .now-illust img{width:100%;max-width:170px;border-radius:50%;display:block;
@@ -120,11 +124,12 @@ h2{font-size:clamp(1.7rem,5.4vw,2.5rem);letter-spacing:.12em;text-align:center}
   border:1.5px solid var(--pero);border-radius:999px;padding:2px 10px;font-weight:700;vertical-align:middle}
 .now-status{font-family:'Kiwi Maru',serif;font-size:1.16rem;letter-spacing:.06em;margin-top:10px;line-height:1.8}
 .now-en{font-size:.82rem;margin-top:6px}
-.now-note{font-size:.74rem;color:var(--ink-soft);margin-top:14px}
+.now-note{font-size:.82rem;color:var(--ink-soft);margin-top:10px}
 @media (max-width:640px){
   .now-card{grid-template-columns:1fr}
-  .now-illust{padding:22px 18px 6px}
-  .now-body{text-align:center;padding:18px 24px 26px}
+  .now-illust{padding:12px 18px}
+  .now-illust img{max-width:116px}
+  .now-body{text-align:center;padding:12px 20px 18px}
 }
 
 
@@ -658,7 +663,8 @@ footer .copy{margin-top:42px;font-size:.72rem;letter-spacing:.16em;color:rgba(25
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .hero .greet,.hero .greet-sub,.hero h1,.hero .tag,.hero .hint,.reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+  .hero .greet,.hero .greet-sub,.hero h1,.hero .tag,.reveal{opacity:1;transform:none}
 }
 
 /* ---- greet-sub: 再訪の記憶 ---- */
@@ -686,12 +692,11 @@ footer .copy{margin-top:42px;font-size:.72rem;letter-spacing:.16em;color:rgba(25
 @media(min-width:720px){
   .hero{justify-content:flex-end;align-items:flex-start}
   .hero .bg img{object-position:center 30%}
-  .hero .inner{text-align:left;align-items:flex-start;padding:0 0 42px 60px;max-width:660px;display:flex;flex-direction:column}
+  .hero .inner{text-align:left;align-items:flex-start;padding-left:60px;max-width:660px;display:flex;flex-direction:column}
   .hero .greet{font-size:.86rem}
   .hero .greet-sub{font-size:.76rem}
   .hero h1{font-size:4rem;margin-top:8px;text-align:left}
   .hero .tag{text-align:left}
-  .hero .hint{display:none}
   .hero .veil{background:
      linear-gradient(to top, rgba(18,16,14,.9) 0%, rgba(18,16,14,.15) 34%, transparent 55%),
      linear-gradient(to right, rgba(18,16,14,.72) 0%, rgba(18,16,14,.15) 42%, transparent 66%)}
@@ -700,8 +705,6 @@ footer .copy{margin-top:42px;font-size:.72rem;letter-spacing:.16em;color:rgba(25
 
 /* ---- mobile hero: 顔を隠さない ---- */
 @media(max-width:719px){
-  .hero .hint{display:none}
-  .hero .inner{padding-bottom:40px}
   .hero h1{font-size:2.7rem}
   .hero .veil{background:linear-gradient(to bottom, rgba(18,16,14,.4) 0%, rgba(18,16,14,0) 30%, rgba(18,16,14,0) 46%, rgba(18,16,14,.94) 80%)}
 }
@@ -1054,6 +1057,8 @@ a.door .lbl i{text-decoration:none}
 .mag-bn button span{position:absolute;z-index:1;left:8px;right:8px;bottom:7px;text-align:left;font-size:.68rem;line-height:1.4;font-weight:700;letter-spacing:.04em}
 .mag-bn button.on{box-shadow:0 0 0 3px var(--honey)}
 .mag-empty{margin-top:12px;font-size:.86rem;color:var(--ink-soft)}
+.mag-permalink{margin-top:16px;text-align:center;font-size:.86rem}
+.mag-permalink a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-soft);text-underline-offset:.25em}
 .mag-sec{scroll-margin-top:70px}
 .mag-diary{margin-top:12px;list-style:none;padding:0;border-left:2px dashed var(--honey);margin-left:6px}
 .mag-diary li{position:relative;padding:4px 0 14px 18px}
@@ -1318,20 +1323,20 @@ a.door .lbl i{text-decoration:none}
 <main id="top">
 
   <div class="hero">
-    <div class="bg"><img data-k="hero" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="カーペットの上にまっすぐ座り、こちらを見つめるフレンチブルドッグのこま"></div>
+    <div class="bg"><img data-k="hero" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="ソファにあごをのせ、こちらを見つめるフレンチブルドッグのこま"></div>
     <div class="veil"></div>
     <div class="inner">
       <p class="greet" id="greeting">こんにちは。</p>
       <h1>こまやすみ。</h1>
       <p class="tag">つかれたら、ここへ。<br></p>
-      <p class="hint">▼</p>
+      <a class="now-link" href="#now">いまのこまをのぞく <span aria-hidden="true">↓</span></a>
     </div>
   </div>
 
-  <section id="now" class="reveal">
+  <section id="now" tabindex="-1" aria-labelledby="now-heading">
     <span class="eyebrow">いま</span>
-    <h2>いまのこま</h2>
-    <p class="lead">こまの平常運転にもとづく、リアルタイム推定です。<br>1日24通り。いつ来ても、こまは何かしています。</p>
+    <h2 id="now-heading">いまのこま</h2>
+    <p class="lead">1日24通り。いま、こまは何してるかな。</p>
     <div class="now-card">
       <div class="now-illust">
         <img data-k="illust" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="伏せてこちらを見るこまのイラスト">
@@ -4331,6 +4336,11 @@ const KOMA_TOD = (function(h){
   if(now.getDate()<11){ cm-=1; if(cm<1){ cm=12; cy-=1; } }
   const CUR=Math.max(1,(cy-2026)*12+(cm-7)+1);
   const ym=v=>{ const t=6+(v-1); return {y:2026+Math.floor(t/12), m:t%12+1}; };
+  const issueKey=({y,m})=>y+'-'+String(m).padStart(2,'0');
+  const issueParam=new URLSearchParams(location.search).get('issue') || '';
+  const issueDate=/^(\d{4})-(0[1-9]|1[0-2])$/.exec(issueParam);
+  const requestedIssue=issueDate ? (+issueDate[1]-2026)*12+(+issueDate[2]-7)+1 : 0;
+  let linkedIssue=requestedIssue>=1 && requestedIssue<=CUR ? requestedIssue : 0;
   function issue(v){
     const d=ISSUES[v]||{}, t=ym(v);
     return Object.assign({cover:WP[t.m]||'hero', title:t.m+'月の、こま。', koma:'今月も、会いに来てくれて ありがとう。', news:[], photos:[], arts:[], papa:'', feature:null, now:null, next:''}, d, {v, y:t.y, m:t.m});
@@ -4400,8 +4410,9 @@ const KOMA_TOD = (function(h){
     body+='<p class="mag-koma"><span class="who">こまより</span>'+esc(it.koma)+'</p>';
     if(isCur){
       const nx=ym(v+1), rel=new Date(nx.y,nx.m-1,11), dd=Math.max(0,Math.ceil((rel-now)/864e5));
-      body+='<div class="mag-next"><span>NEXT ISSUE</span><b>'+nx.m+'月号は、'+nx.m+'月11日 発売。</b><p>'+esc(it.next||(nx.m+'月の こまを、お届けします。'))+'</p><small>あと '+dd+' 日</small></div>';
+      body+='<div class="mag-next"><span>NEXT ISSUE</span><b>'+nx.m+'月11日、次のこま。</b><p>'+esc(it.next||(nx.m+'月の こまを、お届けします。'))+'</p><small>あと '+dd+' 日</small></div>';
     }
+    body+='<p class="mag-permalink"><a href="/?issue='+issueKey(it)+'">この号のリンク</a></p>';
     if(toc.length>1) h+='<nav class="mag-toc"><p>この号の もくじ</p>'+toc.map((t,i)=>'<button type="button" data-to="'+t[0]+'"><i>'+String(i+1).padStart(2,'0')+'</i>'+t[1]+'</button>').join('')+'</nav>';
     view.innerHTML=h+body;
     view.querySelectorAll('[data-to]').forEach(b=>b.addEventListener('click',()=>{ const t=document.getElementById(b.dataset.to); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }));
@@ -4416,7 +4427,15 @@ const KOMA_TOD = (function(h){
     bn.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ render(+b.dataset.v); const r=document.getElementById('room-mag'); if(r) r.scrollTo({top:0,behavior:'smooth'}); }));
     try{ localStorage.setItem('koma_mag_seen', String(CUR)); }catch(e){}
   }
-  document.querySelectorAll('[data-room="room-mag"]').forEach(b=>b.addEventListener('click',()=>render(CUR)));
+  document.querySelectorAll('[data-room="room-mag"]').forEach(b=>b.addEventListener('click',()=>{
+    render(linkedIssue || CUR);
+    linkedIssue=0;
+  }));
+  if(linkedIssue) addEventListener('DOMContentLoaded',()=>{
+    // 部屋だけを開く。ページ全体の初回操作（BGMなど）は発火させない。
+    document.querySelector('.mag-cover').dispatchEvent(new Event('click'));
+    document.querySelector('#room-mag [data-close]').focus();
+  },{once:true});
   let seen=0; try{ seen=+(localStorage.getItem('koma_mag_seen')||0); }catch(e){}
   window.komaMagNew = now.getDate()>=11 && now.getDate()<=17 && seen<CUR ? label(cur) : '';
 })();
